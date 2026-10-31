@@ -1,10 +1,15 @@
-const CACHE="gym-v2";
-const FILES=["./","index.html","manifest.json","icon-192.png","icon-512.png"];
+const CACHE="gym-v4";
+const FILES=["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "img/Butterfly_0.jpg", "img/Butterfly_1.jpg", "img/Cable_Crossover_0.jpg", "img/Cable_Crossover_1.jpg", "img/Cable_Crunch_0.jpg", "img/Cable_Crunch_1.jpg", "img/Cable_Hammer_Curls_-_Rope_Attachment_0.jpg", "img/Cable_Hammer_Curls_-_Rope_Attachment_1.jpg", "img/Cable_Rope_Overhead_Triceps_Extension_0.jpg", "img/Cable_Rope_Overhead_Triceps_Extension_1.jpg", "img/Dips_-_Triceps_Version_0.jpg", "img/Dips_-_Triceps_Version_1.jpg", "img/Dumbbell_Bicep_Curl_0.jpg", "img/Dumbbell_Bicep_Curl_1.jpg", "img/EZ-Bar_Curl_0.jpg", "img/EZ-Bar_Curl_1.jpg", "img/Face_Pull_0.jpg", "img/Face_Pull_1.jpg", "img/Hammer_Curls_0.jpg", "img/Hammer_Curls_1.jpg", "img/Hanging_Leg_Raise_0.jpg", "img/Hanging_Leg_Raise_1.jpg", "img/Incline_Dumbbell_Curl_0.jpg", "img/Incline_Dumbbell_Curl_1.jpg", "img/Incline_Dumbbell_Press_0.jpg", "img/Incline_Dumbbell_Press_1.jpg", "img/Leg_Extensions_0.jpg", "img/Leg_Extensions_1.jpg", "img/Leg_Press_0.jpg", "img/Leg_Press_1.jpg", "img/Leverage_Iso_Row_0.jpg", "img/Leverage_Iso_Row_1.jpg", "img/Machine_Bench_Press_0.jpg", "img/Machine_Bench_Press_1.jpg", "img/Machine_Shoulder_Military_Press_0.jpg", "img/Machine_Shoulder_Military_Press_1.jpg", "img/Plank_0.jpg", "img/Plank_1.jpg", "img/Reverse_Machine_Flyes_0.jpg", "img/Reverse_Machine_Flyes_1.jpg", "img/Seated_Cable_Rows_0.jpg", "img/Seated_Cable_Rows_1.jpg", "img/Seated_Dumbbell_Press_0.jpg", "img/Seated_Dumbbell_Press_1.jpg", "img/Seated_Leg_Curl_0.jpg", "img/Seated_Leg_Curl_1.jpg", "img/Side_Lateral_Raise_0.jpg", "img/Side_Lateral_Raise_1.jpg", "img/Smith_Machine_Bench_Press_0.jpg", "img/Smith_Machine_Bench_Press_1.jpg", "img/Standing_Biceps_Cable_Curl_0.jpg", "img/Standing_Biceps_Cable_Curl_1.jpg", "img/Standing_Calf_Raises_0.jpg", "img/Standing_Calf_Raises_1.jpg", "img/Triceps_Pushdown_-_Rope_Attachment_0.jpg", "img/Triceps_Pushdown_-_Rope_Attachment_1.jpg", "img/Triceps_Pushdown_0.jpg", "img/Triceps_Pushdown_1.jpg", "img/V-Bar_Pulldown_0.jpg", "img/V-Bar_Pulldown_1.jpg", "img/Wide-Grip_Lat_Pulldown_0.jpg", "img/Wide-Grip_Lat_Pulldown_1.jpg"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting()});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))));self.clients.claim()});
 self.addEventListener("fetch",e=>{
-  if(e.request.method!=="GET")return;
-  e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{
-    if(res.ok&&(e.request.url.startsWith(self.location.origin)||e.request.url.includes("fonts.g"))){const copy=res.clone();caches.open(CACHE).then(c=>c.put(e.request,copy))}
-    return res}).catch(()=>caches.match("index.html"))));
+  const r=e.request;if(r.method!=="GET")return;
+  // Seite selbst: erst aus dem Netz (damit Updates sofort ankommen), offline aus dem Speicher
+  if(r.mode==="navigate"){
+    e.respondWith(fetch(r).then(res=>{const c=res.clone();caches.open(CACHE).then(x=>x.put("index.html",c));return res}).catch(()=>caches.match("index.html")));
+    return;
+  }
+  e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{
+    if(res.ok&&(r.url.startsWith(self.location.origin)||r.url.includes("fonts.g"))){const c=res.clone();caches.open(CACHE).then(x=>x.put(r,c))}
+    return res})));
 });

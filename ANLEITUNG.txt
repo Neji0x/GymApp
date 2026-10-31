@@ -1,19 +1,23 @@
-GYM-PLAN ALS APP AUFS HANDY (kostenlos, ca. 10 Minuten)
+GYM-PLAN APP – UPDATE AUF VERSION 4
 
-1. Konto bei github.com anlegen (kostenlos).
-2. Oben rechts "+" -> "New repository". Name: gym-plan. "Public" auswählen. Create.
-3. "uploading an existing file" anklicken und ALLE Dateien aus diesem Ordner
-   (index.html, manifest.json, sw.js, icon-192.png, icon-512.png) hineinziehen. "Commit changes".
-4. Im Repository: Settings -> Pages -> Branch "main", Ordner "/ (root)" -> Save.
-5. 1-2 Minuten warten. Deine App läuft dann unter:
-   https://DEINNAME.github.io/gym-plan/
+WAS DU HOCHLADEN MUSST
+1. Im Repository "GymApp": "Add file" -> "Upload files".
+2. Diese Dateien und den Ordner "img" hineinziehen:
+   index.html, sw.js und den kompletten Ordner img (mit allen Fotos).
+   Tipp: Den Ordner "img" einfach als Ganzes ins Upload-Feld ziehen.
+3. "Commit changes" klicken.
+4. 1-2 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
+   Deine Daten bleiben erhalten.
 
-AUF DEM HANDY INSTALLIEREN
-- Android (Chrome): Link öffnen -> Menü (drei Punkte) -> "App installieren" bzw. "Zum Startbildschirm".
-- iPhone (Safari): Link öffnen -> Teilen-Symbol -> "Zum Home-Bildschirm".
+NEU IN DIESER VERSION
+- Unten Navigationsleiste: Training, Plan, Fortschritt, Einstellungen
+- Übungen als Animation oder als echte Fotos (umschaltbar in Einstellungen)
+- Fortschritt-Seite mit Verlauf pro Übung und Bestwerten
+- Design: System, Hell oder Dunkel
 
-Danach hat die App ein eigenes Icon, startet ohne Browserleiste und funktioniert im Gym auch ohne Netz.
-Deine Haken, Gewichte und Trainings bleiben auf dem Handy gespeichert.
+ERSTINSTALLATION (falls neu)
+Settings -> Pages -> "Deploy from a branch", Branch "main", "/ (root)" -> Save.
+Am iPhone in Safari öffnen: https://neji0x.github.io/GymApp/
+Teilen-Symbol -> "Zum Home-Bildschirm".
 
-ÄNDERUNGEN: Neue index.html in GitHub hochladen (alte ersetzen). In sw.js die Zahl bei
-CACHE="gym-v2" um eins erhöhen, damit das Handy die neue Version lädt.
+Übungsfotos: Free Exercise DB (github.com/yuhonas/free-exercise-db), gemeinfrei (Unlicense).
