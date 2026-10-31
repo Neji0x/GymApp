@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gym-Plan</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#15181A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gym-Plan">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: eine Spalte wie ein Trainingsbuch am Handy; Trainingsarten in Hantelscheiben-Farben (rot 25, blau 20, gelb 15, grün 10 kg) */
+:root{
+  --bg:#EEF0EE; --surface:#FFFFFF; --fg:#15181A; --muted:#5D6663; --line:#D5DAD7; --muscle:#D9DEDB;
+  --red:#C8352B; --blue:#2457A6; --yellow:#C99A06; --green:#2F8A4C; --ok:#2E7D4F;
+  --hit:var(--red); --on-hit:#fff;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121514; --surface:#1B1F1E; --fg:#ECEFED; --muted:#9AA4A0; --line:#2C3331; --muscle:#323937;
+  --red:#E5564A; --blue:#5B8FE0; --yellow:#E6B829; --green:#4FB872; --ok:#52B47A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121514; --surface:#1B1F1E; --fg:#ECEFED; --muted:#9AA4A0; --line:#2C3331; --muscle:#323937;
+  --red:#E5564A; --blue:#5B8FE0; --yellow:#E6B829; --green:#4FB872; --ok:#52B47A; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 120px;display:grid;gap:20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+h1{font-size:2.6rem;font-weight:900}
+h2{font-size:1.6rem;font-weight:800}
+h3{font-size:1.25rem;font-weight:800}
+p{margin:0}
+.lead{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding-block:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.tab{border:2px solid var(--line);background:var(--surface);color:var(--fg);border-radius:12px;padding:6px 2px;cursor:pointer;display:grid;justify-items:center;gap:2px;min-width:0;position:relative}
+.tab b{font-family:var(--display);font-weight:800;font-size:1.2rem;text-transform:uppercase;line-height:1}
+.tab small{font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tab i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tab.today::after{content:"";position:absolute;top:-4px;right:-4px;width:10px;height:10px;border-radius:50%;background:var(--fg);border:2px solid var(--bg)}
+.tab[aria-selected="true"]{border-color:var(--c);background:var(--c);color:var(--on-c)}
+.tab[aria-selected="true"] small{color:var(--on-c)}
+.tab[aria-selected="true"] i{background:var(--on-c)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--hit);outline-offset:2px}
+.mode{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.9rem;cursor:pointer}
+.mode input{width:20px;height:20px;accent-color:var(--hit);flex:none}
+.dayhead{display:grid;gap:6px}
+.dayhead .meta{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.rest{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:12px;font-size:.92rem}
+.progress{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.progress div{height:100%;background:var(--hit);width:0;transition:width .3s}
+.list{display:grid;gap:12px}
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:64px 1fr;gap:12px}
+.ex.done{border-color:var(--ok)}
+.fig svg{width:64px;height:auto;display:block}
+.exbody{min-width:0;display:grid;gap:8px}
+.extop{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.num{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.dose{font-family:var(--mono);font-size:.85rem;font-weight:500}
+.cue{font-size:.92rem;color:var(--muted)}
+.muscles{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--hit);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sets{display:flex;gap:6px;flex-wrap:wrap}
+.set{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:transparent;color:var(--muted);font-family:var(--mono);font-size:.85rem;cursor:pointer}
+.set.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.kg{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.kg input{width:62px;height:36px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:.95rem;text-align:center;font-variant-numeric:tabular-nums}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{font-size:.85rem;font-weight:600;color:var(--fg);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;display:inline-flex;gap:6px;align-items:center}
+.links a:hover{border-color:var(--hit)}
+.links svg{width:14px;height:14px}
+.finish{border:none;border-radius:12px;background:var(--hit);color:var(--on-hit);font-family:var(--display);font-weight:800;font-size:1.3rem;text-transform:uppercase;padding:14px;cursor:pointer}
+.finish[disabled]{opacity:.45;cursor:default}
+.reset{justify-self:start;background:none;border:none;color:var(--muted);text-decoration:underline;font:inherit;font-size:.85rem;cursor:pointer;padding:4px 0}
+.toast{font-size:.9rem;color:var(--ok);font-weight:600}
+section.info{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px}
+.card ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.goals{display:grid;gap:10px}
+.goal{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:baseline}
+.goal b{font-family:var(--display);font-size:1.05rem;text-transform:uppercase}
+.log{display:grid;gap:6px;font-size:.9rem}
+.log div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.log div:last-child{border-bottom:none}
+.log span:last-child{font-family:var(--mono);color:var(--muted);font-size:.8rem}
+.timer{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--fg);color:var(--bg);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.timer .t{font-family:var(--mono);font-size:1.6rem;font-variant-numeric:tabular-nums}
+.timer .lbl{font-size:.8rem;opacity:.75}
+.timer .btns{display:flex;gap:8px}
+.timer button{border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+.timer.zero .t{color:var(--ok)}
+@media (max-width:380px){.tab small{font-size:.58rem}.stat b{font-size:1.5rem}}
+@media (prefers-reduced-motion:reduce){.progress div{transition:none}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <h1>Tims Gym-Plan</h1>
+    <p class="lead">6 Tage pro Woche, Sonntag frei. Brust, Schultern und Arme bekommen jede Woche 2–3 Einheiten, Rücken 2, Beine 1.</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b id="s-week">0/6</b><span>Diese Woche</span></div>
+    <div class="stat"><b id="s-total">0</b><span>Trainings gesamt</span></div>
+    <div class="stat"><b id="s-weeks">0</b><span>Volle Wochen</span></div>
+  </div>
+
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+
+  <label class="mode" for="beginner"><input type="checkbox" id="beginner"><span><b>Einsteiger-Modus</b> (Woche 1–3): höchstens 3 Sätze pro Übung, damit dein Körper sich an 6 Tage gewöhnt.</span></label>
+
+  <main id="day" style="display:grid;gap:14px"></main>
+
+  <section class="info">
+    <h2>Letzte Trainings</h2>
+    <div class="card log" id="log"></div>
+  </section>
+
+  <section class="info">
+    <h2>So läuft jede Einheit</h2>
+    <div class="card">
+      <ul>
+        <li><b>Aufwärmen:</b> 5–8 Min Crosstrainer oder Rad, dann bei der ersten Übung 1 leichter Satz.</li>
+        <li><b>Pause:</b> 90 Sek bei Isolationsübungen, 2 Min bei der ersten schweren Übung. Tipp auf einen Satz startet den Timer.</li>
+        <li><b>Gewicht:</b> so wählen, dass noch 2 saubere Wiederholungen gehen würden.</li>
+        <li><b>Steigern:</b> Schaffst du in allen Sätzen die obere Zahl (z. B. 12), nächstes Mal +2,5 kg (Kurzhanteln: +1 kg pro Hand).</li>
+        <li><b>Am Ende:</b> „Training abschließen" tippen. Das zählt in deine Statistik und setzt die Haken für nächste Woche zurück.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="info">
+    <h2>Realistische Ziele</h2>
+    <div class="card goals">
+      <div class="goal"><b>Woche 1–3</b><span>Einsteiger-Modus an. Technik lernen, Maschinen einstellen lassen. Muskelkater ist normal, Gelenkschmerzen nicht.</span></div>
+      <div class="goal"><b>Woche 4–8</b><span>Einsteiger-Modus aus, volle Sätze. Fast jede Woche mehr Gewicht oder Wiederholungen.</span></div>
+      <div class="goal"><b>Monat 3</b><span>Deutlich mehr Kraft, sichtbare Veränderung an Brust, Schultern und Armen. Dann Plan gemeinsam anpassen.</span></div>
+      <div class="goal"><b>Immer</b><span>Ca. 1,6–2 g Eiweiß pro kg Körpergewicht und 7–9 Std Schlaf. Bei 6 Tagen ist Erholung der Engpass, nicht das Training.</span></div>
+      <div class="goal"><b>Notbremse</b><span>Total platt, schlecht geschlafen, krank? Dann ist ein Tag Pause Teil vom Plan, kein Aufgeben.</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="timer" id="timer" hidden>
+  <div><div class="t" id="tt">1:30</div><div class="lbl" id="tl">Pause</div></div>
+  <div class="btns"><button id="tplus">+30 s</button><button id="tstop">Fertig</button></div>
+</div>
+
+<script>
+const TYPES={push:{c:"var(--red)",on:"#fff"},pull:{c:"var(--blue)",on:"#fff"},legs:{c:"var(--yellow)",on:"#15181A"},arms:{c:"var(--green)",on:"#fff"}};
+const P=[
+{id:"mo",wd:"Mo",short:"Push",type:"push",name:"Push A: Brust schwer",time:"ca. 65 Min",ex:[
+ {n:"Bankdrücken (Multipresse oder Langhantel)",s:4,r:"6–10",p:120,m:["chest","delt","tri"],c:"Anfangs an der Multipresse oder mit Spotter. Stange zur unteren Brust, Schulterblätter zusammen, Füße fest am Boden.",q:"Bankdrücken richtig Anfänger"},
+ {n:"Schrägbankdrücken Kurzhantel",s:3,r:"8–12",p:90,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht.",q:"Schrägbankdrücken Kurzhantel Technik"},
+ {n:"Schulterpresse (Maschine)",s:3,r:"8–12",p:90,m:["delt","tri"],c:"Rücken fest am Polster, nicht ins Hohlkreuz drücken.",q:"Schulterpresse Maschine Technik"},
+ {n:"Butterfly (Maschine)",s:3,r:"12–15",p:75,m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik"},
+ {n:"Seitheben Kurzhantel",s:4,r:"12–15",p:60,m:["delt"],c:"Leichtes Gewicht. Arme bis Schulterhöhe, kein Schwung aus dem Körper.",q:"Seitheben Kurzhantel richtig"},
+ {n:"Trizepsdrücken am Kabel (Seil)",s:3,r:"12–15",p:60,m:["tri"],c:"Ellbogen bleiben am Körper, unten Seil leicht auseinanderziehen.",q:"Trizepsdrücken Kabelzug Seil Technik"}]},
+{id:"di",wd:"Di",short:"Pull",type:"pull",name:"Pull A: Rücken breit + Bizeps",time:"ca. 60 Min",ex:[
+ {n:"Latzug breit",s:4,r:"8–12",p:120,m:["lat","bi"],c:"Stange zur oberen Brust, Brust raus, nicht weit zurücklehnen.",q:"Latzug richtig ausführen"},
+ {n:"Rudern sitzend am Kabel",s:3,r:"10–12",p:90,m:["lat","bi","delt"],c:"Griff zum Bauchnabel, Schulterblätter zusammen, Oberkörper ruhig.",q:"Rudern sitzend Kabelzug Technik"},
+ {n:"Reverse Butterfly (Maschine)",s:3,r:"12–15",p:60,m:["delt","lat"],c:"Hintere Schulter. Wichtig für gesunde Schultern, weil du viel drückst.",q:"Reverse Butterfly Maschine Technik"},
+ {n:"Bizeps-Curls Kurzhantel",s:3,r:"10–12",p:75,m:["bi"],c:"Ellbogen fest neben dem Körper, oben Handfläche nach außen drehen.",q:"Bizeps Curls Kurzhantel richtig"},
+ {n:"Hammer-Curls",s:3,r:"10–12",p:60,m:["bi","fore"],c:"Daumen zeigt nach oben, kein Schwung.",q:"Hammer Curls Technik"}]},
+{id:"mi",wd:"Mi",short:"Beine",type:"legs",name:"Beine + Bauch",time:"ca. 55 Min",ex:[
+ {n:"Beinpresse",s:4,r:"10–12",p:120,m:["quad","ham"],c:"Füße schulterbreit, Knie zeigen Richtung Zehen, unten Po nicht abheben.",q:"Beinpresse richtig ausführen"},
+ {n:"Beinstrecker (Maschine)",s:3,r:"12–15",p:75,m:["quad"],c:"Oben kurz halten, langsam ablassen.",q:"Beinstrecker Maschine Technik"},
+ {n:"Beinbeuger (Maschine)",s:3,r:"10–12",p:75,m:["ham"],c:"Polster knapp über der Ferse, langsam zurücklassen.",q:"Beinbeuger Maschine Technik"},
+ {n:"Wadenheben (Maschine)",s:3,r:"12–15",p:60,m:["calf"],c:"Unten voll dehnen, oben 1 Sek halten.",q:"Wadenheben Maschine Technik"},
+ {n:"Crunches am Kabel",s:3,r:"12–15",p:60,m:["abs"],c:"Rücken einrollen, Hüfte bleibt ruhig.",q:"Kabel Crunches kniend Technik"},
+ {n:"Unterarmstütz (Plank)",s:3,r:"30–45 s",p:60,m:["abs"],c:"Körper eine gerade Linie, Bauch und Po anspannen.",q:"Plank richtig ausführen"}]},
+{id:"do",wd:"Do",short:"Push",type:"push",name:"Push B: Schultern zuerst",time:"ca. 65 Min",ex:[
+ {n:"Schulterdrücken Kurzhantel (sitzend)",s:4,r:"8–12",p:120,m:["delt","tri"],c:"Lehne fast senkrecht, Hanteln bis Ohrhöhe senken.",q:"Kurzhantel Schulterdrücken sitzend Technik"},
+ {n:"Brustpresse (Maschine)",s:3,r:"10–12",p:90,m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen"},
+ {n:"Cable Crossover",s:3,r:"12–15",p:75,m:["chest"],c:"Leicht nach vorne lehnen, Hände vor der Brust zusammenführen.",q:"Cable Crossover Brust Technik"},
+ {n:"Seitheben am Kabel (einarmig)",s:3,r:"12–15",p:60,m:["delt"],c:"Kabel hinter dem Körper, langsam ablassen.",q:"Seitheben Kabelzug einarmig"},
+ {n:"Dips (assistiert an der Maschine)",s:3,r:"8–12",p:90,m:["tri","chest"],c:"Mit Gegengewicht starten. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik"},
+ {n:"Trizeps Überkopf am Kabel",s:3,r:"12–15",p:60,m:["tri"],c:"Ellbogen zeigen nach vorne, unten gut dehnen.",q:"Trizeps Überkopf Kabelzug Seil"}]},
+{id:"fr",wd:"Fr",short:"Pull",type:"pull",name:"Pull B: Rücken dick + Bizeps",time:"ca. 60 Min",ex:[
+ {n:"Rudern an der Maschine (Brustpolster)",s:4,r:"8–12",p:120,m:["lat","bi","delt"],c:"Brust am Polster, Ellbogen eng nach hinten ziehen.",q:"Rudermaschine Brustpolster Technik"},
+ {n:"Latzug enger Griff",s:3,r:"10–12",p:90,m:["lat","bi"],c:"V-Griff zur Brust, Ellbogen nach unten führen.",q:"Latzug enger Griff Technik"},
+ {n:"Face Pulls (Kabel, Seil)",s:3,r:"15",p:60,m:["delt","lat"],c:"Seil Richtung Stirn ziehen, Hände enden neben den Ohren.",q:"Face Pulls richtig ausführen"},
+ {n:"SZ-Curls",s:3,r:"8–12",p:75,m:["bi"],c:"Oberkörper ruhig, unten Arme fast strecken.",q:"SZ Curls Bizeps Technik"},
+ {n:"Bizeps-Curls am Kabel",s:3,r:"12–15",p:60,m:["bi"],c:"Konstante Spannung, oben kurz zusammendrücken.",q:"Bizeps Curls Kabelzug Technik"}]},
+{id:"sa",wd:"Sa",short:"Arme",type:"arms",name:"Arme + Schultern",time:"ca. 55 Min",ex:[
+ {n:"Seitheben Kurzhantel",s:4,r:"12–15",p:60,m:["delt"],c:"Zum Start, solange die Schultern frisch sind. Kein Schwung.",q:"Seitheben Kurzhantel richtig"},
+ {n:"Schrägbank-Curls Kurzhantel",s:3,r:"10–12",p:75,m:["bi"],c:"Bank auf ca. 60°, Arme hängen hinter dem Körper. Starke Dehnung im Bizeps.",q:"Schrägbank Curls Kurzhantel"},
+ {n:"Trizepsdrücken am Kabel (Stange)",s:3,r:"10–12",p:75,m:["tri"],c:"Ellbogen fest, nur die Unterarme bewegen.",q:"Trizepsdrücken Kabelzug Stange"},
+ {n:"Reverse Butterfly (Maschine)",s:3,r:"12–15",p:60,m:["delt","lat"],c:"Hintere Schulter für runde, volle Schultern.",q:"Reverse Butterfly Maschine Technik"},
+ {n:"Hammer-Curls am Kabel (Seil)",s:3,r:"12",p:60,m:["bi","fore"],c:"Daumen oben, Ellbogen bleiben stehen.",q:"Hammer Curls Kabel Seil"},
+ {n:"Beinheben hängend",s:3,r:"8–12",p:60,m:["abs"],c:"Knie zur Brust, nicht schwingen. Zu schwer? Am Dip-Stuhl.",q:"Beinheben hängend Technik"}]}
+];
+const LBL={chest:"Brust",delt:"Schultern",tri:"Trizeps",bi:"Bizeps",lat:"Rücken",quad:"Oberschenkel",ham:"Beinrückseite",calf:"Waden",fore:"Unterarm",abs:"Bauch"};
+function fig(ms){
+ const on=k=>ms.includes(k)?'var(--hit)':'var(--muscle)';
+ return `<svg viewBox="0 0 60 104" role="img" aria-label="Trainierte Muskeln: ${ms.map(k=>LBL[k]).join(', ')}">
+ <circle cx="30" cy="9" r="7" fill="var(--muscle)"/><rect x="27" y="15" width="6" height="5" fill="var(--muscle)"/>
+ <ellipse cx="17" cy="24" rx="6" ry="5" fill="${on('delt')}"/><ellipse cx="43" cy="24" rx="6" ry="5" fill="${on('delt')}"/>
+ <path d="M21 21h8.5v12c-4 1-7 0-8.5-2z" fill="${on('chest')}"/><path d="M39 21h-8.5v12c4 1 7 0 8.5-2z" fill="${on('chest')}"/>
+ <path d="M20 33l3 2 1 15-3-2z" fill="${on('lat')}"/><path d="M40 33l-3 2-1 15 3-2z" fill="${on('lat')}"/>
+ <rect x="25" y="35" width="10" height="17" rx="3" fill="${on('abs')}"/>
+ <ellipse cx="10.5" cy="37" rx="2.4" ry="7.5" fill="${on('tri')}"/><ellipse cx="15" cy="37" rx="2.6" ry="7" fill="${on('bi')}"/>
+ <ellipse cx="49.5" cy="37" rx="2.4" ry="7.5" fill="${on('tri')}"/><ellipse cx="45" cy="37" rx="2.6" ry="7" fill="${on('bi')}"/>
+ <ellipse cx="11.5" cy="54" rx="2.8" ry="8" fill="${on('fore')}"/><ellipse cx="48.5" cy="54" rx="2.8" ry="8" fill="${on('fore')}"/>
+ <path d="M23 53h14l-1 4H24z" fill="var(--muscle)"/>
+ <ellipse cx="25" cy="70" rx="5" ry="12" fill="${on('quad')}"/><ellipse cx="35" cy="70" rx="5" ry="12" fill="${on('quad')}"/>
+ <ellipse cx="21.5" cy="72" rx="1.6" ry="8" fill="${on('ham')}"/><ellipse cx="38.5" cy="72" rx="1.6" ry="8" fill="${on('ham')}"/>
+ <ellipse cx="25" cy="93" rx="3.5" ry="9" fill="${on('calf')}"/><ellipse cx="35" cy="93" rx="3.5" ry="9" fill="${on('calf')}"/>
+ </svg>`}
+const ICON_IMG='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2.5" width="13" height="11" rx="2"/><circle cx="5.5" cy="6.5" r="1.3"/><path d="M2 12l4-4 3 3 2-2 3 3"/></svg>';
+const ICON_VID='<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7.5-4.5z"/></svg>';
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const todayIdx=(new Date().getDay()+6)%7; // Mo=0 … So=6
+let cur=todayIdx<6?todayIdx:0;
+let beginner=store.get("gym.beginner",true);
+let toast="";
+const $=id=>document.getElementById(id);
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
+function sets(e){return beginner?Math.min(e.s,3):e.s}
+function renderStats(){
+ const log=store.get("gym.log",[]);const wk=iso(monday(new Date()));
+ const thisWeek=new Set(log.filter(l=>iso(monday(new Date(l.date)))===wk).map(l=>l.day)).size;
+ const byWeek={};log.forEach(l=>{const k=iso(monday(new Date(l.date)));(byWeek[k]=byWeek[k]||new Set()).add(l.day)});
+ $("s-week").textContent=thisWeek+"/6";$("s-total").textContent=log.length;
+ $("s-weeks").textContent=Object.values(byWeek).filter(s=>s.size>=6).length;
+ const last=log.slice(-6).reverse();
+ $("log").innerHTML=last.length?last.map(l=>{const d=P.find(p=>p.id===l.day);const dt=new Date(l.date);
+  return `<div><span>${d?d.name:l.day}</span><span>${dt.toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'})}</span></div>`}).join('')
+  :'<p class="lead">Noch nichts eingetragen. Nach deinem ersten Training tippst du unten auf „Training abschließen", dann erscheint es hier.</p>';
+}
+function renderTabs(){
+ $("tabs").innerHTML=P.map((d,i)=>{const t=TYPES[d.type];
+  return `<button class="tab${i===todayIdx?' today':''}" role="tab" aria-selected="${i===cur}" data-i="${i}" style="--c:${t.c};--on-c:${t.on}" aria-label="${d.wd}: ${d.name}"><b>${d.wd}</b><i></i><small>${d.short}</small></button>`}).join('');
+}
+function render(){
+ const day=P[cur];const t=TYPES[day.type];
+ document.documentElement.style.setProperty('--hit',t.c);document.documentElement.style.setProperty('--on-hit',t.on);
+ renderTabs();$("beginner").checked=beginner;
+ const done=store.get("gym.sets."+day.id,{});const kg=store.get("gym.kg",{});
+ let total=0,got=0;
+ const items=day.ex.map((e,i)=>{const n=sets(e);total+=n;const ds=(done[i]||[]).slice(0,n);const g=ds.filter(Boolean).length;got+=g;
+  const sb=Array.from({length:n},(_,s)=>`<button class="set${ds[s]?' on':''}" data-i="${i}" data-s="${s}" aria-pressed="${!!ds[s]}" aria-label="Satz ${s+1}">${s+1}</button>`).join('');
+  const key=day.id+"-"+i;
+  return `<article class="ex${g===n?' done':''}"><div class="fig">${fig(e.m)}</div><div class="exbody">
+   <div class="extop"><h3>${e.n}</h3><span class="num">${String(i+1).padStart(2,'0')}</span></div>
+   <div class="row"><span class="dose">${n} × ${e.r}</span><span class="muscles">${e.m.map(k=>LBL[k]).join(' · ')}</span></div>
+   <p class="cue">${e.c}</p>
+   <div class="row"><div class="sets">${sb}</div><label class="kg" for="kg-${key}"><input id="kg-${key}" inputmode="decimal" data-k="${key}" value="${kg[key]??''}" placeholder="–">kg</label></div>
+   <div class="links"><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a><a href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(e.n+' Übung Ausführung')}" target="_blank" rel="noopener">${ICON_IMG}Bilder</a></div>
+  </div></article>`}).join('');
+ const restNote=todayIdx===6?`<div class="rest"><b>Heute ist Sonntag, dein Ruhetag.</b> Muskeln wachsen in der Pause. Morgen geht es mit Push A weiter.</div>`:'';
+ $("day").innerHTML=`${restNote}<div class="dayhead"><h2>${day.wd}: ${day.name}</h2><span class="meta">${day.ex.length} Übungen · ${total} Sätze · ${day.time} · ${got}/${total} erledigt</span><div class="progress"><div style="width:${total?got/total*100:0}%"></div></div></div><div class="list">${items}</div>
+ <button class="finish" id="finish"${got===0?' disabled':''}>Training abschließen</button>${toast?`<p class="toast">${toast}</p>`:''}<button class="reset" id="reset">Haken für ${day.wd} zurücksetzen</button>`;
+ toast="";renderStats();
+}
+$("tabs").addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;cur=+b.dataset.i;render();window.scrollTo({top:$("tabs").offsetTop-10})});
+$("beginner").addEventListener('change',e=>{beginner=e.target.checked;store.set("gym.beginner",beginner);render()});
+$("day").addEventListener('click',e=>{
+ const day=P[cur];const b=e.target.closest('.set');
+ if(b){const d=store.get("gym.sets."+day.id,{});const i=b.dataset.i,s=+b.dataset.s;d[i]=d[i]||[];d[i][s]=!d[i][s];store.set("gym.sets."+day.id,d);if(d[i][s])startTimer(day.ex[i].p);render();return}
+ if(e.target.id==='reset'){store.set("gym.sets."+day.id,{});render()}
+ if(e.target.id==='finish'){const log=store.get("gym.log",[]);log.push({date:new Date().toISOString(),day:day.id});store.set("gym.log",log);store.set("gym.sets."+day.id,{});clearInterval(iv);$("timer").hidden=true;toast="Eingetragen. Stark, dass du da warst.";render()}
+});
+$("day").addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;const kg=store.get("gym.kg",{});kg[k]=e.target.value;store.set("gym.kg",kg)});
+let left=0,iv=null;
+function show(){const m=Math.floor(Math.max(left,0)/60),s=Math.max(left,0)%60;$("tt").textContent=m+':'+String(s).padStart(2,'0');$("timer").classList.toggle('zero',left<=0);$("tl").textContent=left<=0?'Los, nächster Satz':'Pause'}
+function startTimer(sec){left=sec;$("timer").hidden=false;show();clearInterval(iv);iv=setInterval(()=>{left--;show();if(left<=0){clearInterval(iv);try{navigator.vibrate&&navigator.vibrate(300)}catch(e){}}},1000)}
+$("tplus").onclick=()=>{if(left<=0)startTimer(30);else{left+=30;show()}};
+$("tstop").onclick=()=>{clearInterval(iv);$("timer").hidden=true};
+render();
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+</script>
+
+</body>
+</html>

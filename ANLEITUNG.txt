@@ -1,0 +1,19 @@
+GYM-PLAN ALS APP AUFS HANDY (kostenlos, ca. 10 Minuten)
+
+1. Konto bei github.com anlegen (kostenlos).
+2. Oben rechts "+" -> "New repository". Name: gym-plan. "Public" auswählen. Create.
+3. "uploading an existing file" anklicken und ALLE Dateien aus diesem Ordner
+   (index.html, manifest.json, sw.js, icon-192.png, icon-512.png) hineinziehen. "Commit changes".
+4. Im Repository: Settings -> Pages -> Branch "main", Ordner "/ (root)" -> Save.
+5. 1-2 Minuten warten. Deine App läuft dann unter:
+   https://DEINNAME.github.io/gym-plan/
+
+AUF DEM HANDY INSTALLIEREN
+- Android (Chrome): Link öffnen -> Menü (drei Punkte) -> "App installieren" bzw. "Zum Startbildschirm".
+- iPhone (Safari): Link öffnen -> Teilen-Symbol -> "Zum Home-Bildschirm".
+
+Danach hat die App ein eigenes Icon, startet ohne Browserleiste und funktioniert im Gym auch ohne Netz.
+Deine Haken, Gewichte und Trainings bleiben auf dem Handy gespeichert.
+
+ÄNDERUNGEN: Neue index.html in GitHub hochladen (alte ersetzen). In sw.js die Zahl bei
+CACHE="gym-v2" um eins erhöhen, damit das Handy die neue Version lädt.
