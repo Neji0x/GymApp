@@ -1,23 +1,40 @@
-GYM-PLAN APP – UPDATE AUF VERSION 4
+GYM-PLAN APP – UPDATE AUF VERSION 7
 
-WAS DU HOCHLADEN MUSST
+HOCHLADEN
 1. Im Repository "GymApp": "Add file" -> "Upload files".
-2. Diese Dateien und den Ordner "img" hineinziehen:
-   index.html, sw.js und den kompletten Ordner img (mit allen Fotos).
-   Tipp: Den Ordner "img" einfach als Ganzes ins Upload-Feld ziehen.
+2. index.html, sw.js und den kompletten Ordner img hineinziehen
+   (der Ordner hat jetzt mehr Fotos, alte werden einfach ersetzt).
 3. "Commit changes" klicken.
-4. 1-2 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
-   Deine Daten bleiben erhalten.
+4. 5-10 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
+   Ab jetzt erkennst du die neue Version an "Version 7" ganz unten in den Einstellungen.
 
-NEU IN DIESER VERSION
-- Unten Navigationsleiste: Training, Plan, Fortschritt, Einstellungen
-- Übungen als Animation oder als echte Fotos (umschaltbar in Einstellungen)
-- Fortschritt-Seite mit Verlauf pro Übung und Bestwerten
-- Design: System, Hell oder Dunkel
+WICHTIG
+Deine Trainings, Rekorde und Einstellungen bleiben erhalten.
+Nur angefangene, noch nicht abgeschlossene Sätze werden einmal zurückgesetzt,
+weil sich die Reihenfolge der Übungen geändert hat.
 
-ERSTINSTALLATION (falls neu)
-Settings -> Pages -> "Deploy from a branch", Branch "main", "/ (root)" -> Save.
-Am iPhone in Safari öffnen: https://neji0x.github.io/GymApp/
-Teilen-Symbol -> "Zum Home-Bildschirm".
+NEU IN VERSION 7
+- Tab "Ich" (vorher "Kopf"): Schlaf, Eiweiß-Zähler, Körper-Tracking (Gewicht, Brust, Oberarm, Taille)
+- Warnung bei wenig Schlaf
+- Plan-Editor: im Plan-Tab bei jedem Tag auf "Bearbeiten"
+- Aufwärmsätze, Scheibenrechner, geschätztes Maximalgewicht (1RM)
+- Kalender und Wochen-Serie im Fortschritt-Tab
+- Wochenrückblick als Obsidian-Notiz (kopieren oder teilen)
+- Gym-Tasche-Checkliste im Plan-Tab
+
+AUS VERSION 6
+- Neuer Tab "Kopf": Gedanke des Tages, Stimmung, Schlechter-Tag-Modus, dein Warum, Erfolge, Hilfe-Nummern
+
+AUS VERSION 5
+- Neuer Plan: 7-8 Übungen pro Abend, ca. 75-85 Min
+  (mehr Lat, Bauch 6x pro Woche, unterer Rücken, Po, Beinrückseite, Nacken, Unterarme)
+- Früh-Modus: lockere Einheiten für morgens (Ausdauer, Bauch-Stabilität, Beweglichkeit)
+- Supersätze am Samstag
+- Muskel-Bilanz: Sätze pro Muskelgruppe pro Woche
+- Übung tauschen, wenn eine Maschine besetzt ist
+- Notizen pro Übung (z. B. Sitzhöhe)
+- Trainingsdauer und bewegtes Gewicht
+- Erholungswoche (schlägt sich nach ca. 6 Wochen selbst vor)
+- Ausblick auf kommende Funktionen im Plan-Tab
 
 Übungsfotos: Free Exercise DB (github.com/yuhonas/free-exercise-db), gemeinfrei (Unlicense).

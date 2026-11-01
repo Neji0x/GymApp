@@ -149,6 +149,114 @@ section.info{display:grid;gap:12px}
 .nav a[aria-current="page"] svg{color:var(--hit)}
 @media (max-width:380px){.tab small{font-size:.58rem}.stat b{font-size:1.5rem}.ex{grid-template-columns:44px 1fr}.fig svg{width:44px}}
 @media (prefers-reduced-motion:reduce){.progress div{transition:none}.media.ph img+img{animation:none;opacity:0}}
+.slot{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px}
+.slot button{font:inherit;font-weight:600;font-size:.9rem;border:none;background:transparent;color:var(--fg);border-radius:9px;padding:9px 4px;cursor:pointer;display:grid;line-height:1.2}
+.slot button small{font-weight:500;font-size:.72rem;color:var(--muted)}
+.slot button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.slot button[aria-pressed="true"] small{color:var(--bg);opacity:.75}
+.tabs.seven{grid-template-columns:repeat(7,1fr)}
+.banner{border-radius:12px;padding:12px 14px;font-size:.92rem;display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--hit)}
+.banner b{font-weight:600}
+.ss{justify-self:start;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--hit);color:var(--hit);border-radius:999px;padding:2px 9px}
+.swaps{display:grid;gap:6px}
+.swaps button{font:inherit;font-size:.9rem;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:9px 12px;cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+.swaps button span{color:var(--muted);font-size:.78rem}
+.swaps button[aria-current="true"]{border-color:var(--hit)}
+.note{font-size:.88rem;background:var(--bg);border-radius:8px;padding:6px 10px;border:1px dashed var(--line)}
+.noteedit{display:grid;gap:6px}
+.noteedit input{height:40px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;padding:0 10px;min-width:0}
+.swapped{font-size:.75rem;color:var(--muted)}
+.am-item{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.am-item.done{border-color:var(--ok)}
+.am-item h3{font-size:1.15rem}
+.am-item .d{font-family:var(--mono);font-size:.82rem}
+.am-item p{font-size:.92rem;color:var(--muted)}
+.bal{display:grid;gap:10px}
+.balrow{display:grid;grid-template-columns:104px 1fr 54px;gap:10px;align-items:center;font-size:.88rem}
+.balrow .v{font-family:var(--mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+.bar{position:relative;height:12px;border-radius:6px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+.bar .zone{position:absolute;top:0;bottom:0;background:var(--line);opacity:.8}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--fg)}
+.bar .fill.ok{background:var(--ok)}
+.bar .plan{position:absolute;top:-1px;bottom:-1px;width:2px;background:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.75rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:8px;border-radius:2px;vertical-align:middle;margin-right:4px}
+.road{display:grid;gap:10px}
+.road div{display:grid;gap:2px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.road div:last-child{border-bottom:none;padding-bottom:0}
+.road b{font-weight:600}
+.road span{font-size:.88rem;color:var(--muted)}
+.road em{font-style:normal;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--hit)}
+
+.nav{grid-template-columns:repeat(5,1fr)!important}
+.nav a{font-size:.64rem!important}
+.quote{gap:6px;border-left:5px solid var(--hit)}
+.quote .q{font-family:var(--display);font-weight:800;font-size:1.55rem;line-height:1.1;text-transform:uppercase;text-wrap:balance}
+.quote small{color:var(--muted);font-size:.8rem}
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.moods button{font:inherit;font-size:.78rem;font-weight:600;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:10px 2px;cursor:pointer;display:grid;justify-items:center;gap:4px}
+.moods button i{width:22px;height:22px;border-radius:50%;background:var(--mc)}
+.moods button[aria-pressed="true"]{border-color:var(--fg);border-width:2px}
+.mh{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;align-items:end;height:56px}
+.mh div{border-radius:3px 3px 0 0;background:var(--mc);min-height:3px}
+.mh div.none{background:var(--line);opacity:.5}
+.mhl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.why{width:100%;box-sizing:border-box;min-height:84px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit;padding:10px}
+.help{gap:12px}
+.hl{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.hl span{display:grid;font-size:.92rem}
+.hl small{color:var(--muted);font-size:.78rem}
+.hl b{font-family:var(--mono);font-size:1.05rem;text-align:right;white-space:nowrap;user-select:all}
+.warn{border:2px solid var(--yellow);border-radius:12px;padding:12px;font-size:.92rem;display:grid;gap:4px}
+:root{--m1:#B8433A;--m2:#D98A3D;--m3:#B9A23A;--m4:#5E9E62;--m5:#2E7D4F}
+
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.chips.four{grid-template-columns:repeat(4,1fr)}
+.chips button{font:inherit;font-family:var(--mono);font-size:.85rem;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:9px 2px;cursor:pointer;display:grid;justify-items:center;gap:2px;line-height:1.2}
+.chips button small{font-family:var(--body);font-size:.66rem;color:var(--muted);text-align:center}
+.chips button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.prot-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.prot-n{font-family:var(--mono);font-size:.9rem;color:var(--muted)}
+.prot-n b{font-family:var(--display);font-size:1.8rem;color:var(--fg)}
+.progress.prot div{background:var(--ok)}
+.inl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.inl input{width:76px;height:40px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:1rem;text-align:center}
+.bodyform{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bodyform label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.bodyform input{width:100%;box-sizing:border-box;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:1rem;text-align:center}
+.cal-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cal-head b{font-family:var(--display);font-size:1.3rem;text-transform:uppercase}
+.cal-head button{font:inherit;font-size:1.1rem;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;width:40px;height:40px;cursor:pointer}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-family:var(--mono);font-size:.78rem;text-align:center}
+.cal .wd{color:var(--muted);font-size:.68rem;padding-bottom:2px}
+.cal .d{aspect-ratio:1;border-radius:8px;display:grid;place-items:center;position:relative;background:var(--bg);color:var(--muted)}
+.cal .d.k{background:var(--c);color:var(--on-c)}
+.cal .d.am::after{content:"";position:absolute;bottom:4px;width:5px;height:5px;border-radius:50%;background:var(--fg)}
+.cal .d.k.am::after{background:var(--on-c)}
+.cal .d.today{outline:2px solid var(--fg);outline-offset:1px}
+.cal .d.out{visibility:hidden}
+.streak{display:flex;align-items:baseline;gap:10px}
+.streak b{font-family:var(--display);font-size:2.2rem;line-height:1}
+.review-md{width:100%;box-sizing:border-box;min-height:160px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:.72rem;padding:8px}
+.warm{font-family:var(--mono);font-size:.78rem;background:var(--bg);border-radius:8px;padding:6px 10px}
+.warm b{font-family:var(--body)}
+.plates{font-size:.8rem;color:var(--muted)}
+.bagitem{display:flex;gap:10px;align-items:center;font-size:.95rem;cursor:pointer}
+.bagitem input{width:22px;height:22px;accent-color:var(--ok)}
+.ed{display:grid;gap:10px}
+.ed-row{border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:8px;background:var(--bg)}
+.ed-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.ed-top b{font-size:.95rem;font-weight:600}
+.ed-btns{display:flex;gap:4px;flex:none}
+.ed-btns button,.step button{font:inherit;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;font-size:1rem;line-height:1}
+.ed-btns button:disabled{opacity:.35;cursor:default}
+.ed-fields{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.82rem;color:var(--muted)}
+.step{display:flex;align-items:center;gap:4px}
+.step span{font-family:var(--mono);min-width:22px;text-align:center;color:var(--fg)}
+.ed-fields input,.ed-fields select,.ed-add select,.ed-custom input,.ed-custom select{height:36px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-size:.88rem;padding:0 8px;min-width:0}
+.ed-fields input{width:74px;font-family:var(--mono);text-align:center}
+.ed-add,.ed-custom{display:grid;gap:8px}
+.ed-custom{border-top:1px solid var(--line);padding-top:10px}
 </style>
 </head>
 <body>
@@ -160,8 +268,12 @@ section.info{display:grid;gap:12px}
   <section class="view" id="v-training" data-view="training">
     <header style="display:grid;gap:6px">
       <h1>Training</h1>
-      <p class="lead" id="t-sub">6 Tage pro Woche, Sonntag frei.</p>
+      <p class="lead" id="t-sub"></p>
     </header>
+    <div class="slot" role="group" aria-label="Einheit wählen" id="slot">
+      <button data-v="pm">Abend · Kraft<small>Haupttraining</small></button>
+      <button data-v="am">Früh · locker<small>Ausdauer + Mobility</small></button>
+    </div>
     <nav class="tabs" role="tablist" id="tabs" aria-label="Trainingstag"></nav>
     <div id="day" style="display:grid;gap:14px"></div>
   </section>
@@ -170,30 +282,50 @@ section.info{display:grid;gap:12px}
   <section class="view" id="v-plan" data-view="plan" hidden>
     <header style="display:grid;gap:6px">
       <h1>Wochenplan</h1>
-      <p class="lead">Brust, Schultern und Arme bekommen jede Woche 2–3 Einheiten, Rücken 2, Beine 1. Tippe auf „Starten", um einen Tag zu öffnen.</p>
+      <p class="lead">Abends Kraft, 75–85 Minuten. Früh optional locker: Ausdauer, Bauch-Stabilität und Beweglichkeit. Sonntag Pause.</p>
     </header>
     <div id="plan" style="display:grid;gap:12px"></div>
+    <section class="info">
+      <h2>Gym-Tasche</h2>
+      <div class="card opt" id="bag"></div>
+    </section>
+    <section class="info">
+      <h2>Zweimal am Tag: die Regeln</h2>
+      <div class="card">
+        <ul>
+          <li><b>Nur eine harte Einheit pro Tag.</b> Das Krafttraining am Abend ist das Wichtigste. Früh ist immer locker.</li>
+          <li><b>Locker heißt:</b> Du kannst dabei noch ganze Sätze sprechen.</li>
+          <li><b>Früh streichen</b>, wenn du schlecht geschlafen hast, die Gelenke wehtun oder die Gewichte abends schlechter werden.</li>
+          <li><b>Essen:</b> Zwei Einheiten verbrauchen viel. Iss genug, sonst baust du keine Muskeln auf, sondern nur ab.</li>
+          <li><b>Sonntag</b> ist komplett frei, höchstens ein Spaziergang.</li>
+        </ul>
+      </div>
+    </section>
     <section class="info">
       <h2>So läuft jede Einheit</h2>
       <div class="card">
         <ul>
-          <li><b>Aufwärmen:</b> 5–8 Min Crosstrainer oder Rad, dann bei der ersten Übung 1 leichter Satz.</li>
+          <li><b>Aufwärmen:</b> 5–8 Min Crosstrainer oder Rad, dann bei der ersten Übung 1–2 leichte Sätze.</li>
           <li><b>Eintragen:</b> Gewicht und Wiederholungen eingeben, dann auf die Satznummer tippen. Leere Felder übernehmen den grauen Vorschlag.</li>
-          <li><b>Gewicht:</b> so wählen, dass noch 2 saubere Wiederholungen gehen würden.</li>
-          <li><b>Steigern:</b> Schaffst du in allen Sätzen die obere Zahl, zeigt dir die App das neue Gewicht.</li>
-          <li><b>Am Ende:</b> „Training abschließen" tippen. Erst dann zählt es für Verlauf und Statistik.</li>
+          <li><b>Supersatz:</b> Zwei Übungen im Wechsel, zwischen ihnen keine Pause, nach dem Paar 90 Sek.</li>
+          <li><b>Maschine besetzt?</b> „Tauschen" zeigt dir gleichwertige Alternativen.</li>
+          <li><b>Am Ende:</b> „Training abschließen" tippen. Erst dann zählt es für Verlauf, Statistik und Muskel-Bilanz.</li>
         </ul>
       </div>
     </section>
     <section class="info">
       <h2>Realistische Ziele</h2>
       <div class="card goals">
-        <div class="goal"><b>Woche 1–3</b><span>Einsteiger-Modus an. Technik lernen, Maschinen einstellen lassen. Muskelkater ist normal, Gelenkschmerzen nicht.</span></div>
-        <div class="goal"><b>Woche 4–8</b><span>Einsteiger-Modus aus, volle Sätze. Fast jede Woche mehr Gewicht oder Wiederholungen.</span></div>
-        <div class="goal"><b>Monat 3</b><span>Deutlich mehr Kraft, sichtbare Veränderung an Brust, Schultern und Armen. Dann Plan gemeinsam anpassen.</span></div>
-        <div class="goal"><b>Immer</b><span>Ca. 1,6–2 g Eiweiß pro kg Körpergewicht und 7–9 Std Schlaf. Bei 6 Tagen ist Erholung der Engpass, nicht das Training.</span></div>
-        <div class="goal"><b>Notbremse</b><span>Total platt, schlecht geschlafen, krank? Dann ist ein Tag Pause Teil vom Plan, kein Aufgeben.</span></div>
+        <div class="goal"><b>Woche 1–3</b><span>Einsteiger-Modus an, Früheinheiten höchstens 3× pro Woche. Technik lernen, Maschinen einstellen lassen.</span></div>
+        <div class="goal"><b>Woche 4–8</b><span>Einsteiger-Modus aus. Fast jede Woche mehr Gewicht oder Wiederholungen. Früh bis zu 6× locker.</span></div>
+        <div class="goal"><b>Woche 7–8</b><span>Erste Erholungswoche. Danach bist du stärker als vorher.</span></div>
+        <div class="goal"><b>Monat 3</b><span>Deutlich mehr Kraft, sichtbare Veränderung an Brust, Schultern, Armen und Rücken. Dann Plan gemeinsam anpassen.</span></div>
+        <div class="goal"><b>Immer</b><span>Ca. 1,6–2 g Eiweiß pro kg Körpergewicht und 7–9 Std Schlaf. Bei so viel Training ist Erholung der Engpass.</span></div>
       </div>
+    </section>
+    <section class="info">
+      <h2>Ausblick</h2>
+      <div class="card road" id="road"></div>
     </section>
   </section>
 
@@ -201,10 +333,22 @@ section.info{display:grid;gap:12px}
   <section class="view" id="v-fortschritt" data-view="fortschritt" hidden>
     <header><h1>Fortschritt</h1></header>
     <div class="stats">
-      <div class="stat"><b id="s-week">0/6</b><span>Diese Woche</span></div>
-      <div class="stat"><b id="s-total">0</b><span>Trainings gesamt</span></div>
-      <div class="stat"><b id="s-weeks">0</b><span>Volle Wochen</span></div>
+      <div class="stat"><b id="s-week">0/6</b><span>Kraft diese Woche</span></div>
+      <div class="stat"><b id="s-am">0</b><span>Früh diese Woche</span></div>
+      <div class="stat"><b id="s-total">0</b><span>Einheiten gesamt</span></div>
     </div>
+    <section class="info">
+      <h2>Kalender</h2>
+      <div class="card opt" id="cal"></div>
+    </section>
+    <section class="info">
+      <h2>Muskel-Bilanz</h2>
+      <div class="card bal" id="balance"></div>
+    </section>
+    <section class="info">
+      <h2>Wochenrückblick</h2>
+      <div class="card opt" id="review"></div>
+    </section>
     <section class="info">
       <h2>Verlauf pro Übung</h2>
       <div class="card" id="prog-chart"></div>
@@ -214,8 +358,90 @@ section.info{display:grid;gap:12px}
       <div class="card log" id="records"></div>
     </section>
     <section class="info">
-      <h2>Letzte Trainings</h2>
+      <h2>Letzte Einheiten</h2>
       <div class="card log" id="log"></div>
+    </section>
+  </section>
+
+  <!-- ============ ICH ============ -->
+  <section class="view" id="v-ich" data-view="ich" hidden>
+    <header style="display:grid;gap:6px">
+      <h1>Ich</h1>
+      <p class="lead">Erholung, Körper und Kopf. Für die Tage, an denen der Kopf schwerer ist als die Hantel.</p>
+    </header>
+    <div class="card quote" id="quote"></div>
+    <section class="info">
+      <h2>Wie geht's dir heute?</h2>
+      <div class="card opt">
+        <div class="moods" role="group" aria-label="Stimmung heute" id="moods"></div>
+        <div id="mood-hist"></div>
+        <div id="mood-warn"></div>
+      </div>
+    </section>
+    <section class="info">
+      <h2>Erholung heute</h2>
+      <div class="card opt">
+        <p class="lbl">Letzte Nacht geschlafen</p>
+        <div class="chips" role="group" aria-label="Stunden Schlaf letzte Nacht" id="sleep"></div>
+        <p class="sub" id="sleep-sub"></p>
+        <div id="rec-warn"></div>
+      </div>
+      <div class="card opt">
+        <div class="prot-top"><p class="lbl">Eiweiß heute</p><p class="prot-n"><b id="prot-total">0</b> / <span id="prot-goal">140</span> g</p></div>
+        <div class="progress prot"><div id="prot-bar"></div></div>
+        <div class="chips four" role="group" aria-label="Eiweiß hinzufügen" id="prot-add">
+          <button data-p="20">+20 g<small>Quark, 2 Eier</small></button><button data-p="25">+25 g<small>Shake</small></button><button data-p="30">+30 g<small>Hähnchen</small></button><button data-p="40">+40 g<small>große Portion</small></button>
+        </div>
+        <div class="inl"><label class="sub" for="prot-custom">Andere Menge</label><input id="prot-custom" inputmode="numeric" placeholder="g"><button class="btn" id="prot-custom-btn">Hinzufügen</button></div>
+        <div class="inl"><button class="reset" id="prot-undo">Letzten Eintrag löschen</button><span class="sub" id="prot-week"></span></div>
+        <div class="inl"><label class="sub" for="prot-goal-in">Tagesziel in g</label><input id="prot-goal-in" inputmode="numeric"><span class="sub" id="prot-goal-hint"></span></div>
+      </div>
+    </section>
+    <section class="info">
+      <h2>Schlechter Tag?</h2>
+      <div class="card opt">
+        <p>Dann gilt heute: <b>Hingehen ist der Sieg.</b> Die App kürzt dein Training auf 4 Übungen mit je 2 Sätzen. Das dauert ca. 30 Minuten und zählt trotzdem voll.</p>
+        <button class="btn primary" id="lowday-btn"></button>
+      </div>
+    </section>
+    <section class="info">
+      <h2>Dein Warum</h2>
+      <div class="card opt">
+        <label class="sub" for="why">Schreib auf, warum du trainierst. An schlechten Tagen zeigt dir die App genau diesen Satz.</label>
+        <textarea id="why" class="why" placeholder="Zum Beispiel: Ich mache das für mich. Ich will stark sein, im Körper und im Kopf."></textarea>
+        <p class="status" id="why-status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="info">
+      <h2>Körper</h2>
+      <div class="card opt">
+        <p class="sub" id="body-hint">Einmal pro Woche, am besten morgens nüchtern. Leere Felder werden übersprungen.</p>
+        <div class="bodyform">
+          <label for="bd-w">Gewicht<span><input id="bd-w" inputmode="decimal" placeholder="kg"></span></label>
+          <label for="bd-c">Brust<span><input id="bd-c" inputmode="decimal" placeholder="cm"></span></label>
+          <label for="bd-a">Oberarm<span><input id="bd-a" inputmode="decimal" placeholder="cm"></span></label>
+          <label for="bd-t">Taille<span><input id="bd-t" inputmode="decimal" placeholder="cm"></span></label>
+        </div>
+        <button class="btn primary" id="bd-save">Eintragen</button>
+        <p class="status" id="bd-status" aria-live="polite"></p>
+        <div id="body-chart"></div>
+      </div>
+    </section>
+    <section class="info">
+      <h2>Was du schon geschafft hast</h2>
+      <div class="card log" id="proof"></div>
+    </section>
+    <section class="info">
+      <h2>Wenn es richtig schwer wird</h2>
+      <div class="card help">
+        <p>Training hilft dem Kopf viel, ersetzt aber kein Gespräch. Wenn du merkst, dass du über Wochen nur noch runterziehst, nichts mehr Freude macht oder dunkle Gedanken kommen: Rede mit jemandem. Mit Freunden, deiner Hausärztin oder deinem Hausarzt, oder anonym:</p>
+        <div class="hl"><span>Telefonseelsorge (Deutschland)<small>kostenlos, rund um die Uhr, auch Chat auf telefonseelsorge.de</small></span><b>116 123</b></div>
+        <div class="hl"><span>Telefonseelsorge, weitere Nummern</span><b>0800 111 0 111<br>0800 111 0 222</b></div>
+        <div class="hl"><span>Ärztlicher Bereitschaftsdienst<small>wenn die Praxis zu hat</small></span><b>116 117</b></div>
+        <div class="hl"><span>Österreich: Telefonseelsorge</span><b>142</b></div>
+        <div class="hl"><span>Schweiz: Die Dargebotene Hand</span><b>143</b></div>
+        <div class="hl"><span>Akute Gefahr für dich oder andere</span><b>112</b></div>
+      </div>
     </section>
   </section>
 
@@ -235,6 +461,7 @@ section.info{display:grid;gap:12px}
       <h2>Training</h2>
       <div class="card opt">
         <label class="mode" for="beginner"><input type="checkbox" id="beginner"><span><b>Einsteiger-Modus</b> (Woche 1–3): höchstens 3 Sätze pro Übung.</span></label>
+        <label class="mode" for="deload"><input type="checkbox" id="deload"><span><b>Erholungswoche</b>: 2 Sätze pro Übung, ca. 30 % weniger Gewicht. Schaltet sich nach 7 Tagen von selbst ab.</span></label>
         <label class="mode" for="sound"><input type="checkbox" id="sound"><span><b>Ton am Pausenende.</b> Beim iPhone muss der Lautlos-Schalter aus sein.</span></label>
       </div>
     </section>
@@ -267,7 +494,7 @@ section.info{display:grid;gap:12px}
         <p class="status" id="bk-status" aria-live="polite"></p>
       </div>
     </section>
-    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt.</p>
+    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 7.</p>
   </section>
 </div>
 
@@ -280,6 +507,7 @@ section.info{display:grid;gap:12px}
   <a href="#training" data-nav="training"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>Training</a>
   <a href="#plan" data-nav="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Plan</a>
   <a href="#fortschritt" data-nav="fortschritt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19.5h17M5 15l4.5-5 3.5 3.5L19 6.5"/></svg>Fortschritt</a>
+  <a href="#ich" data-nav="ich"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Ich</a>
   <a href="#einstellungen" data-nav="einstellungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Einstellungen</a>
 </nav>
 
@@ -295,7 +523,7 @@ const add=(p,a,l)=>{const v=dir(a);return[p[0]+v[0]*l,p[1]+v[1]*l]};
 const sub=(p,a,l)=>add(p,a,-l);
 const lerp=(a,b,t)=>a+(b-a)*t;
 const lerpA=(a,b,t)=>a+((((b-a)%360)+540)%360-180)*t;
-const ANG=new Set(["t","ua","fa","th","sh","ft","ua2","fa2","th2","sh2","el","h","bend","elL","hL","elR","hR"]);
+const ANG=new Set(["wr","t","ua","fa","th","sh","ft","ua2","fa2","th2","sh2","el","h","bend","elL","hL","elR","hR"]);
 function mix(A,B,t){const o={};for(const k in A){const a=A[k],b=B[k]===undefined?a:B[k];
  o[k]=Array.isArray(a)?[lerp(a[0],b[0],t),lerp(a[1],b[1],t)]:typeof a==="number"?(ANG.has(k)?lerpA(a,b,t):lerp(a,b,t)):a}return o}
 const f1=n=>n.toFixed(1);
@@ -334,7 +562,7 @@ function drawSide(J,o={}){
 /* ---- Frontansicht ---- */
 function armVec(el,h,s){return[s*Math.sin(rad(el))*Math.cos(rad(h)),Math.cos(rad(el))]}
 function front(P){
- const cx=100,hy=P.seated?112:86,sy=hy-L.T+3;
+ const cx=100,hy=P.seated?112:86,sy=hy-L.T+3-(P.shrug||0);
  const S={hip:[cx,hy],neck:[cx,hy-L.T],head:[cx,hy-L.T-L.N-L.R]};
  const arms=[-1,1].map(s=>{const el=s<0?(P.elL??P.el):(P.elR??P.el),h=s<0?(P.hL??P.h):(P.hR??P.h),b=P.bend??10;
   const shp=[cx+s*14,sy];const v1=armVec(el,h,s),v2=armVec(el+b,h,s);
@@ -420,11 +648,34 @@ const D={
   draw:(J)=>tower(170)+pulley([166,10])+cable([166,10],J.ha)+drawSide(J)},
  plank:{v:"side",A:{hip:[96,124],t:80,ua:180,fa:90,th:262,sh:262,ft:180},B:{hip:[96,122]},
   draw:(J)=>drawSide(J)},
+ straightArm:{v:"side",A:{hip:[92,86],t:18,ua:42,fa:42,th:182,sh:180},B:{ua:172,fa:172},
+  draw:(J)=>tower(170)+pulley([166,8])+cable([166,8],J.ha)+drawSide(J)+ln([J.ha[0]-2,J.ha[1]-6],[J.ha[0]+2,J.ha[1]+6],4,WT)},
+ shrug:{v:"front",A:{el:2,h:0,bend:0,shrug:0},B:{shrug:7},
+  draw:(F)=>drawFront(F)+F.arms.map(a=>db(a.ha,0)).join("")},
+ hyperext:{v:"side",A:{hip:[104,98],t:138,rel:1,ua:150,fa:12,th:248,sh:244,ft:160},B:{t:82},
+  draw:(J)=>ln([112,104],[150,G],5,EQ)+ln([60,G],[112,104],5,EQ)+rc(98,98,18,8,WT)+drawSide(J,{noFarArm:1})+ci(J.an,4,EQ)},
+ rdl:{v:"side",A:{hip:[96,86],t:0,ua:180,fa:180,th:180,sh:180},B:{hip:[88,90],t:76,th:174,sh:188},
+  draw:(J)=>drawSide(J)+db(J.ha,90)},
+ hipThrust:{v:"side",A:{hip:[100,134],t:285,rel:1,ua:170,fa:170,th:50,sh:170},B:{hip:[100,116],t:266,th:95,sh:180},
+  draw:(J)=>rc(22,124,44,6,EQ)+rc(30,130,3,G-130,EQ)+rc(56,130,3,G-130,EQ)+drawSide(J,{noFarArm:1})+plate([J.hip[0],J.hip[1]-9])},
+ rowOneArm:{v:"side",A:{hip:[118,86],t:280,ua:180,fa:180,ua2:180,fa2:180,th:172,sh:184,th2:180,sh2:270,ft:90},B:{ua:65,fa:182},
+  draw:(J)=>rc(40,123,100,6,EQ)+rc(48,129,3,G-129,EQ)+rc(130,129,3,G-129,EQ)+drawSide(J)+db(J.ha,90)},
+ wristCurl:{v:"side",A:{hip:[84,112],t:20,ua:168,fa:88,th:90,sh:180,wr:150},B:{wr:40},
+  draw:(J,P)=>{const h=add(J.ha,P.wr,7);return seat(84,118,26)+drawSide(J)+ln(J.ha,h,5)+db(h,P.wr)}},
+ abMachine:{v:"side",A:{hip:[90,112],t:352,rel:1,ua:150,fa:12,th:90,sh:180},B:{t:38},
+  draw:(J,P)=>seat(90,118,28)+rc(70,60,6,52,EQ)+drawSide(J)+ln([J.ha[0]-1,J.ha[1]-6],[J.ha[0]+1,J.ha[1]+6],4,WT)},
+ sidePlank:{v:"side",A:{hip:[104,128],t:66,ua:180,fa:96,th:254,sh:256,ft:180},B:{hip:[104,124]},
+  draw:(J)=>rc(40,G-3,120,3,"var(--line)")+drawSide(J,{noFarArm:1,noFarLeg:1})},
+ benchDB:{v:"side",A:{hip:[100,104],t:270,ua:120,fa:345,th:100,sh:155},B:{ua:12,fa:0},
+  draw:(J)=>drawSide(J,{back:bench(30,116,110)})+db(J.ha)},
+ squatSmith:{v:"side",A:{hip:[96,86],t:2,ua:205,fa:20,th:180,sh:180},B:{hip:[86,112],t:30,th:105,sh:200},
+  draw:(J)=>rc(J.sh[0]-1.5,4,3,G-4,LN)+drawSide(J)+plate([J.sh[0],J.sh[1]-2])},
  legRaise:{v:"side",A:{hand:[100,6],t:0,ua:0,fa:0,th:180,sh:180,ft:120},B:{t:352,th:78,sh:170,ft:100},
   draw:(J)=>rc(60,2,80,5,EQ)+drawSide(J,{noFarArm:1})},
 };
 /* Übung -> Animation */
 const MAP={
+ "Überzüge am Kabel (gestreckte Arme)":"straightArm","Shrugs Kurzhantel":"shrug","Hyperextensions":"hyperext","Rumänisches Kreuzheben Kurzhantel":"rdl","Hip Thrust":"hipThrust","Einarmiges Kurzhantel-Rudern":"rowOneArm","Unterarm-Curls Kurzhantel":"wristCurl","Bauchmaschine (Crunch)":"abMachine","Seitstütz":"sidePlank","Bankdrücken Kurzhantel":"benchDB","Kniebeuge (Multipresse)":"squatSmith",
  "Bankdrücken (Multipresse oder Langhantel)":"benchSmith","Schrägbankdrücken Kurzhantel":"inclineDB","Schulterpresse (Maschine)":"shoulderPress","Butterfly (Maschine)":"flyMachine","Seitheben Kurzhantel":"lateralDB","Trizepsdrücken am Kabel (Seil)":"pushdown",
  "Latzug breit":"pulldown","Rudern sitzend am Kabel":"rowCable","Reverse Butterfly (Maschine)":"reverseFly","Bizeps-Curls Kurzhantel":"curlDB","Hammer-Curls Kurzhantel":"hammerDB",
  "Beinpresse":"legPress","Beinstrecker (Maschine)":"legExt","Beinbeuger (Maschine)":"legCurl","Wadenheben (Maschine)":"calf","Crunches am Kabel":"cableCrunch","Unterarmstütz (Plank)":"plank",
@@ -447,99 +698,167 @@ if(typeof module!=="undefined")module.exports=AN;
 
 </script>
 <script>
-const TYPES={push:{c:"var(--red)",on:"#fff"},pull:{c:"var(--blue)",on:"#fff"},legs:{c:"var(--yellow)",on:"#15181A"},arms:{c:"var(--green)",on:"#fff"}};
-const P=[
-{id:"mo",wd:"Mo",short:"Push",type:"push",name:"Push A: Brust schwer",time:"ca. 65 Min",ex:[
- {n:"Bankdrücken (Multipresse oder Langhantel)",ph:"Smith_Machine_Bench_Press",s:4,r:"6–10",p:120,m:["chest","delt","tri"],c:"Anfangs an der Multipresse oder mit Spotter. Stange zur unteren Brust, Schulterblätter zusammen, Füße fest am Boden.",q:"Bankdrücken richtig Anfänger"},
- {n:"Schrägbankdrücken Kurzhantel",ph:"Incline_Dumbbell_Press",s:3,r:"8–12",p:90,db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik"},
- {n:"Schulterpresse (Maschine)",ph:"Machine_Shoulder_Military_Press",s:3,r:"8–12",p:90,m:["delt","tri"],c:"Rücken fest am Polster, nicht ins Hohlkreuz drücken.",q:"Schulterpresse Maschine Technik"},
- {n:"Butterfly (Maschine)",ph:"Butterfly",s:3,r:"12–15",p:75,m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik"},
- {n:"Seitheben Kurzhantel",ph:"Side_Lateral_Raise",s:4,r:"12–15",p:60,db:1,m:["delt"],c:"Leichtes Gewicht. Arme bis Schulterhöhe, kein Schwung aus dem Körper.",q:"Seitheben Kurzhantel richtig"},
- {n:"Trizepsdrücken am Kabel (Seil)",ph:"Triceps_Pushdown_-_Rope_Attachment",s:3,r:"12–15",p:60,m:["tri"],c:"Ellbogen bleiben am Körper, unten Seil leicht auseinanderziehen.",q:"Trizepsdrücken Kabelzug Seil Technik"}]},
-{id:"di",wd:"Di",short:"Pull",type:"pull",name:"Pull A: Rücken breit + Bizeps",time:"ca. 60 Min",ex:[
- {n:"Latzug breit",ph:"Wide-Grip_Lat_Pulldown",s:4,r:"8–12",p:120,m:["lat","bi"],c:"Stange zur oberen Brust, Brust raus, nicht weit zurücklehnen.",q:"Latzug richtig ausführen"},
- {n:"Rudern sitzend am Kabel",ph:"Seated_Cable_Rows",s:3,r:"10–12",p:90,m:["lat","bi","delt"],c:"Griff zum Bauchnabel, Schulterblätter zusammen, Oberkörper ruhig.",q:"Rudern sitzend Kabelzug Technik"},
- {n:"Reverse Butterfly (Maschine)",ph:"Reverse_Machine_Flyes",s:3,r:"12–15",p:60,m:["delt","lat"],c:"Hintere Schulter. Wichtig für gesunde Schultern, weil du viel drückst.",q:"Reverse Butterfly Maschine Technik"},
- {n:"Bizeps-Curls Kurzhantel",ph:"Dumbbell_Bicep_Curl",s:3,r:"10–12",p:75,db:1,m:["bi"],c:"Ellbogen fest neben dem Körper, oben Handfläche nach außen drehen.",q:"Bizeps Curls Kurzhantel richtig"},
- {n:"Hammer-Curls Kurzhantel",ph:"Hammer_Curls",s:3,r:"10–12",p:60,db:1,m:["bi","fore"],c:"Daumen zeigt nach oben, kein Schwung.",q:"Hammer Curls Technik"}]},
-{id:"mi",wd:"Mi",short:"Beine",type:"legs",name:"Beine + Bauch",time:"ca. 55 Min",ex:[
- {n:"Beinpresse",ph:"Leg_Press",s:4,r:"10–12",p:120,m:["quad","ham"],c:"Füße schulterbreit, Knie zeigen Richtung Zehen, unten Po nicht abheben.",q:"Beinpresse richtig ausführen"},
- {n:"Beinstrecker (Maschine)",ph:"Leg_Extensions",s:3,r:"12–15",p:75,m:["quad"],c:"Oben kurz halten, langsam ablassen.",q:"Beinstrecker Maschine Technik"},
- {n:"Beinbeuger (Maschine)",ph:"Seated_Leg_Curl",s:3,r:"10–12",p:75,m:["ham"],c:"Polster knapp über der Ferse, langsam zurücklassen.",q:"Beinbeuger Maschine Technik"},
- {n:"Wadenheben (Maschine)",ph:"Standing_Calf_Raises",s:3,r:"12–15",p:60,m:["calf"],c:"Unten voll dehnen, oben 1 Sek halten.",q:"Wadenheben Maschine Technik"},
- {n:"Crunches am Kabel",ph:"Cable_Crunch",s:3,r:"12–15",p:60,m:["abs"],c:"Rücken einrollen, Hüfte bleibt ruhig.",q:"Kabel Crunches kniend Technik"},
- {n:"Unterarmstütz (Plank)",ph:"Plank",s:3,r:"30–45 s",p:60,bw:1,m:["abs"],c:"Körper eine gerade Linie, Bauch und Po anspannen. Sekunden eintragen.",q:"Plank richtig ausführen"}]},
-{id:"do",wd:"Do",short:"Push",type:"push",name:"Push B: Schultern zuerst",time:"ca. 65 Min",ex:[
- {n:"Schulterdrücken Kurzhantel (sitzend)",ph:"Seated_Dumbbell_Press",s:4,r:"8–12",p:120,db:1,m:["delt","tri"],c:"Lehne fast senkrecht, Hanteln bis Ohrhöhe senken.",q:"Kurzhantel Schulterdrücken sitzend Technik"},
- {n:"Brustpresse (Maschine)",ph:"Machine_Bench_Press",s:3,r:"10–12",p:90,m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen"},
- {n:"Cable Crossover",ph:"Cable_Crossover",s:3,r:"12–15",p:75,m:["chest"],c:"Leicht nach vorne lehnen, Hände vor der Brust zusammenführen.",q:"Cable Crossover Brust Technik"},
- {n:"Seitheben am Kabel (einarmig)",ph:"Side_Lateral_Raise",phNote:"ähnliche Bewegung mit Kurzhanteln",s:3,r:"12–15",p:60,m:["delt"],c:"Kabel hinter dem Körper, langsam ablassen.",q:"Seitheben Kabelzug einarmig"},
- {n:"Dips (assistiert an der Maschine)",ph:"Dips_-_Triceps_Version",phNote:"freie Dips, gleiche Bewegung",s:3,r:"8–12",p:90,assist:1,m:["tri","chest"],c:"Hilfsgewicht eintragen. Weniger Hilfe heißt stärker. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik"},
- {n:"Trizeps Überkopf am Kabel",ph:"Cable_Rope_Overhead_Triceps_Extension",s:3,r:"12–15",p:60,m:["tri"],c:"Ellbogen zeigen nach vorne, unten gut dehnen.",q:"Trizeps Überkopf Kabelzug Seil"}]},
-{id:"fr",wd:"Fr",short:"Pull",type:"pull",name:"Pull B: Rücken dick + Bizeps",time:"ca. 60 Min",ex:[
- {n:"Rudern an der Maschine (Brustpolster)",ph:"Leverage_Iso_Row",s:4,r:"8–12",p:120,m:["lat","bi","delt"],c:"Brust am Polster, Ellbogen eng nach hinten ziehen.",q:"Rudermaschine Brustpolster Technik"},
- {n:"Latzug enger Griff",ph:"V-Bar_Pulldown",s:3,r:"10–12",p:90,m:["lat","bi"],c:"V-Griff zur Brust, Ellbogen nach unten führen.",q:"Latzug enger Griff Technik"},
- {n:"Face Pulls (Kabel, Seil)",ph:"Face_Pull",s:3,r:"15",p:60,m:["delt","lat"],c:"Seil Richtung Stirn ziehen, Hände enden neben den Ohren.",q:"Face Pulls richtig ausführen"},
- {n:"SZ-Curls",ph:"EZ-Bar_Curl",s:3,r:"8–12",p:75,m:["bi"],c:"Oberkörper ruhig, unten Arme fast strecken.",q:"SZ Curls Bizeps Technik"},
- {n:"Bizeps-Curls am Kabel",ph:"Standing_Biceps_Cable_Curl",s:3,r:"12–15",p:60,m:["bi"],c:"Konstante Spannung, oben kurz zusammendrücken.",q:"Bizeps Curls Kabelzug Technik"}]},
-{id:"sa",wd:"Sa",short:"Arme",type:"arms",name:"Arme + Schultern",time:"ca. 55 Min",ex:[
- {n:"Seitheben Kurzhantel",ph:"Side_Lateral_Raise",s:4,r:"12–15",p:60,db:1,m:["delt"],c:"Zum Start, solange die Schultern frisch sind. Kein Schwung.",q:"Seitheben Kurzhantel richtig"},
- {n:"Schrägbank-Curls Kurzhantel",ph:"Incline_Dumbbell_Curl",s:3,r:"10–12",p:75,db:1,m:["bi"],c:"Bank auf ca. 60°, Arme hängen hinter dem Körper. Starke Dehnung im Bizeps.",q:"Schrägbank Curls Kurzhantel"},
- {n:"Trizepsdrücken am Kabel (Stange)",ph:"Triceps_Pushdown",s:3,r:"10–12",p:75,m:["tri"],c:"Ellbogen fest, nur die Unterarme bewegen.",q:"Trizepsdrücken Kabelzug Stange"},
- {n:"Reverse Butterfly (Maschine)",ph:"Reverse_Machine_Flyes",s:3,r:"12–15",p:60,m:["delt","lat"],c:"Hintere Schulter für runde, volle Schultern.",q:"Reverse Butterfly Maschine Technik"},
- {n:"Hammer-Curls am Kabel (Seil)",ph:"Cable_Hammer_Curls_-_Rope_Attachment",s:3,r:"12",p:60,m:["bi","fore"],c:"Daumen oben, Ellbogen bleiben stehen.",q:"Hammer Curls Kabel Seil"},
- {n:"Beinheben hängend",ph:"Hanging_Leg_Raise",s:3,r:"8–12",p:60,bw:1,m:["abs"],c:"Knie zur Brust, nicht schwingen. Zu schwer? Am Dip-Stuhl.",q:"Beinheben hängend Technik"}]}
+const TYPES={push:{c:"var(--red)",on:"#fff"},pull:{c:"var(--blue)",on:"#fff"},legs:{c:"var(--yellow)",on:"#15181A"},arms:{c:"var(--green)",on:"#fff"},am:{c:"var(--fg)",on:"var(--bg)"}};
+
+/* ---------- Übungs-Bibliothek ---------- */
+const LIB={
+ "Bankdrücken (Multipresse oder Langhantel)":{ph:"Smith_Machine_Bench_Press",bar:20,m:["chest","delt","tri"],c:"Anfangs an der Multipresse oder mit Spotter. Stange zur unteren Brust, Schulterblätter zusammen, Füße fest am Boden.",q:"Bankdrücken richtig Anfänger",alt:["Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
+ "Bankdrücken Kurzhantel":{ph:"Dumbbell_Bench_Press",db:1,m:["chest","delt","tri"],c:"Hanteln kontrolliert bis Brusthöhe, oben nicht aneinanderschlagen. Gewicht pro Hantel eintragen.",q:"Kurzhantel Bankdrücken Technik",alt:["Bankdrücken (Multipresse oder Langhantel)","Brustpresse (Maschine)"]},
+ "Schrägbankdrücken Kurzhantel":{ph:"Incline_Dumbbell_Press",db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik",alt:["Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
+ "Brustpresse (Maschine)":{ph:"Machine_Bench_Press",m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen",alt:["Bankdrücken Kurzhantel","Bankdrücken (Multipresse oder Langhantel)"]},
+ "Butterfly (Maschine)":{ph:"Butterfly",m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik",alt:["Cable Crossover"]},
+ "Cable Crossover":{ph:"Cable_Crossover",m:["chest"],c:"Leicht nach vorne lehnen, Hände vor der Brust zusammenführen.",q:"Cable Crossover Brust Technik",alt:["Butterfly (Maschine)"]},
+ "Dips (assistiert an der Maschine)":{ph:"Dips_-_Triceps_Version",phNote:"freie Dips, gleiche Bewegung",assist:1,m:["tri","chest"],c:"Hilfsgewicht eintragen. Weniger Hilfe heißt stärker. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik",alt:["Trizepsdrücken am Kabel (Stange)"]},
+ "Schulterpresse (Maschine)":{ph:"Machine_Shoulder_Military_Press",m:["delt","tri"],c:"Rücken fest am Polster, nicht ins Hohlkreuz drücken.",q:"Schulterpresse Maschine Technik",alt:["Schulterdrücken Kurzhantel (sitzend)"]},
+ "Schulterdrücken Kurzhantel (sitzend)":{ph:"Seated_Dumbbell_Press",db:1,m:["delt","tri"],c:"Lehne fast senkrecht, Hanteln bis Ohrhöhe senken.",q:"Kurzhantel Schulterdrücken sitzend Technik",alt:["Schulterpresse (Maschine)"]},
+ "Seitheben Kurzhantel":{ph:"Side_Lateral_Raise",db:1,m:["delt"],c:"Leichtes Gewicht. Arme bis Schulterhöhe, kein Schwung aus dem Körper.",q:"Seitheben Kurzhantel richtig",alt:["Seitheben am Kabel (einarmig)"]},
+ "Seitheben am Kabel (einarmig)":{ph:"Side_Lateral_Raise",phNote:"ähnliche Bewegung mit Kurzhanteln",m:["delt"],c:"Kabel hinter dem Körper, langsam ablassen. Gewicht pro Seite.",q:"Seitheben Kabelzug einarmig",alt:["Seitheben Kurzhantel"]},
+ "Reverse Butterfly (Maschine)":{ph:"Reverse_Machine_Flyes",m:["delt","lat"],c:"Hintere Schulter. Wichtig für gesunde Schultern, weil du viel drückst.",q:"Reverse Butterfly Maschine Technik",alt:["Face Pulls (Kabel, Seil)"]},
+ "Face Pulls (Kabel, Seil)":{ph:"Face_Pull",m:["delt","trap"],c:"Seil Richtung Stirn ziehen, Hände enden neben den Ohren.",q:"Face Pulls richtig ausführen",alt:["Reverse Butterfly (Maschine)"]},
+ "Trizepsdrücken am Kabel (Seil)":{ph:"Triceps_Pushdown_-_Rope_Attachment",m:["tri"],c:"Ellbogen bleiben am Körper, unten Seil leicht auseinanderziehen.",q:"Trizepsdrücken Kabelzug Seil Technik",alt:["Trizepsdrücken am Kabel (Stange)","Trizeps Überkopf am Kabel"]},
+ "Trizepsdrücken am Kabel (Stange)":{ph:"Triceps_Pushdown",m:["tri"],c:"Ellbogen fest, nur die Unterarme bewegen.",q:"Trizepsdrücken Kabelzug Stange",alt:["Trizepsdrücken am Kabel (Seil)","Trizeps Überkopf am Kabel"]},
+ "Trizeps Überkopf am Kabel":{ph:"Cable_Rope_Overhead_Triceps_Extension",m:["tri"],c:"Ellbogen zeigen nach vorne, unten gut dehnen.",q:"Trizeps Überkopf Kabelzug Seil",alt:["Trizepsdrücken am Kabel (Seil)"]},
+ "Latzug breit":{ph:"Wide-Grip_Lat_Pulldown",m:["lat","bi"],c:"Stange zur oberen Brust, Brust raus, nicht weit zurücklehnen.",q:"Latzug richtig ausführen",alt:["Latzug enger Griff","Überzüge am Kabel (gestreckte Arme)"]},
+ "Latzug enger Griff":{ph:"V-Bar_Pulldown",m:["lat","bi"],c:"V-Griff zur Brust, Ellbogen nach unten führen.",q:"Latzug enger Griff Technik",alt:["Latzug breit"]},
+ "Überzüge am Kabel (gestreckte Arme)":{ph:"Straight-Arm_Pulldown",m:["lat"],c:"Arme fast gestreckt, Stange in einem Bogen bis zu den Oberschenkeln ziehen. Spür den Lat.",q:"Straight Arm Pulldown Technik",alt:["Latzug enger Griff"]},
+ "Rudern sitzend am Kabel":{ph:"Seated_Cable_Rows",m:["lat","bi","delt"],c:"Griff zum Bauchnabel, Schulterblätter zusammen, Oberkörper ruhig.",q:"Rudern sitzend Kabelzug Technik",alt:["Rudern an der Maschine (Brustpolster)","Einarmiges Kurzhantel-Rudern"]},
+ "Rudern an der Maschine (Brustpolster)":{ph:"Leverage_Iso_Row",m:["lat","bi","delt"],c:"Brust am Polster, Ellbogen eng nach hinten ziehen.",q:"Rudermaschine Brustpolster Technik",alt:["Rudern sitzend am Kabel","Einarmiges Kurzhantel-Rudern"]},
+ "Einarmiges Kurzhantel-Rudern":{ph:"One-Arm_Dumbbell_Row",db:1,m:["lat","bi"],c:"Knie und Hand auf der Bank, Rücken gerade. Ellbogen Richtung Hüfte ziehen. Sätze pro Seite.",q:"Einarmiges Kurzhantel Rudern Technik",alt:["Rudern sitzend am Kabel","Rudern an der Maschine (Brustpolster)"]},
+ "Shrugs Kurzhantel":{ph:"Dumbbell_Shrug",db:1,m:["trap"],c:"Schultern gerade nach oben zu den Ohren ziehen, oben 1 Sek halten. Nicht kreisen.",q:"Kurzhantel Shrugs Technik",alt:[]},
+ "Hyperextensions":{ph:"Hyperextensions_Back_Extensions",bw:1,m:["lowback","glute","ham"],c:"Langsam runter, hoch bis der Körper gerade ist, nicht ins Hohlkreuz überstrecken.",q:"Hyperextensions richtig ausführen",alt:["Rumänisches Kreuzheben Kurzhantel"]},
+ "Bizeps-Curls Kurzhantel":{ph:"Dumbbell_Bicep_Curl",db:1,m:["bi"],c:"Ellbogen fest neben dem Körper, oben Handfläche nach außen drehen.",q:"Bizeps Curls Kurzhantel richtig",alt:["SZ-Curls","Bizeps-Curls am Kabel"]},
+ "Hammer-Curls Kurzhantel":{ph:"Hammer_Curls",db:1,m:["bi","fore"],c:"Daumen zeigt nach oben, kein Schwung.",q:"Hammer Curls Technik",alt:["Hammer-Curls am Kabel (Seil)"]},
+ "SZ-Curls":{ph:"EZ-Bar_Curl",bar:10,m:["bi"],c:"Oberkörper ruhig, unten Arme fast strecken.",q:"SZ Curls Bizeps Technik",alt:["Bizeps-Curls Kurzhantel","Bizeps-Curls am Kabel"]},
+ "Bizeps-Curls am Kabel":{ph:"Standing_Biceps_Cable_Curl",m:["bi"],c:"Konstante Spannung, oben kurz zusammendrücken.",q:"Bizeps Curls Kabelzug Technik",alt:["Bizeps-Curls Kurzhantel","SZ-Curls"]},
+ "Schrägbank-Curls Kurzhantel":{ph:"Incline_Dumbbell_Curl",db:1,m:["bi"],c:"Bank auf ca. 60°, Arme hängen hinter dem Körper. Starke Dehnung im Bizeps.",q:"Schrägbank Curls Kurzhantel",alt:["Bizeps-Curls Kurzhantel"]},
+ "Hammer-Curls am Kabel (Seil)":{ph:"Cable_Hammer_Curls_-_Rope_Attachment",m:["bi","fore"],c:"Daumen oben, Ellbogen bleiben stehen.",q:"Hammer Curls Kabel Seil",alt:["Hammer-Curls Kurzhantel"]},
+ "Unterarm-Curls Kurzhantel":{ph:"Seated_Dumbbell_Palms-Up_Wrist_Curl",db:1,m:["fore"],c:"Unterarme auf den Oberschenkeln, nur die Handgelenke bewegen. Leichtes Gewicht, volle Bewegung.",q:"Unterarm Curls Kurzhantel sitzend",alt:["Hammer-Curls Kurzhantel"]},
+ "Beinpresse":{ph:"Leg_Press",m:["quad","glute","ham"],c:"Füße schulterbreit, Knie zeigen Richtung Zehen, unten Po nicht abheben.",q:"Beinpresse richtig ausführen",alt:["Kniebeuge (Multipresse)"]},
+ "Kniebeuge (Multipresse)":{ph:"Smith_Machine_Squat",bar:20,m:["quad","glute"],c:"Füße leicht vor der Stange, Brust aufrecht, so tief wie es mit geradem Rücken geht.",q:"Kniebeuge Multipresse Technik",alt:["Beinpresse"]},
+ "Rumänisches Kreuzheben Kurzhantel":{ph:"Stiff-Legged_Dumbbell_Deadlift",db:1,m:["ham","glute","lowback"],c:"Knie leicht gebeugt, Po nach hinten schieben, Rücken gerade. Runter bis du die Dehnung hinten im Bein spürst.",q:"Rumänisches Kreuzheben Kurzhantel Technik",alt:["Hip Thrust","Beinbeuger (Maschine)"]},
+ "Hip Thrust":{ph:"Barbell_Hip_Thrust",bar:20,m:["glute","ham"],c:"Schulterblätter auf der Bank, Kinn zur Brust. Oben Po fest anspannen, 1 Sek halten. Gibt es auch als Maschine.",q:"Hip Thrust richtig ausführen",alt:["Rumänisches Kreuzheben Kurzhantel"]},
+ "Beinstrecker (Maschine)":{ph:"Leg_Extensions",m:["quad"],c:"Oben kurz halten, langsam ablassen.",q:"Beinstrecker Maschine Technik",alt:["Beinpresse"]},
+ "Beinbeuger (Maschine)":{ph:"Seated_Leg_Curl",m:["ham"],c:"Polster knapp über der Ferse, langsam zurücklassen.",q:"Beinbeuger Maschine Technik",alt:["Rumänisches Kreuzheben Kurzhantel"]},
+ "Wadenheben (Maschine)":{ph:"Standing_Calf_Raises",m:["calf"],c:"Unten voll dehnen, oben 1 Sek halten.",q:"Wadenheben Maschine Technik",alt:[]},
+ "Crunches am Kabel":{ph:"Cable_Crunch",m:["abs"],c:"Rücken einrollen, Hüfte bleibt ruhig.",q:"Kabel Crunches kniend Technik",alt:["Bauchmaschine (Crunch)"]},
+ "Bauchmaschine (Crunch)":{ph:"Ab_Crunch_Machine",m:["abs"],c:"Langsam einrollen, Ausatmen beim Runterziehen. Nicht mit den Armen ziehen.",q:"Bauchmaschine Crunch Technik",alt:["Crunches am Kabel"]},
+ "Beinheben hängend":{ph:"Hanging_Leg_Raise",bw:1,m:["abs"],c:"Knie zur Brust, nicht schwingen. Zu schwer? Am Dip-Stuhl.",q:"Beinheben hängend Technik",alt:["Crunches am Kabel"]},
+ "Unterarmstütz (Plank)":{ph:"Plank",bw:1,m:["abs","lowback"],c:"Körper eine gerade Linie, Bauch und Po anspannen. Sekunden eintragen.",q:"Plank richtig ausführen",alt:["Seitstütz"]},
+ "Seitstütz":{ph:"Side_Bridge",bw:1,m:["abs"],c:"Auf dem Unterarm, Körper gerade, Hüfte oben halten. Sekunden pro Seite eintragen.",q:"Seitstütz richtig ausführen",alt:["Russian Twist"]},
+ "Russian Twist":{ph:"Russian_Twist",bw:1,m:["abs"],c:"Oberkörper leicht zurück, von Seite zu Seite drehen. Wiederholungen pro Seite.",q:"Russian Twist Technik",alt:["Seitstütz"]},
+};
+
+/* ---------- Plan (Abend, Kraft) ---------- */
+const X=(n,s,r,p,ss)=>({n,s,r,p,ss});
+const P_DEFAULT=[
+{id:"mo",wd:"Mo",short:"Push",type:"push",name:"Push A: Brust schwer",time:"ca. 80 Min",ex:[
+ X("Bankdrücken (Multipresse oder Langhantel)",4,"6–10",150),X("Schrägbankdrücken Kurzhantel",3,"8–12",90),X("Schulterpresse (Maschine)",3,"8–12",90),
+ X("Butterfly (Maschine)",3,"12–15",60),X("Seitheben Kurzhantel",3,"12–15",60),X("Trizepsdrücken am Kabel (Seil)",3,"12–15",60),
+ X("Kniebeuge (Multipresse)",3,"8–12",120),X("Crunches am Kabel",3,"12–15",60)]},
+{id:"di",wd:"Di",short:"Pull",type:"pull",name:"Pull A: Lat breit + Bizeps",time:"ca. 80 Min",ex:[
+ X("Latzug breit",4,"8–12",120),X("Rudern sitzend am Kabel",3,"10–12",90),X("Überzüge am Kabel (gestreckte Arme)",3,"12–15",60),
+ X("Reverse Butterfly (Maschine)",3,"12–15",60),X("Shrugs Kurzhantel",3,"10–15",60),X("Bizeps-Curls Kurzhantel",3,"10–12",60),
+ X("Hammer-Curls Kurzhantel",3,"10–12",60),X("Hyperextensions",3,"12–15",60)]},
+{id:"mi",wd:"Mi",short:"Beine",type:"legs",name:"Beine, Po + Bauch",time:"ca. 85 Min",ex:[
+ X("Beinpresse",4,"10–12",150),X("Rumänisches Kreuzheben Kurzhantel",3,"8–12",120),X("Beinstrecker (Maschine)",3,"12–15",60),
+ X("Beinbeuger (Maschine)",3,"10–12",60),X("Hip Thrust",3,"8–12",90),X("Wadenheben (Maschine)",4,"12–15",60),
+ X("Beinheben hängend",3,"8–12",60),X("Unterarmstütz (Plank)",3,"30–45 s",45)]},
+{id:"do",wd:"Do",short:"Push",type:"push",name:"Push B: Schultern zuerst",time:"ca. 75 Min",ex:[
+ X("Schulterdrücken Kurzhantel (sitzend)",4,"8–12",120),X("Brustpresse (Maschine)",3,"10–12",90),X("Cable Crossover",3,"12–15",60),
+ X("Seitheben am Kabel (einarmig)",3,"12–15",45),X("Dips (assistiert an der Maschine)",3,"8–12",90),X("Trizepsdrücken am Kabel (Stange)",3,"10–12",60),
+ X("Seitstütz",3,"30–45 s",30)]},
+{id:"fr",wd:"Fr",short:"Pull",type:"pull",name:"Pull B: Rücken dick + Bizeps",time:"ca. 80 Min",ex:[
+ X("Rudern an der Maschine (Brustpolster)",4,"8–12",120),X("Latzug enger Griff",3,"10–12",90),X("Einarmiges Kurzhantel-Rudern",3,"10–12",60),
+ X("Face Pulls (Kabel, Seil)",3,"15",60),X("SZ-Curls",3,"8–12",75),X("Beinbeuger (Maschine)",3,"10–12",60),
+ X("Unterarm-Curls Kurzhantel",3,"15–20",45),X("Bauchmaschine (Crunch)",3,"12–15",60)]},
+{id:"sa",wd:"Sa",short:"Arme",type:"arms",name:"Arme + Schultern (Supersätze)",time:"ca. 75 Min",ex:[
+ X("Seitheben Kurzhantel",4,"12–15",60),X("Schrägbank-Curls Kurzhantel",3,"10–12",10,"A"),X("Trizepsdrücken am Kabel (Stange)",3,"10–12",90,"A"),
+ X("Hammer-Curls am Kabel (Seil)",3,"12",10,"B"),X("Trizeps Überkopf am Kabel",3,"12–15",90,"B"),X("Shrugs Kurzhantel",3,"10–15",60),
+ X("Wadenheben (Maschine)",3,"15",45),X("Russian Twist",3,"15–20",45)]}
 ];
-const LBL={chest:"Brust",delt:"Schultern",tri:"Trizeps",bi:"Bizeps",lat:"Rücken",quad:"Oberschenkel",ham:"Beinrückseite",calf:"Waden",fore:"Unterarm",abs:"Bauch"};
+/* ---------- Früheinheiten (locker) ---------- */
+const AM={
+ mo:{name:"Ausdauer locker",time:"40–50 Min",items:[{n:"Laufband mit Steigung",d:"30–40 Min · 8–12 % · 5–6 km/h",c:"Nicht am Geländer festhalten. Tempo so, dass du noch reden kannst.",q:"Laufband Steigung gehen Zone 2"},{n:"Mobility Hüfte und Brust",d:"10 Min",c:"Hüftbeuger-Dehnung im Ausfallschritt, Brustdehnung im Türrahmen, je 2 × 45 Sek pro Seite.",q:"Hüftbeuger dehnen Brust dehnen Übungen"}]},
+ di:{name:"Bauch-Stabilität + Beweglichkeit",time:"30 Min",items:[{n:"Crosstrainer locker",d:"15 Min",c:"Ruhiges Tempo zum Warmwerden.",q:"Crosstrainer richtig benutzen"},{n:"Dead Bug",d:"3 × 10 pro Seite",c:"Rücken bleibt flach am Boden. Langsam und kontrolliert.",q:"Dead Bug Übung richtig"},{n:"Bird Dog",d:"3 × 10 pro Seite",c:"Im Vierfüßlerstand Arm und gegenüberliegendes Bein strecken, kurz halten.",q:"Bird Dog Übung richtig"},{n:"Mobility Schultern",d:"8 Min",c:"Schulterkreisen, Wanddrücken, Band-Pull-Aparts mit leichtem Band.",q:"Schulter Mobility Übungen Gym"}]},
+ mi:{name:"Gehen + Oberkörper lockern",time:"35–45 Min",items:[{n:"Laufband flach oder draußen gehen",d:"30–40 Min",c:"Abends kommen die Beine dran. Heute früh also nur gehen, keine Steigung.",q:"Zone 2 Gehen Vorteile"},{n:"Mobility Brustwirbelsäule",d:"8 Min",c:"Katze-Kuh, offenes Buch in Seitenlage, je 10 Wiederholungen.",q:"Brustwirbelsäule Mobility Übungen"}]},
+ do:{name:"Ausdauer locker",time:"40–50 Min",items:[{n:"Rad oder Crosstrainer",d:"30–40 Min locker",c:"Gleichmäßig, ohne Sprints. Du kannst noch ganze Sätze sprechen.",q:"Ergometer Zone 2 Training"},{n:"Dehnen Beine und Rücken",d:"10 Min",c:"Beinrückseite, Hüfte, unterer Rücken. Je 2 × 45 Sek.",q:"Beine dehnen nach Training"}]},
+ fr:{name:"Bauch-Stabilität + Beweglichkeit",time:"30 Min",items:[{n:"Crosstrainer locker",d:"15 Min",c:"Ruhiges Tempo zum Warmwerden.",q:"Crosstrainer richtig benutzen"},{n:"Dead Bug",d:"3 × 10 pro Seite",c:"Rücken bleibt flach am Boden.",q:"Dead Bug Übung richtig"},{n:"Pallof Press am Kabel",d:"3 × 10 pro Seite",c:"Seitlich zum Kabel stehen, Griff vor der Brust nach vorne drücken, Rumpf dreht sich nicht mit.",q:"Pallof Press Kabel Technik"},{n:"Mobility Hüfte",d:"8 Min",c:"90/90-Sitz, Hüftbeuger-Dehnung, tiefe Hocke halten.",q:"Hüfte Mobility 90 90"}]},
+ sa:{name:"Länger draußen",time:"45–60 Min",items:[{n:"Spaziergang oder lockeres Radfahren",d:"45–60 Min draußen",c:"Frische Luft, Tageslicht, Kopf frei bekommen. Gern mit Musik oder Podcast.",q:"Spazieren gehen Vorteile Gesundheit"}]},
+ so:{name:"Ruhetag",time:"optional",items:[{n:"Spaziergang",d:"30–60 Min, wenn du magst",c:"Sonst wirklich Pause. Muskeln wachsen in der Erholung, nicht im Training.",q:"aktive Erholung Ruhetag"}]}
+};
+const AMDAYS=[["mo","Mo"],["di","Di"],["mi","Mi"],["do","Do"],["fr","Fr"],["sa","Sa"],["so","So"]];
+
+const LBL={chest:"Brust",delt:"Schultern",tri:"Trizeps",bi:"Bizeps",lat:"Rücken/Lat",quad:"Oberschenkel",ham:"Beinrückseite",glute:"Po",calf:"Waden",fore:"Unterarm",abs:"Bauch",lowback:"Unterer Rücken",trap:"Nacken"};
+const ZONE={chest:[10,20],delt:[12,30],tri:[10,22],bi:[10,22],lat:[10,20],quad:[8,16],ham:[6,14],glute:[6,14],calf:[6,12],fore:[4,10],abs:[8,16],lowback:[3,8],trap:[4,10]};
 function fig(ms){
  const on=k=>ms.includes(k)?'var(--hit)':'var(--muscle)';
  return `<svg viewBox="0 0 60 104" role="img" aria-label="Trainierte Muskeln: ${ms.map(k=>LBL[k]).join(', ')}">
  <circle cx="30" cy="9" r="7" fill="var(--muscle)"/><rect x="27" y="15" width="6" height="5" fill="var(--muscle)"/>
+ <path d="M24 16l-6 5 6 1zM36 16l6 5-6 1z" fill="${on('trap')}"/>
  <ellipse cx="17" cy="24" rx="6" ry="5" fill="${on('delt')}"/><ellipse cx="43" cy="24" rx="6" ry="5" fill="${on('delt')}"/>
  <path d="M21 21h8.5v12c-4 1-7 0-8.5-2z" fill="${on('chest')}"/><path d="M39 21h-8.5v12c4 1 7 0 8.5-2z" fill="${on('chest')}"/>
- <path d="M20 33l3 2 1 15-3-2z" fill="${on('lat')}"/><path d="M40 33l-3 2-1 15 3-2z" fill="${on('lat')}"/>
+ <path d="M20 33l3 2 1 12-3-2z" fill="${on('lat')}"/><path d="M40 33l-3 2-1 12 3-2z" fill="${on('lat')}"/>
+ <path d="M21 46l3 2v4l-3-1z" fill="${on('lowback')}"/><path d="M39 46l-3 2v4l3-1z" fill="${on('lowback')}"/>
  <rect x="25" y="35" width="10" height="17" rx="3" fill="${on('abs')}"/>
  <ellipse cx="10.5" cy="37" rx="2.4" ry="7.5" fill="${on('tri')}"/><ellipse cx="15" cy="37" rx="2.6" ry="7" fill="${on('bi')}"/>
  <ellipse cx="49.5" cy="37" rx="2.4" ry="7.5" fill="${on('tri')}"/><ellipse cx="45" cy="37" rx="2.6" ry="7" fill="${on('bi')}"/>
  <ellipse cx="11.5" cy="54" rx="2.8" ry="8" fill="${on('fore')}"/><ellipse cx="48.5" cy="54" rx="2.8" ry="8" fill="${on('fore')}"/>
- <path d="M23 53h14l-1 4H24z" fill="var(--muscle)"/>
- <ellipse cx="25" cy="70" rx="5" ry="12" fill="${on('quad')}"/><ellipse cx="35" cy="70" rx="5" ry="12" fill="${on('quad')}"/>
- <ellipse cx="21.5" cy="72" rx="1.6" ry="8" fill="${on('ham')}"/><ellipse cx="38.5" cy="72" rx="1.6" ry="8" fill="${on('ham')}"/>
+ <path d="M23 53h14l-1 3H24z" fill="var(--muscle)"/>
+ <ellipse cx="24.5" cy="58.5" rx="4.5" ry="3" fill="${on('glute')}"/><ellipse cx="35.5" cy="58.5" rx="4.5" ry="3" fill="${on('glute')}"/>
+ <ellipse cx="25" cy="72" rx="5" ry="10.5" fill="${on('quad')}"/><ellipse cx="35" cy="72" rx="5" ry="10.5" fill="${on('quad')}"/>
+ <ellipse cx="21.5" cy="73" rx="1.6" ry="7.5" fill="${on('ham')}"/><ellipse cx="38.5" cy="73" rx="1.6" ry="7.5" fill="${on('ham')}"/>
  <ellipse cx="25" cy="93" rx="3.5" ry="9" fill="${on('calf')}"/><ellipse cx="35" cy="93" rx="3.5" ry="9" fill="${on('calf')}"/>
  </svg>`}
 const ICON_IMG='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2.5" width="13" height="11" rx="2"/><circle cx="5.5" cy="6.5" r="1.3"/><path d="M2 12l4-4 3 3 2-2 3 3"/></svg>';
 const ICON_VID='<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7.5-4.5z"/></svg>';
 const ICON_CHART='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 13l4-5 3 3 6-8"/></svg>';
+const ICON_SWAP='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h10l-3-3M13 11H3l3 3"/></svg>';
+const ICON_NOTE='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 13l1-3 7-7 2 2-7 7z"/></svg>';
 
 /* ---------- Speicher ---------- */
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const $=id=>document.getElementById(id);
 const fmt=n=>(Math.round(n*100)/100).toString().replace('.',',');
+const fmtK=n=>Math.round(n).toLocaleString('de-DE');
 const num=v=>{const x=parseFloat(String(v??'').replace(',','.'));return isFinite(x)?x:NaN};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 function monday(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
 const shortDate=d=>new Date(d).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
-const ALL=[];P.forEach(d=>d.ex.forEach(e=>{if(!ALL.find(x=>x.n===e.n))ALL.push(e)}));
+
+/* Planwechsel auf Version 5: angefangene Eingaben passen nicht mehr zu den neuen Positionen */
+Object.assign(LIB,store.get("gym.customLib",{}));
+let P=store.get("gym.plan",null)||JSON.parse(JSON.stringify(P_DEFAULT));
+if(store.get("gym.planVer",0)<5){try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",5)}
 
 const todayIdx=(new Date().getDay()+6)%7;
 let cur=todayIdx<6?todayIdx:0;
+let amCur=todayIdx;
+let slot=store.get("gym.slotPref",null)||(new Date().getHours()<12?"am":"pm");
 let beginner=store.get("gym.beginner",true);
 let soundOn=store.get("gym.sound",true);
 let media=store.get("gym.media","anim");
 let theme=store.get("gym.theme","system");
-let toast="";const openCharts=new Set();
+let toast="";const openCharts=new Set(),openSwap=new Set(),openNote=new Set();
 let progEx=store.get("gym.progEx",null);
 
-const nSets=e=>beginner?Math.min(e.s,3):e.s;
+const deloadOn=()=>{const u=store.get("gym.deloadUntil",0);return u&&Date.now()<u};
+const lowDay=()=>store.get("gym.lowDay","")===iso(new Date());
+const nSets=e=>(deloadOn()||lowDay())?2:(beginner?Math.min(e.s,3):e.s);
+const exCount=day=>lowDay()?Math.min(4,day.ex.length):day.ex.length;
 const unit=e=>/s$/.test(e.r)?"s":"Wdh";
 const topReps=e=>{const m=e.r.match(/\d+/g);return m?+m[m.length-1]:null};
-function hist(name){return store.get("gym.log",[]).filter(l=>l.ex&&l.ex[name]&&l.ex[name].length).map(l=>({date:l.date,sets:l.ex[name]}))}
+const logAll=()=>store.get("gym.log",[]);
+function hist(name){return logAll().filter(l=>l.ex&&l.ex[name]&&l.ex[name].length).map(l=>({date:l.date,sets:l.ex[name]}))}
 function getState(d){return store.get("gym.cur."+d.id,{})}
 function cell(st,i,s){st[i]=st[i]||[];st[i][s]=st[i][s]||{kg:"",reps:"",done:false};return st[i][s]}
+/* Übung an Position i, mit Tausch */
+function exAt(day,i){const slotEx=day.ex[i];const sw=store.get("gym.swap",{})[day.id+"-"+i];const n=sw&&LIB[sw]?sw:slotEx.n;return{...LIB[n],...slotEx,n,orig:slotEx.n,swapped:n!==slotEx.n}}
 
 /* ---------- Steigerungs-Logik ---------- */
 function suggest(e,last){
  if(!last)return null;
+ if(deloadOn()){const kgs=last.sets.map(x=>num(x.kg)).filter(isFinite);if(e.bw||!kgs.length)return{up:false,text:"Erholungswoche: locker, 2 Sätze"};const k=Math.round(Math.max(...kgs)*0.7/2.5)*2.5;return{up:false,kg:k,text:`Erholungswoche: ca. ${fmt(k)} kg, locker`}}
  const sets=last.sets,top=topReps(e),u=unit(e);
  const allTop=top!=null&&sets.length>0&&sets.every(x=>num(x.reps)>=top);
  if(e.bw){
@@ -571,17 +890,17 @@ function chart(e,h){
  if(pts.length<2)return `<div class="chart"><span class="ttl">${ttl}</span><p>Ab dem 2. abgeschlossenen Training siehst du hier deinen Verlauf.</p></div>`;
  const W=300,H=110,L=10,R=44,T=14,B=22;
  let lo=Math.min(...pts.map(p=>p.v)),hi=Math.max(...pts.map(p=>p.v));if(lo===hi){lo-=1;hi+=1}
- const X=i=>L+(W-L-R)*i/(pts.length-1),Y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
- const line=pts.map((p,i)=>`${i?'L':'M'}${X(i).toFixed(1)} ${Y(p.v).toFixed(1)}`).join(' ');
- const area=`${line} L${X(pts.length-1).toFixed(1)} ${H-B} L${L} ${H-B} Z`;
+ const Xp=i=>L+(W-L-R)*i/(pts.length-1),Y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
+ const line=pts.map((p,i)=>`${i?'L':'M'}${Xp(i).toFixed(1)} ${Y(p.v).toFixed(1)}`).join(' ');
+ const area=`${line} L${Xp(pts.length-1).toFixed(1)} ${H-B} L${L} ${H-B} Z`;
  const lp=pts[pts.length-1],fp=pts[0];
  return `<div class="chart"><span class="ttl">${ttl}</span><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${ttl}: von ${fmt(fp.v)} auf ${fmt(lp.v)}">
   <line x1="${L}" x2="${W-R}" y1="${Y(hi)}" y2="${Y(hi)}" stroke="var(--line)" stroke-width="1"/>
   <line x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}" stroke="var(--line)" stroke-width="1"/>
   <path d="${area}" fill="var(--hit)" opacity=".12"/>
   <path d="${line}" fill="none" stroke="var(--hit)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  ${pts.map((p,i)=>`<circle cx="${X(i).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${i===pts.length-1?5:3}" fill="${i===pts.length-1?'var(--hit)':'var(--surface)'}" stroke="var(--hit)" stroke-width="2"/>`).join('')}
-  <text x="${X(pts.length-1)+9}" y="${Y(lp.v)+5}" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600" fill="var(--fg)">${fmt(lp.v)}</text>
+  ${pts.map((p,i)=>`<circle cx="${Xp(i).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${i===pts.length-1?5:3}" fill="${i===pts.length-1?'var(--hit)':'var(--surface)'}" stroke="var(--hit)" stroke-width="2"/>`).join('')}
+  <text x="${Xp(pts.length-1)+9}" y="${Y(lp.v)+5}" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600" fill="var(--fg)">${fmt(lp.v)}</text>
   <text x="${L}" y="${H-5}" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)">${shortDate(fp.d)}</text>
   <text x="${W-R}" y="${H-5}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)">${shortDate(lp.d)}</text>
  </svg></div>`;
@@ -589,11 +908,13 @@ function chart(e,h){
 
 /* ---------- Übungs-Darstellung ---------- */
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function photoHTML(e){return `<div class="media ph"><img src="img/${e.ph}_0.jpg" alt="${esc(e.n)}: Startposition" loading="lazy"><img src="img/${e.ph}_1.jpg" alt="${esc(e.n)}: Endposition" loading="lazy">${e.phNote?`<span class="tag">${e.phNote}</span>`:''}</div>`}
 function mediaHTML(e){
  if(media==="off")return "";
- if(media==="photo"&&e.ph)return `<div class="media ph"><img src="img/${e.ph}_0.jpg" alt="${e.n}: Startposition" loading="lazy"><img src="img/${e.ph}_1.jpg" alt="${e.n}: Endposition" loading="lazy">${e.phNote?`<span class="tag">${e.phNote}</span>`:''}</div>`;
- const k=AN.key(e.n);if(!k)return "";
- return `<div class="media anim" data-anim="${k}" role="img" aria-label="Animation: ${e.n}"><svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet">${staticFrame(k)}</svg><span class="pause" hidden>Pausiert</span></div>`;
+ const k=AN.key(e.n);
+ if(media==="photo"&&e.ph||!k&&e.ph)return photoHTML(e);
+ if(!k)return "";
+ return `<div class="media anim" data-anim="${k}" role="img" aria-label="Animation: ${esc(e.n)}"><svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet">${staticFrame(k)}</svg><span class="pause" hidden>Pausiert</span></div>`;
 }
 function staticFrame(k){return reduceMotion?`<g opacity=".28">${AN.frame(k,0)}</g>${AN.frame(k,1)}`:AN.frame(k,0)}
 const visible=new Set();const paused=new WeakSet();
@@ -605,104 +926,452 @@ function loop(t){requestAnimationFrame(loop);if(t-lastT<33||document.hidden)retu
 if(!reduceMotion)requestAnimationFrame(loop);
 
 /* ---------- Statistik / Fortschritt ---------- */
-function weekStats(){const log=store.get("gym.log",[]);const wk=iso(monday(new Date()));
- const thisWeek=new Set(log.filter(l=>iso(monday(new Date(l.date)))===wk).map(l=>l.day)).size;
- const byWeek={};log.forEach(l=>{const k=iso(monday(new Date(l.date)));(byWeek[k]=byWeek[k]||new Set()).add(l.day)});
- return{log,thisWeek,full:Object.values(byWeek).filter(s=>s.size>=6).length}}
+function weekStats(){const log=logAll();const wk=iso(monday(new Date()));
+ const inWeek=log.filter(l=>iso(monday(new Date(l.date)))===wk);
+ return{log,inWeek,thisWeek:new Set(inWeek.filter(l=>!l.am).map(l=>l.day)).size,amWeek:inWeek.filter(l=>l.am).length}}
+function muscleSets(entries){const out={};Object.keys(LBL).forEach(k=>out[k]=0);
+ entries.forEach(l=>{if(!l.ex)return;Object.entries(l.ex).forEach(([n,sets])=>{const e=LIB[n];if(!e)return;e.m.forEach((m,j)=>out[m]+=sets.length*(j===0?1:.5))})});return out}
+function plannedSets(){const out={};Object.keys(LBL).forEach(k=>out[k]=0);P.forEach(d=>d.ex.forEach((_,i)=>{const e=exAt(d,i);e.m.forEach((m,j)=>out[m]+=nSets(e)*(j===0?1:.5))}));return out}
 function renderProgress(){
- const{log,thisWeek,full}=weekStats();
- $("s-week").textContent=thisWeek+"/6";$("s-total").textContent=log.length;$("s-weeks").textContent=full;
- const withH=ALL.filter(e=>hist(e.n).length);
- if(!withH.length){$("prog-chart").innerHTML='<p class="lead">Sobald du ein Training abgeschlossen hast, wählst du hier eine Übung und siehst ihren Verlauf.</p>'}
- else{if(!progEx||!withH.find(e=>e.n===progEx))progEx=withH[0].n;const e=withH.find(x=>x.n===progEx);
-  $("prog-chart").innerHTML=`<label class="status" for="prog-pick">Übung</label><select class="pick" id="prog-pick">${withH.map(x=>`<option${x.n===progEx?' selected':''}>${x.n}</option>`).join('')}</select>${chart(e,hist(e.n))}`;
+ const{log,inWeek,thisWeek,amWeek}=weekStats();
+ $("s-week").textContent=thisWeek+"/6";$("s-am").textContent=amWeek;$("s-total").textContent=log.length;
+ renderCal();renderReview();
+ const done=muscleSets(inWeek),plan=plannedSets(),MAX=26;
+ $("balance").innerHTML=`<p class="status">Harte Sätze pro Muskel diese Woche. Hauptmuskel zählt voll, Hilfsmuskel halb. Der graue Bereich ist ein guter Zielbereich.</p>`+
+  Object.keys(LBL).map(k=>{const v=done[k],z=ZONE[k],pl=plan[k];const pc=x=>Math.min(100,x/MAX*100);
+   return `<div class="balrow"><span>${LBL[k]}</span><div class="bar" role="img" aria-label="${LBL[k]}: ${fmt(v)} von geplant ${fmt(pl)} Sätzen"><div class="zone" style="left:${pc(z[0])}%;width:${pc(z[1])-pc(z[0])}%"></div><div class="fill${v>=z[0]?' ok':''}" style="width:${pc(v)}%"></div><div class="plan" style="left:${pc(pl)}%"></div></div><span class="v">${fmt(v)}/${fmt(pl)}</span></div>`}).join('')+
+  `<div class="legend"><span><i style="background:var(--line)"></i>Zielbereich</span><span><i style="background:var(--ok)"></i>erreicht</span><span><i style="background:var(--muted);width:3px"></i>geplant</span></div>`;
+ const names=[...new Set(Object.keys(LIB))].filter(n=>hist(n).length);
+ if(!names.length){$("prog-chart").innerHTML='<p class="lead">Sobald du ein Training abgeschlossen hast, wählst du hier eine Übung und siehst ihren Verlauf.</p>'}
+ else{if(!progEx||!names.includes(progEx))progEx=names[0];const e={...LIB[progEx],n:progEx,r:(P.flatMap(d=>d.ex).find(x=>x.n===progEx)||{r:"10"}).r};
+  $("prog-chart").innerHTML=`<label class="status" for="prog-pick">Übung</label><select class="pick" id="prog-pick">${names.map(x=>`<option${x===progEx?' selected':''}>${esc(x)}</option>`).join('')}</select>${chart(e,hist(progEx))}`;
   $("prog-pick").onchange=ev=>{progEx=ev.target.value;store.set("gym.progEx",progEx);renderProgress()}}
- const recs=ALL.filter(e=>!e.assist).map(e=>{const h=hist(e.n);if(!h.length)return null;let best=null;
-  h.forEach(x=>x.sets.forEach(s=>{const v=e.bw?num(s.reps):num(s.kg);if(isFinite(v)&&(!best||v>best.v||(v===best.v&&!e.bw&&num(s.reps)>best.r)))best={v,r:num(s.reps),d:x.date}}));
-  return best?{e,best}:null}).filter(Boolean);
- $("records").innerHTML=recs.length?recs.map(({e,best})=>`<div><span>${e.n}</span><span>${e.bw?`${fmt(best.v)} ${unit(e)==="s"?"s":"Wdh."}`:`${fmt(best.v)} kg × ${best.r}`}</span></div>`).join(''):'<p class="lead">Hier erscheinen deine Bestwerte pro Übung.</p>';
- const last=log.slice(-8).reverse();
- $("log").innerHTML=last.length?last.map(l=>{const d=P.find(p=>p.id===l.day);
-  return `<div><span>${d?d.name:l.day}</span><span>${new Date(l.date).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'})}</span></div>`}).join('')
+ const recs=Object.keys(LIB).filter(n=>!LIB[n].assist).map(n=>{const e=LIB[n];const h=hist(n);if(!h.length)return null;let best=null;
+  h.forEach(x=>x.sets.forEach(s=>{const v=e.bw?num(s.reps):num(s.kg);if(isFinite(v)&&(!best||v>best.v||(v===best.v&&!e.bw&&num(s.reps)>best.r)))best={v,r:num(s.reps)}}));
+  return best?{n,e,best}:null}).filter(Boolean);
+ $("records").innerHTML=recs.length?recs.map(({n,e,best})=>`<div><span>${esc(n)}</span><span>${e.bw?`${fmt(best.v)}`:`${fmt(best.v)} kg × ${best.r}<br>≈ 1RM ${fmt(e1rm(n))} kg`}</span></div>`).join(''):'<p class="lead">Hier erscheinen deine Bestwerte pro Übung.</p>';
+ const last=log.slice(-10).reverse();
+ $("log").innerHTML=last.length?last.map(l=>{const nm=l.am?`Früh: ${(AM[l.day]||{}).name||"locker"}`:((P.find(p=>p.id===l.day)||{}).name||l.day);
+  const extra=[l.dur?`${l.dur} Min`:"",l.vol?`${fmtK(l.vol)} kg`:""].filter(Boolean).join(" · ");
+  return `<div><span>${esc(nm)}</span><span>${new Date(l.date).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'})}${extra?" · "+extra:""}</span></div>`}).join('')
   :'<p class="lead">Noch nichts eingetragen. Nach dem ersten Training tippst du auf „Training abschließen".</p>';
 }
 
-/* ---------- Plan ---------- */
-function renderPlan(){
- $("plan").innerHTML=P.map((d,i)=>{const t=TYPES[d.type];
-  return `<article class="card plan-day" style="--c:${t.c}"><header><h3>${d.wd}: ${d.name}</h3><span class="num">${d.time}</span></header>
-  <ol>${d.ex.map(e=>`<li>${e.n} <span>${nSets(e)} × ${e.r}</span></li>`).join('')}</ol>
-  <button class="btn${i===todayIdx?' primary':''}" data-start="${i}">${i===todayIdx?'Heute starten':'Starten'}</button></article>`}).join('')
-  +`<article class="card plan-day" style="--c:var(--line)"><header><h3>So: Ruhetag</h3></header><p class="lead">Muskeln wachsen in der Pause. Gut für Spazieren, Dehnen und das wöchentliche Backup.</p></article>`;
+/* ---------- Plan + Editor ---------- */
+let editDay=null,resetAsk=null;
+const PAUSES=[10,30,45,60,75,90,120,150,180];
+function libOptions(){
+ const groups={};Object.keys(LIB).forEach(n=>{const g=LIB[n].m[0];(groups[g]=groups[g]||[]).push(n)});
+ return Object.keys(LBL).filter(g=>groups[g]).map(g=>`<optgroup label="${LBL[g]}">${groups[g].sort().map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
 }
-$("plan").addEventListener('click',e=>{const b=e.target.closest('[data-start]');if(!b)return;cur=+b.dataset.start;location.hash="training";});
+function editorHTML(d,i){
+ const t=TYPES[d.type];
+ const rows=d.ex.map((x,j)=>`<div class="ed-row"><div class="ed-top"><b>${j+1}. ${esc(x.n)}</b><div class="ed-btns"><button data-ed="up" data-j="${j}" aria-label="Nach oben"${j===0?' disabled':''}>↑</button><button data-ed="down" data-j="${j}" aria-label="Nach unten"${j===d.ex.length-1?' disabled':''}>↓</button><button data-ed="del" data-j="${j}" aria-label="Löschen">✕</button></div></div>
+  <div class="ed-fields"><span>Sätze</span><span class="step"><button data-ed="sminus" data-j="${j}" aria-label="Weniger Sätze">−</button><span>${x.s}</span><button data-ed="splus" data-j="${j}" aria-label="Mehr Sätze">+</button></span>
+  <label>Wdh <input data-edf="r" data-j="${j}" value="${esc(x.r)}" aria-label="Wiederholungen"></label>
+  <label>Pause <select data-edf="p" data-j="${j}">${PAUSES.map(p=>`<option value="${p}"${p===x.p?' selected':''}>${p} s</option>`).join('')}</select></label>
+  <label>Supersatz <select data-edf="ss" data-j="${j}"><option value="">–</option>${["A","B","C"].map(v=>`<option${x.ss===v?' selected':''}>${v}</option>`).join('')}</select></label></div></div>`).join('');
+ return `<article class="card plan-day ed" style="--c:${t.c}"><header><h3>${d.wd}: ${esc(d.name)}</h3><span class="num">bearbeiten</span></header>
+ ${rows||'<p class="lead">Noch keine Übungen.</p>'}
+ <div class="ed-add"><label class="sub" for="ed-add-sel">Übung hinzufügen</label><select id="ed-add-sel">${libOptions()}</select><button class="btn" data-ed="add">Hinzufügen</button></div>
+ <details class="ed-custom"><summary>Eigene Übung anlegen</summary><div class="ed-add" style="margin-top:8px">
+  <input id="ec-name" placeholder="Name, z. B. Butterfly einarmig" aria-label="Name der Übung">
+  <select id="ec-m" aria-label="Hauptmuskel">${Object.keys(LBL).map(k=>`<option value="${k}">${LBL[k]}</option>`).join('')}</select>
+  <label class="mode" for="ec-bw"><input type="checkbox" id="ec-bw"><span>Ohne Gewicht (nur Wiederholungen oder Sekunden)</span></label>
+  <button class="btn" data-ed="custom">Anlegen und hinzufügen</button><p class="status" id="ec-status"></p></div></details>
+ <div class="btns2"><button class="btn primary" data-ed="done">Fertig</button>${resetAsk===i?`<button class="btn danger" data-ed="reset-yes">Wirklich zurücksetzen</button>`:`<button class="btn" data-ed="reset">Tag zurücksetzen</button>`}</div>
+ <p class="status">Änderungen werden sofort gespeichert. Deine Trainingsgeschichte bleibt dabei erhalten.</p></article>`;
+}
+function renderPlan(){
+ $("plan").innerHTML=P.map((d,i)=>{if(editDay===i)return editorHTML(d,i);const t=TYPES[d.type];const a=AM[d.id];
+  return `<article class="card plan-day" style="--c:${t.c}"><header><h3>${d.wd}: ${esc(d.name)}</h3><span class="num">${d.time}</span></header>
+  <ol>${d.ex.map((_,j)=>{const e=exAt(d,j);return `<li>${esc(e.n)} <span>${nSets(e)} × ${e.r}${e.ss?` · Supersatz ${e.ss}`:''}</span></li>`}).join('')}</ol>
+  <p class="status">Früh (optional): ${a.name}, ${a.time}</p>
+  <div class="btns2"><button class="btn${i===todayIdx?' primary':''}" data-start="${i}">${i===todayIdx?'Heute starten':'Starten'}</button><button class="btn" data-edit="${i}">Bearbeiten</button></div></article>`}).join('')
+  +`<article class="card plan-day" style="--c:var(--line)"><header><h3>So: Ruhetag</h3></header><p class="lead">Muskeln wachsen in der Pause. Höchstens ein Spaziergang. Guter Tag fürs wöchentliche Backup und den Wochenrückblick.</p></article>`;
+ $("road").innerHTML=ROAD.map(r=>`<div><em>${r.s}</em><b>${r.t}</b><span>${r.d}</span></div>`).join('');
+ renderBag();
+}
+const ROAD=[
+ {s:"Fertig · V7",t:"Erholung: Eiweiß und Schlaf",d:"Eiweiß-Zähler mit Schnellbuttons, Schlaf pro Nacht, Warnung bei zu wenig Schlaf. Im Tab Ich."},
+ {s:"Fertig · V7",t:"Körper-Tracking",d:"Gewicht, Brust, Oberarm und Taille mit Verlauf. Im Tab Ich."},
+ {s:"Fertig · V7",t:"Wochenrückblick für Obsidian",d:"Zusammenfassung jeder Woche als fertige Markdown-Notiz zum Kopieren oder Teilen. Im Tab Fortschritt."},
+ {s:"Fertig · V7",t:"Aufwärmsätze, Scheibenrechner, 1RM",d:"Aufwärmsätze werden automatisch berechnet, Scheiben pro Seite angezeigt, Maximalgewicht geschätzt."},
+ {s:"Fertig · V7",t:"Plan-Editor",d:"Übungen hinzufügen, löschen, verschieben, Sätze, Wiederholungen, Pausen und Supersätze ändern, eigene Übungen anlegen."},
+ {s:"Fertig · V7",t:"Kalender und Serie",d:"Monatsansicht aller Trainings und deine Serie aktiver Wochen. Im Tab Fortschritt."},
+ {s:"Fertig · V7",t:"Gym-Tasche",d:"Checkliste zum Abhaken, setzt sich jeden Tag zurück."},
+ {s:"Als Nächstes",t:"Erfolge und Meilensteine",d:"10, 25, 50 und 100 Trainings, erste volle Woche, neue Rekorde."},
+ {s:"Als Nächstes",t:"Übungs-Bibliothek",d:"Alle Übungen nach Muskelgruppe zum Stöbern, mit Animation, Fotos und Technik-Tipps."},
+ {s:"Monat 3",t:"Plan für Fortgeschrittene",d:"Mehr Abwechslung, schwerere Grundübungen und gezielte Schwachstellen."},
+ {s:"Bewusst nicht",t:"Fortschrittsfotos",d:"Würden den Speicher der App sprengen. Dafür ist deine Foto-App besser, z. B. ein eigenes Album."},
+ {s:"Geht nicht",t:"Apple Health und Watch",d:"Eine Web-App kann darauf leider nicht zugreifen."}
+];
+function savePlan(i){store.set("gym.plan",P);const d=P[i];const sw=store.get("gym.swap",{});Object.keys(sw).filter(k=>k.startsWith(d.id+"-")).forEach(k=>delete sw[k]);store.set("gym.swap",sw);store.set("gym.cur."+d.id,{})}
+$("plan").addEventListener('click',e=>{
+ const st=e.target.closest('[data-start]');if(st){cur=+st.dataset.start;slot="pm";editDay=null;location.hash="training";return}
+ const ed=e.target.closest('[data-edit]');if(ed){editDay=+ed.dataset.edit;resetAsk=null;renderPlan();document.querySelector('.plan-day.ed').scrollIntoView({block:"start"});return}
+ const b=e.target.closest('[data-ed]');if(!b||editDay==null)return;
+ const i=editDay,d=P[i],j=+b.dataset.j,act=b.dataset.ed;const y=window.scrollY;
+ if(act==="up"&&j>0){[d.ex[j-1],d.ex[j]]=[d.ex[j],d.ex[j-1]]}
+ else if(act==="down"&&j<d.ex.length-1){[d.ex[j+1],d.ex[j]]=[d.ex[j],d.ex[j+1]]}
+ else if(act==="del"){d.ex.splice(j,1)}
+ else if(act==="sminus"){d.ex[j].s=Math.max(1,d.ex[j].s-1)}
+ else if(act==="splus"){d.ex[j].s=Math.min(8,d.ex[j].s+1)}
+ else if(act==="add"){const n=$("ed-add-sel").value;if(LIB[n])d.ex.push({n,s:3,r:LIB[n].bw?"10–15":"10–12",p:75})}
+ else if(act==="custom"){const n=$("ec-name").value.trim();if(!n){$("ec-status").textContent="Bitte einen Namen eingeben.";return}
+  if(LIB[n]&&!LIB[n].custom){$("ec-status").textContent="Diese Übung gibt es schon. Wähle sie oben bei „Übung hinzufügen“.";return}
+  const cl=store.get("gym.customLib",{});cl[n]={m:[$("ec-m").value],c:"Eigene Übung.",q:n+" Übung Technik",bw:$("ec-bw").checked?1:0,alt:[],custom:1};store.set("gym.customLib",cl);LIB[n]=cl[n];d.ex.push({n,s:3,r:"10–12",p:75})}
+ else if(act==="reset"){resetAsk=i;renderPlan();window.scrollTo({top:y});return}
+ else if(act==="reset-yes"){P[i]=JSON.parse(JSON.stringify(P_DEFAULT[i]));resetAsk=null}
+ else if(act==="done"){editDay=null;resetAsk=null;renderPlan();return}
+ savePlan(i);renderPlan();window.scrollTo({top:y});
+});
+$("plan").addEventListener('change',e=>{
+ const f=e.target.dataset.edf;if(!f||editDay==null)return;const x=P[editDay].ex[+e.target.dataset.j];
+ if(f==="r"){const v=e.target.value.trim().replace(/-/g,"–");if(/\d/.test(v))x.r=v}
+ if(f==="p")x.p=+e.target.value;
+ if(f==="ss")x.ss=e.target.value||undefined;
+ savePlan(editDay);
+});
+/* Gym-Tasche */
+const BAG=["Handtuch","Trinkflasche","Kopfhörer","Schloss für den Spind","Wechselshirt","Eiweiß-Snack oder Shake","Mitgliedskarte oder App"];
+function renderBag(){const st=store.get("gym.bag",{});const done=st.date===iso(new Date())?st.items||[]:[];
+ $("bag").innerHTML=BAG.map((x,k)=>`<label class="bagitem" for="bag-${k}"><input type="checkbox" id="bag-${k}" data-bag="${k}"${done.includes(k)?' checked':''}><span>${x}</span></label>`).join('')+(done.length===BAG.length?'<p class="toast">Alles dabei. Los geht\'s!</p>':'<p class="status">Setzt sich jeden Tag von selbst zurück.</p>')}
+$("bag").addEventListener('change',e=>{const k=e.target.dataset.bag;if(k==null)return;const st=store.get("gym.bag",{});const items=st.date===iso(new Date())?st.items||[]:[];const n=+k;const i=items.indexOf(n);if(i>=0)items.splice(i,1);else items.push(n);store.set("gym.bag",{date:iso(new Date()),items});renderBag()});
+
+/* ---------- Aufwärmen, Scheiben, 1RM ---------- */
+function warmupHTML(e,i,sg,last){
+ if(e.bw||e.assist||!(i===0||e.p>=120))return "";
+ let w=sg&&sg.kg!=null?sg.kg:(last?Math.max(...last.sets.map(s=>num(s.kg)).filter(isFinite)):NaN);
+ if(!isFinite(w)||w<=0)return `<p class="warm"><b>Aufwärmen:</b> 2 leichte Sätze mit ca. 50 % und 70 % deines Arbeitsgewichts</p>`;
+ const step=e.db?2:2.5;const r=x=>Math.max(step,Math.round(x/step)*step);
+ const sets=(w<20?[[.5,10],[.75,5]]:[[.5,10],[.7,5],[.85,2]]).map(([f,rp])=>[r(w*f),rp]).filter((x,k,a)=>k===0||x[0]!==a[k-1][0]);
+ return `<p class="warm"><b>Aufwärmen:</b> ${sets.map(([k,rp])=>`${fmt(k)} kg × ${rp}`).join(' · ')}</p>`;
+}
+function platesHTML(e,sg){
+ if(!e.bar||!sg||sg.kg==null)return "";let side=(sg.kg-e.bar)/2;if(side<0)return "";
+ const out=[];for(const p of [25,20,15,10,5,2.5,1.25]){while(side>=p-1e-9){out.push(p);side-=p}}
+ return `<p class="plates">Scheiben pro Seite für ${fmt(sg.kg)} kg: ${out.length?out.map(fmt).join(' + '):'keine, nur die Stange'} (bei ${e.bar}-kg-Stange${e.n.includes('Multipresse')?'; Multipresse-Stangen sind oft leichter':''})</p>`;
+}
+function e1rm(n){let b=0;hist(n).forEach(h=>h.sets.forEach(s=>{const k=num(s.kg),r=num(s.reps);if(isFinite(k)&&isFinite(r)&&r>0&&r<=15)b=Math.max(b,k*(1+r/30))}));return Math.round(b*2)/2}
 
 /* ---------- Training ---------- */
+function setAccent(){const t=slot==="am"&&location.hash.slice(1)!=="plan"?TYPES.am:TYPES[P[cur].type];document.documentElement.style.setProperty('--hit',t.c);document.documentElement.style.setProperty('--on-hit',t.on)}
 function renderTabs(){
- $("tabs").innerHTML=P.map((d,i)=>{const t=TYPES[d.type];
+ const tabs=$("tabs");
+ if(slot==="am"){tabs.classList.add("seven");
+  tabs.innerHTML=AMDAYS.map(([id,wd],i)=>`<button class="tab${i===todayIdx?' today':''}" role="tab" aria-selected="${i===amCur}" data-i="${i}" style="--c:var(--fg);--on-c:var(--bg)" aria-label="${wd}: ${AM[id].name}"><b>${wd}</b><small>${AM[id].time.split(" ")[0]}</small></button>`).join('');return}
+ tabs.classList.remove("seven");
+ tabs.innerHTML=P.map((d,i)=>{const t=TYPES[d.type];
   return `<button class="tab${i===todayIdx?' today':''}" role="tab" aria-selected="${i===cur}" data-i="${i}" style="--c:${t.c};--on-c:${t.on}" aria-label="${d.wd}: ${d.name}"><b>${d.wd}</b><i></i><small>${d.short}</small></button>`}).join('');
 }
-function setAccent(){const t=TYPES[P[cur].type];document.documentElement.style.setProperty('--hit',t.c);document.documentElement.style.setProperty('--on-hit',t.on)}
 function renderTraining(){
- const day=P[cur];setAccent();renderTabs();
- const st=getState(day);const oldKg=store.get("gym.kg",{});const{thisWeek}=weekStats();
- $("t-sub").textContent=`Diese Woche: ${thisWeek} von 6 Trainings`;
+ document.querySelectorAll('#slot button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===slot));
+ setAccent();renderTabs();
+ const{thisWeek,amWeek}=weekStats();
+ $("t-sub").textContent=`Diese Woche: ${thisWeek} von 6 Krafteinheiten · ${amWeek}× früh`;
+ if(slot==="am"){renderAM();return}
+ const day=P[cur];const st=getState(day);
  let total=0,got=0;
- const items=day.ex.map((e,i)=>{
+ const items=day.ex.slice(0,exCount(day)).map((_,i)=>{
+  const e=exAt(day,i);
   const n=nSets(e);total+=n;const h=hist(e.n);const last=h[h.length-1];const sg=suggest(e,last);
-  const old=num(oldKg[day.id+"-"+i]);
-  const preKg=sg&&sg.kg!=null?fmt(sg.kg):(isFinite(old)?fmt(old):"");
+  const preKg=sg&&sg.kg!=null?fmt(sg.kg):"";
   const u=unit(e);const top=topReps(e);let g=0;
   const rows=Array.from({length:n},(_,s)=>{
    const c=(st[i]||[])[s]||{};if(c.done)g++;
    const preR=last&&last.sets[s]?last.sets[s].reps:(top??"");
    const id=`${day.id}-${i}-${s}`;
-   return `<div class="setrow${e.bw?' bw':''}"><button class="set${c.done?' on':''}" data-i="${i}" data-s="${s}" aria-pressed="${!!c.done}" aria-label="Satz ${s+1} erledigt">${s+1}</button>${e.bw?'':`<label class="fld" for="kg-${id}"><input id="kg-${id}" inputmode="decimal" data-f="kg" data-i="${i}" data-s="${s}" value="${c.kg??''}" placeholder="${preKg}"><span>${e.assist?'kg Hilfe':'kg'}</span></label>`}<label class="fld" for="rp-${id}"><input id="rp-${id}" inputmode="numeric" data-f="reps" data-i="${i}" data-s="${s}" value="${c.reps??''}" placeholder="${preR}"><span>${u}</span></label></div>`}).join('');
-  got+=g;const ck=day.id+i;const open=openCharts.has(ck);
+   return `<div class="setrow${e.bw?' bw':''}"><button class="set${c.done?' on':''}" data-i="${i}" data-s="${s}" aria-pressed="${!!c.done}" aria-label="Satz ${s+1} erledigt">${s+1}</button>${e.bw?'':`<label class="fld" for="kg-${id}"><input id="kg-${id}" inputmode="decimal" data-f="kg" data-i="${i}" data-s="${s}" value="${esc(c.kg??'')}" placeholder="${preKg}"><span>${e.assist?'kg Hilfe':'kg'}</span></label>`}<label class="fld" for="rp-${id}"><input id="rp-${id}" inputmode="numeric" data-f="reps" data-i="${i}" data-s="${s}" value="${esc(c.reps??'')}" placeholder="${preR}"><span>${u}</span></label></div>`}).join('');
+  got+=g;const ck=day.id+"-"+i;
+  const note=store.get("gym.note",{})[e.n]||"";
+  const swapUI=openSwap.has(ck)?`<div class="swaps">${[e.orig,...(LIB[e.orig].alt||[])].filter((x,k,a)=>a.indexOf(x)===k).map(a=>`<button data-swapto="${esc(a)}" data-i="${i}" aria-current="${a===e.n}">${esc(a)}<span>${a===e.orig?'Original':(LIB[a].m.map(m=>LBL[m]).slice(0,2).join(', '))}</span></button>`).join('')}</div>`:'';
+  const noteUI=openNote.has(ck)?`<div class="noteedit"><label class="status" for="note-${ck}">Notiz, z. B. Sitzhöhe oder Griff</label><input id="note-${ck}" data-note="${esc(e.n)}" value="${esc(note)}" placeholder="Sitz Stufe 4, Polster Loch 3"></div>`:(note?`<p class="note"><b>Notiz:</b> ${esc(note)}</p>`:'');
   return `<article class="ex${g===n?' done':''}">${mediaHTML(e)}<div class="fig">${fig(e.m)}</div><div class="exbody">
-   <div class="extop"><h3>${e.n}</h3><span class="num">${String(i+1).padStart(2,'0')}</span></div>
+   <div class="extop"><h3>${esc(e.n)}</h3><span class="num">${String(i+1).padStart(2,'0')}</span></div>
+   ${e.ss?`<span class="ss">Supersatz ${e.ss}${day.ex[i+1]&&day.ex[i+1].ss===e.ss?': direkt weiter zur nächsten Übung':': danach Pause'}</span>`:''}
+   ${e.swapped?`<span class="swapped">Getauscht statt: ${esc(e.orig)}</span>`:''}
    <div class="row"><span class="dose">${n} × ${e.r}</span><span class="muscles">${e.m.map(k=>LBL[k]).join(' · ')}</span></div>
    <p class="cue">${e.c}</p>
+   ${noteUI}
    ${last?`<p class="last">Letztes Mal (${shortDate(last.date)}): ${lastText(e,last)}</p>`:''}
    ${sg?`<span class="hint${sg.up?' up':''}">${sg.up?'↑ ':''}${sg.text}</span>`:''}
+   ${platesHTML(e,sg)}${warmupHTML(e,i,sg,last)}
    <div class="setrows">${rows}</div>
-   <div class="links"><button class="hbtn" data-chart="${ck}" aria-expanded="${open}">${ICON_CHART}Verlauf</button><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a><a href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(e.n+' Übung Ausführung')}" target="_blank" rel="noopener">${ICON_IMG}Bilder</a></div>
-   ${open?chart(e,h):''}
+   <div class="links">${(LIB[e.orig].alt||[]).length?`<button class="hbtn" data-swap="${ck}" aria-expanded="${openSwap.has(ck)}">${ICON_SWAP}Tauschen</button>`:''}<button class="hbtn" data-note-toggle="${ck}" aria-expanded="${openNote.has(ck)}">${ICON_NOTE}Notiz</button><button class="hbtn" data-chart="${ck}" aria-expanded="${openCharts.has(ck)}">${ICON_CHART}Verlauf</button><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a></div>
+   ${swapUI}
+   ${openCharts.has(ck)?chart(e,h):''}
   </div></article>`}).join('');
- const restNote=todayIdx===6?`<div class="rest"><b>Heute ist Sonntag, dein Ruhetag.</b> Muskeln wachsen in der Pause. Morgen geht es mit Push A weiter.</div>`:'';
- $("day").innerHTML=`${restNote}<div class="dayhead"><h2>${day.wd}: ${day.name}</h2><span class="meta">${day.ex.length} Übungen · ${total} Sätze · ${day.time} · ${got}/${total} erledigt</span><div class="progress"><div style="width:${total?got/total*100:0}%"></div></div></div><div class="list">${items}</div>
+ const banners=[];
+ if(todayIdx===6)banners.push(`<div class="banner"><b>Heute ist Sonntag, dein Ruhetag.</b><span>Muskeln wachsen in der Pause. Morgen geht es mit Push A weiter.</span></div>`);
+ const rb=recBanner(false);if(rb)banners.push(rb);
+ if(lowDay()){const why=store.get("gym.why","");banners.push(`<div class="banner"><b>Schlechter-Tag-Modus: 4 Übungen, je 2 Sätze.</b><span>Hingehen ist heute der Sieg. Alles darüber ist Bonus.</span>${why?`<span><b>Dein Warum:</b> ${esc(why)}</span>`:''}<button class="reset" id="lowday-off" style="justify-self:start">Doch normal trainieren</button></div>`)}
+ if(deloadOn())banners.push(`<div class="banner"><b>Erholungswoche aktiv.</b><span>2 Sätze pro Übung, ca. 30 % weniger Gewicht. Endet am ${new Date(store.get("gym.deloadUntil",0)).toLocaleDateString('de-DE')}.</span></div>`);
+ else if(deloadDue())banners.push(`<div class="banner"><b>Zeit für eine Erholungswoche?</b><span>Du trainierst seit über 6 Wochen ohne Pause. Eine lockere Woche schützt Gelenke, danach bist du stärker. Einschalten unter Einstellungen.</span></div>`);
+ const start=st._start;
+ $("day").innerHTML=`${banners.join('')}<div class="dayhead"><h2>${day.wd}: ${day.name}</h2><span class="meta">${exCount(day)} Übungen · ${total} Sätze · ${day.time} · ${got}/${total} erledigt<span id="elapsed">${start?` · läuft seit ${Math.max(1,Math.round((Date.now()-start)/60000))} Min`:''}</span></span><div class="progress"><div style="width:${total?got/total*100:0}%"></div></div></div><div class="list">${items}</div>
  <button class="finish" id="finish"${got===0?' disabled':''}>Training abschließen</button>${toast?`<p class="toast" role="status">${toast}</p>`:''}<button class="reset" id="reset">Eingaben für ${day.wd} zurücksetzen</button>`;
  toast="";hookAnims();
 }
-$("tabs").addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;unlockAudio();cur=+b.dataset.i;renderTraining();window.scrollTo({top:0})});
+function deloadDue(){const log=logAll().filter(l=>!l.am);if(log.length<20)return false;const first=new Date(log[0].date).getTime();const lastDl=store.get("gym.deloadUntil",0);const since=Math.max(first,lastDl);return Date.now()-since>42*864e5}
+function renderAM(){
+ const[id,wd]=AMDAYS[amCur];const a=AM[id];const st=store.get("gym.amcur."+id,{});
+ const got=a.items.filter((_,i)=>st[i]).length;
+ $("day").innerHTML=`${recBanner(true)}<div class="banner"><b>Früh ist immer locker.</b><span>Du solltest dabei noch reden können. Bist du müde oder tun Gelenke weh, lass die Früheinheit weg. Das Krafttraining am Abend ist wichtiger.</span></div>
+ <div class="dayhead"><h2>${wd}: ${a.name}</h2><span class="meta">${a.items.length} ${a.items.length===1?"Teil":"Teile"} · ${a.time} · ${got}/${a.items.length} erledigt</span><div class="progress"><div style="width:${got/a.items.length*100}%"></div></div></div>
+ <div class="list">${a.items.map((it,i)=>`<article class="am-item${st[i]?' done':''}"><button class="set${st[i]?' on':''}" data-am="${i}" aria-pressed="${!!st[i]}" aria-label="${esc(it.n)} erledigt">${i+1}</button><div class="exbody"><h3>${esc(it.n)}</h3><span class="d">${it.d}</span><p>${it.c}</p><div class="links"><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(it.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a></div></div></article>`).join('')}</div>
+ <button class="finish" id="am-finish"${got===0?' disabled':''}>Früheinheit abschließen</button>${toast?`<p class="toast" role="status">${toast}</p>`:''}`;
+ toast="";visible.clear();
+}
+$("slot").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;slot=b.dataset.v;store.set("gym.slotPref",null);renderTraining()});
+$("tabs").addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;unlockAudio();if(slot==="am")amCur=+b.dataset.i;else cur=+b.dataset.i;renderTraining();window.scrollTo({top:0})});
 $("day").addEventListener('click',e=>{
+ const keep=fn=>{const y=window.scrollY;fn();renderTraining();window.scrollTo({top:y})};
+ const am=e.target.closest('[data-am]');
+ if(am){const id=AMDAYS[amCur][0];const st=store.get("gym.amcur."+id,{});const i=am.dataset.am;st[i]=!st[i];store.set("gym.amcur."+id,st);keep(()=>{});return}
+ if(e.target.id==='am-finish'){const id=AMDAYS[amCur][0];const log=logAll();log.push({date:new Date().toISOString(),day:id,am:1});store.set("gym.log",log);store.set("gym.amcur."+id,{});toast="Früheinheit eingetragen. Guter Start in den Tag.";renderTraining();return}
  const day=P[cur];
  const m=e.target.closest('.media.anim');
  if(m&&!reduceMotion){const pz=m.querySelector('.pause');if(paused.has(m)){paused.delete(m);pz.hidden=true}else{paused.add(m);pz.hidden=false}return}
  const b=e.target.closest('.set');
  if(b){unlockAudio();const st=getState(day);const i=+b.dataset.i,s=+b.dataset.s;const c=cell(st,i,s);c.done=!c.done;
-  if(c.done){const id=`${day.id}-${i}-${s}`;const kgI=$("kg-"+id),rpI=$("rp-"+id);
-   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;startTimer(day.ex[i].p)}
-  store.set("gym.cur."+day.id,st);const y=window.scrollY;renderTraining();window.scrollTo({top:y});return}
- const hb=e.target.closest('.hbtn');
- if(hb){const k=hb.dataset.chart;openCharts.has(k)?openCharts.delete(k):openCharts.add(k);const y=window.scrollY;renderTraining();window.scrollTo({top:y});return}
+  if(c.done){if(!st._start)st._start=Date.now();const id=`${day.id}-${i}-${s}`;const kgI=$("kg-"+id),rpI=$("rp-"+id);
+   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;const ex=exAt(day,i);startTimer(ex.p,ex.p<=15?"Wechsel zur nächsten Übung":"Pause")}
+  store.set("gym.cur."+day.id,st);keep(()=>{});return}
+ const sw=e.target.closest('[data-swap]');if(sw){const k=sw.dataset.swap;keep(()=>openSwap.has(k)?openSwap.delete(k):openSwap.add(k));return}
+ const to=e.target.closest('[data-swapto]');
+ if(to){const i=+to.dataset.i;const map=store.get("gym.swap",{});const key=day.id+"-"+i;const orig=day.ex[i].n;
+  if(to.dataset.swapto===orig)delete map[key];else map[key]=to.dataset.swapto;store.set("gym.swap",map);
+  const st=getState(day);delete st[i];store.set("gym.cur."+day.id,st);keep(()=>openSwap.delete(key));return}
+ const nt=e.target.closest('[data-note-toggle]');if(nt){const k=nt.dataset.noteToggle;keep(()=>openNote.has(k)?openNote.delete(k):openNote.add(k));const inp=document.getElementById("note-"+k);if(inp)inp.focus();return}
+ const hb=e.target.closest('[data-chart]');if(hb){const k=hb.dataset.chart;keep(()=>openCharts.has(k)?openCharts.delete(k):openCharts.add(k));return}
+ if(e.target.id==='lowday-off'){store.set("gym.lowDay","");renderTraining();return}
  if(e.target.id==='reset'){store.set("gym.cur."+day.id,{});renderTraining();return}
  if(e.target.id==='finish')finish(day);
 });
-$("day").addEventListener('input',e=>{const f=e.target.dataset.f;if(!f)return;const day=P[cur];const st=getState(day);const c=cell(st,+e.target.dataset.i,+e.target.dataset.s);c[f]=e.target.value.trim();store.set("gym.cur."+day.id,st)});
+$("day").addEventListener('input',e=>{
+ if(e.target.dataset.note!==undefined){const notes=store.get("gym.note",{});const v=e.target.value.trim();if(v)notes[e.target.dataset.note]=v;else delete notes[e.target.dataset.note];store.set("gym.note",notes);return}
+ const f=e.target.dataset.f;if(!f)return;const day=P[cur];const st=getState(day);const c=cell(st,+e.target.dataset.i,+e.target.dataset.s);c[f]=e.target.value.trim();store.set("gym.cur."+day.id,st)});
 function finish(day){
- const st=getState(day);const ex={};const prs=[];
- day.ex.forEach((e,i)=>{
+ const st=getState(day);const ex={};const prs=[];let vol=0;
+ day.ex.slice(0,exCount(day)).forEach((_,i)=>{const e=exAt(day,i);
   const done=(st[i]||[]).slice(0,nSets(e)).filter(c=>c&&c.done&&c.reps!=="").map(c=>e.bw?{reps:num(c.reps)}:{kg:num(c.kg),reps:num(c.reps)}).filter(x=>isFinite(x.reps)&&(e.bw||isFinite(x.kg)));
   if(!done.length)return;
-  if(!e.bw&&!e.assist){const prev=hist(e.n);if(prev.length){const pm=Math.max(...prev.flatMap(x=>x.sets.map(s=>num(s.kg))).filter(isFinite));const nm=Math.max(...done.map(x=>x.kg));if(nm>pm)prs.push(e.n.replace(/ \(.*\)/,''))}}
-  ex[e.n]=done;
+  if(!e.bw&&!e.assist){done.forEach(x=>vol+=x.kg*x.reps*(e.db?2:1));const prev=hist(e.n);if(prev.length){const pm=Math.max(...prev.flatMap(x=>x.sets.map(s=>num(s.kg))).filter(isFinite));const nm=Math.max(...done.map(x=>x.kg));if(nm>pm)prs.push(e.n.replace(/ \(.*\)/,''))}}
+  ex[e.n]=(ex[e.n]||[]).concat(done);
  });
- const log=store.get("gym.log",[]);log.push({date:new Date().toISOString(),day:day.id,ex});store.set("gym.log",log);
+ const dur=st._start?Math.max(1,Math.round((Date.now()-st._start)/60000)):null;
+ const log=logAll();log.push({date:new Date().toISOString(),day:day.id,ex,dur,vol:Math.round(vol)});store.set("gym.log",log);
  store.set("gym.cur."+day.id,{});stopTimer();
- toast=prs.length?`Eingetragen. Neuer Rekord bei: ${prs.join(", ")}!`:"Eingetragen. Stark, dass du da warst.";
+ toast=(prs.length?`Eingetragen. Neuer Rekord bei: ${prs.join(", ")}!`:"Eingetragen. Stark, dass du da warst.")+(dur?` ${dur} Min., ${fmtK(vol)} kg bewegt.`:"");
  renderTraining();const f=$("finish");if(f)window.scrollTo({top:f.offsetTop-200});
 }
+setInterval(()=>{const el=$("elapsed");if(!el||slot!=="pm")return;const s=getState(P[cur])._start;if(s)el.textContent=` · läuft seit ${Math.max(1,Math.round((Date.now()-s)/60000))} Min`},30000);
+
+/* ---------- Kopf ---------- */
+const LINES=[
+"Du musst heute nicht motiviert sein. Du musst nur hingehen.",
+"Der schwerste Satz ist der Weg zur Tür. Danach läuft es.",
+"Jedes Training ist ein Beweis, dass du auf dich aufpasst.",
+"Schlechte Tage zählen doppelt. Nicht für die Muskeln, für den Kopf.",
+"Fortschritt ist leise. Schau auf deine Zahlen, nicht auf deine Laune.",
+"Du baust gerade nicht nur Muskeln. Du baust Routine, und die trägt dich.",
+"Ein kurzes Training ist unendlich viel mehr als keins.",
+"Gefühle kommen in Wellen. Das Training ist dein fester Boden.",
+"Heute reichen 70 Prozent. Morgen wieder mehr.",
+"Du hast schon härtere Tage überstanden als diesen.",
+"Niemand sieht die Arbeit, bis man das Ergebnis sieht.",
+"Schlafen, essen, trainieren. Drei Dinge, die heute in deiner Hand liegen.",
+"Stark sein heißt auch, Pause zu machen, wenn der Körper sie braucht.",
+"Vergleich dich mit dir von letzter Woche. Mit niemandem sonst.",
+"Die Hantel ist ehrlich. Was du reinsteckst, kommt zurück.",
+"Du trainierst nicht, um jemandem etwas zu beweisen. Du trainierst für dich.",
+"Auch kleine Schritte bringen dich nach vorne.",
+"Was du heute tust, spürt dein Körper in drei Monaten.",
+"Kopf voll? Ein Satz nach dem anderen. Mehr musst du gerade nicht denken.",
+"Disziplin heißt, das Richtige zu tun, auch wenn die Lust fehlt.",
+"Es ist okay, nicht okay zu sein. Geh trotzdem kurz raus.",
+"Jede Wiederholung ist eine Entscheidung für dich.",
+"Du bist nicht hinterher. Du bist genau da, wo dein Weg gerade ist.",
+"Die erste Übung ist Verhandlung. Ab der zweiten gehört der Tag dir.",
+"Reden hilft auch. Melde dich heute bei einem Freund.",
+"Muskeln wachsen in der Pause. Manchmal auch Gedanken.",
+"Ein Rekord ist nicht nötig. Dranbleiben ist der Rekord.",
+"Du hast angefangen, als es schwer war. Das sagt viel über dich.",
+"Wasser trinken, raus ans Licht, Hantel in die Hand. Einfach anfangen.",
+"In vier Wochen bist du froh, dass du heute nicht aufgehört hast."
+];
+const MOODS=[[1,"Mies","var(--m1)"],[2,"Schlecht","var(--m2)"],[3,"Okay","var(--m3)"],[4,"Gut","var(--m4)"],[5,"Stark","var(--m5)"]];
+function dayNum(){const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
+function renderKopf(){
+ const mood=store.get("gym.mood",{});const today=iso(new Date());
+ $("quote").innerHTML=`<small>Gedanke für heute</small><p class="q">${LINES[(dayNum()+new Date().getFullYear())%LINES.length]}</p>`;
+ $("moods").innerHTML=MOODS.map(([v,l,c])=>`<button data-mood="${v}" aria-pressed="${mood[today]===v}" style="--mc:${c}"><i></i>${l}</button>`).join('');
+ const days=[...Array(14)].map((_,k)=>{const d=new Date();d.setDate(d.getDate()-13+k);return iso(d)});
+ const any=days.some(d=>mood[d]);
+ $("mood-hist").innerHTML=any?`<div class="mh" role="img" aria-label="Stimmung der letzten 14 Tage">${days.map(d=>{const v=mood[d];return v?`<div style="height:${v*20}%;--mc:${MOODS[v-1][2]}" title="${d}: ${MOODS[v-1][1]}"></div>`:'<div class="none"></div>'}).join('')}</div><div class="mhl"><span>vor 2 Wochen</span><span>heute</span></div>`:'<p class="sub">Tipp einmal am Tag, wie es dir geht. Hier siehst du dann deine letzten 14 Tage.</p>';
+ const last10=days.slice(-10).map(d=>mood[d]).filter(Boolean);const low=last10.filter(v=>v<=2).length;
+ $("mood-warn").innerHTML=last10.length>=5&&low/last10.length>=.6?`<div class="warn"><b>Dir geht es seit Tagen oft schlecht.</b><span>Das ist mehr als ein Durchhänger, und das ist nichts, wofür man sich schämen muss. Bitte sprich mit jemandem darüber: einem Freund, deiner Hausarztpraxis oder der Telefonseelsorge unten auf dieser Seite.</span></div>`:'';
+ $("lowday-btn").textContent=lowDay()?"Schlechter-Tag-Modus ist an. Ausschalten":"Heute ist ein schlechter Tag";
+ $("why").value=store.get("gym.why","");
+ renderRecovery();renderBody();
+ const log=logAll();const str=log.filter(l=>!l.am),am=log.filter(l=>l.am);
+ if(!log.length){$("proof").innerHTML='<p class="lead">Hier sammelt die App, was du geschafft hast. Nach dem ersten abgeschlossenen Training geht es los.</p>';return}
+ const first=new Date(log[0].date);const daysSince=Math.max(1,Math.round((Date.now()-first)/864e5));
+ const gains=Object.keys(LIB).filter(n=>!LIB[n].bw&&!LIB[n].assist).map(n=>{const h=hist(n);if(h.length<2)return null;const mx=x=>Math.max(...x.sets.map(s=>num(s.kg)).filter(isFinite));const a=mx(h[0]),b=Math.max(...h.map(mx));return b>a?{n,a,b}:null}).filter(Boolean).sort((x,y)=>(y.b-y.a)/y.a-(x.b-x.a)/x.a);
+ const vol=str.reduce((t,l)=>t+(l.vol||0),0);
+ $("proof").innerHTML=[
+  `<div><span>Krafteinheiten seit ${first.toLocaleDateString('de-DE')}</span><span>${str.length}</span></div>`,
+  am.length?`<div><span>Früheinheiten</span><span>${am.length}</span></div>`:'',
+  vol?`<div><span>Insgesamt bewegt</span><span>${fmtK(vol)} kg</span></div>`:'',
+  `<div><span>Übungen, bei denen du stärker geworden bist</span><span>${gains.length}</span></div>`,
+  ...gains.slice(0,3).map(g=>`<div><span>${esc(g.n)}</span><span>${fmt(g.a)} → ${fmt(g.b)} kg</span></div>`),
+  `<div><span>Tage seit deinem Start</span><span>${daysSince}</span></div>`
+ ].join('');
+}
+$("moods").addEventListener('click',e=>{const b=e.target.closest('[data-mood]');if(!b)return;const m=store.get("gym.mood",{});m[iso(new Date())]=+b.dataset.mood;store.set("gym.mood",m);renderKopf()});
+$("lowday-btn").addEventListener('click',()=>{if(lowDay()){store.set("gym.lowDay","");renderKopf()}else{store.set("gym.lowDay",iso(new Date()));slot="pm";location.hash="training"}});
+let whyT=null;$("why").addEventListener('input',e=>{store.set("gym.why",e.target.value.trim());clearTimeout(whyT);$("why-status").textContent="Gespeichert.";whyT=setTimeout(()=>$("why-status").textContent="",1500)});
+
+/* ---------- Erholung: Schlaf + Eiweiß ---------- */
+const SLEEP=[5,5.5,6,6.5,7,7.5,8,8.5,9,9.5];
+const daysBack=n=>[...Array(n)].map((_,k)=>{const d=new Date();d.setDate(d.getDate()-k);return iso(d)});
+function sleepAvg(n){const s=store.get("gym.sleep",{});const v=daysBack(n).map(d=>s[d]).filter(x=>x!=null);return v.length>=Math.min(2,n)?v.reduce((a,b)=>a+b,0)/v.length:null}
+function recBanner(am){const a=sleepAvg(3);if(a==null||a>=6)return "";
+ return am?`<div class="banner"><b>Wenig Schlaf (Ø ${fmt(Math.round(a*10)/10)} Std in den letzten Nächten).</b><span>Lass die Früheinheit heute aus und schlaf lieber länger oder geh nur spazieren. Das Abendtraining ist wichtiger.</span></div>`
+  :`<div class="banner"><b>Wenig Schlaf in letzter Zeit (Ø ${fmt(Math.round(a*10)/10)} Std).</b><span>Trainier heute normal, aber ohne Rekordversuche, und lass die Früheinheit weg. Schlaf ist gerade dein bestes Training.</span></div>`}
+function latestWeight(){const b=store.get("gym.body",[]).filter(x=>isFinite(x.w));return b.length?b[b.length-1].w:null}
+function protGoal(){const g=store.get("gym.protGoal",null);if(g)return g;const w=latestWeight();return w?Math.round(w*1.8/5)*5:140}
+function renderRecovery(){
+ const sl=store.get("gym.sleep",{}),today=iso(new Date());
+ $("sleep").innerHTML=SLEEP.map(h=>`<button data-sleep="${h}" aria-pressed="${sl[today]===h}">${h===5?'≤5':h===9.5?'9,5+':fmt(h)}</button>`).join('');
+ const a7=sleepAvg(7);$("sleep-sub").textContent=a7!=null?`Ø letzte 7 Nächte: ${fmt(Math.round(a7*10)/10)} Std. Ziel: 7–9 Std.`:"Tipp jeden Morgen kurz an, wie lange du geschlafen hast.";
+ $("rec-warn").innerHTML=recBanner(false);
+ const pr=store.get("gym.protein",{});const t=(pr[today]||[]).reduce((x,y)=>x+y,0);const g=protGoal();
+ $("prot-total").textContent=t;$("prot-goal").textContent=g;$("prot-bar").style.width=Math.min(100,t/g*100)+"%";
+ const wk=daysBack(7).slice(1).map(d=>(pr[d]||[]).reduce((x,y)=>x+y,0)).filter(x=>x>0);
+ $("prot-week").textContent=wk.length?`Ø der letzten Tage: ${Math.round(wk.reduce((x,y)=>x+y,0)/wk.length)} g`:"";
+ const w=latestWeight();$("prot-goal-in").value=store.get("gym.protGoal","")||"";$("prot-goal-in").placeholder=String(g);
+ $("prot-goal-hint").textContent=w?`Empfehlung bei ${fmt(w)} kg: ca. ${Math.round(w*1.6)}–${Math.round(w*2)} g`:"Trag unten dein Gewicht ein, dann rechnet die App das Ziel aus.";
+}
+$("sleep").addEventListener('click',e=>{const b=e.target.closest('[data-sleep]');if(!b)return;const s=store.get("gym.sleep",{});s[iso(new Date())]=+b.dataset.sleep;store.set("gym.sleep",s);renderRecovery()});
+function addProt(g){if(!(g>0&&g<300))return;const p=store.get("gym.protein",{});const k=iso(new Date());(p[k]=p[k]||[]).push(g);store.set("gym.protein",p);renderRecovery()}
+$("prot-add").addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b)addProt(+b.dataset.p)});
+$("prot-custom-btn").addEventListener('click',()=>{addProt(Math.round(num($("prot-custom").value)));$("prot-custom").value=""});
+$("prot-undo").addEventListener('click',()=>{const p=store.get("gym.protein",{});const k=iso(new Date());if(p[k]&&p[k].length){p[k].pop();store.set("gym.protein",p);renderRecovery()}});
+$("prot-goal-in").addEventListener('change',e=>{const v=Math.round(num(e.target.value));store.set("gym.protGoal",v>0?v:null);renderRecovery()});
+
+/* ---------- Körper ---------- */
+const BODY=[["w","Gewicht","kg"],["c","Brust","cm"],["a","Oberarm","cm"],["t","Taille","cm"]];
+let bodyMetric=store.get("gym.bodyMetric","w");
+function lineSVG(pts,ttl){
+ if(pts.length<2)return `<div class="chart"><span class="ttl">${ttl}</span><p>Ab dem 2. Eintrag siehst du hier deinen Verlauf.</p></div>`;
+ const W=300,H=110,L=10,R=44,T=14,B=22;let lo=Math.min(...pts.map(p=>p.v)),hi=Math.max(...pts.map(p=>p.v));if(lo===hi){lo-=1;hi+=1}
+ const Xp=i=>L+(W-L-R)*i/(pts.length-1),Y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
+ const line=pts.map((p,i)=>`${i?'L':'M'}${Xp(i).toFixed(1)} ${Y(p.v).toFixed(1)}`).join(' ');const lp=pts[pts.length-1],fp=pts[0];
+ return `<div class="chart"><span class="ttl">${ttl}</span><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${ttl}: von ${fmt(fp.v)} auf ${fmt(lp.v)}">
+  <line x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}" stroke="var(--line)"/><path d="${line} L${Xp(pts.length-1).toFixed(1)} ${H-B} L${L} ${H-B} Z" fill="var(--hit)" opacity=".12"/>
+  <path d="${line}" fill="none" stroke="var(--hit)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  ${pts.map((p,i)=>`<circle cx="${Xp(i).toFixed(1)}" cy="${Y(p.v).toFixed(1)}" r="${i===pts.length-1?5:3}" fill="${i===pts.length-1?'var(--hit)':'var(--surface)'}" stroke="var(--hit)" stroke-width="2"/>`).join('')}
+  <text x="${Xp(pts.length-1)+9}" y="${Y(lp.v)+5}" font-family="IBM Plex Mono,monospace" font-size="13" font-weight="600" fill="var(--fg)">${fmt(lp.v)}</text>
+  <text x="${L}" y="${H-5}" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)">${shortDate(fp.d)}</text>
+  <text x="${W-R}" y="${H-5}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--muted)">${shortDate(lp.d)}</text></svg></div>`;
+}
+function renderBody(){
+ const b=store.get("gym.body",[]);
+ const last=b.length?b[b.length-1]:null;const ago=last?Math.round((Date.now()-new Date(last.date))/864e5):null;
+ $("body-hint").textContent=last?(ago>=7?`Letzter Eintrag vor ${ago} Tagen. Zeit für einen neuen.`:`Letzter Eintrag am ${new Date(last.date).toLocaleDateString('de-DE')}. Nächster in ${7-ago} Tagen.`):"Einmal pro Woche, am besten morgens nüchtern und immer an der gleichen Stelle messen. Leere Felder werden übersprungen.";
+ const m=BODY.find(x=>x[0]===bodyMetric)||BODY[0];
+ const pts=b.filter(x=>isFinite(x[m[0]])).map(x=>({d:x.date,v:x[m[0]]}));
+ const first=pts[0],lastp=pts[pts.length-1];
+ const delta=pts.length>=2?lastp.v-first.v:null;
+ $("body-chart").innerHTML=`<div class="chips four" role="group" aria-label="Messwert wählen">${BODY.map(([k,l])=>`<button data-bm="${k}" aria-pressed="${k===m[0]}">${l}</button>`).join('')}</div>${lineSVG(pts,`${m[1]} in ${m[2]}`)}${delta!=null?`<p class="sub">Seit ${new Date(first.d).toLocaleDateString('de-DE')}: ${delta>0?'+':''}${fmt(Math.round(delta*10)/10)} ${m[2]}</p>`:''}`;
+}
+$("body-chart").addEventListener('click',e=>{const b=e.target.closest('[data-bm]');if(!b)return;bodyMetric=b.dataset.bm;store.set("gym.bodyMetric",bodyMetric);renderBody()});
+$("bd-save").addEventListener('click',()=>{
+ const v={w:num($("bd-w").value),c:num($("bd-c").value),a:num($("bd-a").value),t:num($("bd-t").value)};
+ if(!Object.values(v).some(isFinite)){$("bd-status").textContent="Trag mindestens einen Wert ein.";return}
+ const b=store.get("gym.body",[]);const k=iso(new Date());let e=b.find(x=>x.date===k);if(!e){e={date:k};b.push(e)}
+ Object.entries(v).forEach(([kk,x])=>{if(isFinite(x))e[kk]=x});b.sort((x,y)=>x.date<y.date?-1:1);store.set("gym.body",b);
+ ["bd-w","bd-c","bd-a","bd-t"].forEach(id=>$(id).value="");$("bd-status").textContent="Eingetragen.";renderBody();renderRecovery();
+});
+
+/* ---------- Kalender + Serie ---------- */
+let calOff=0;
+const MONTHS=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+function streakWeeks(){const log=logAll().filter(l=>!l.am);const per={};log.forEach(l=>{const k=iso(monday(new Date(l.date)));per[k]=(per[k]||0)+1});
+ let n=0;const d=monday(new Date());if((per[iso(d)]||0)>=3)n++;d.setDate(d.getDate()-7);
+ while((per[iso(d)]||0)>=3){n++;d.setDate(d.getDate()-7)}return n}
+function renderCal(){
+ const now=new Date();const m=new Date(now.getFullYear(),now.getMonth()+calOff,1);
+ const kd={},amd={};logAll().forEach(l=>{const k=iso(new Date(l.date));if(l.am)amd[k]=1;else{const d=P.find(p=>p.id===l.day);kd[k]=d?d.type:"push"}});
+ const startPad=(m.getDay()+6)%7;const days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();const today=iso(now);
+ let cells="";for(let i=0;i<startPad;i++)cells+='<div class="d out"></div>';
+ for(let i=1;i<=days;i++){const k=iso(new Date(m.getFullYear(),m.getMonth(),i));const t=kd[k]?TYPES[kd[k]]:null;
+  cells+=`<div class="d${t?' k':''}${amd[k]?' am':''}${k===today?' today':''}"${t?` style="--c:${t.c};--on-c:${t.on}"`:''}>${i}</div>`}
+ const cnt=Object.keys(kd).filter(k=>k.startsWith(iso(m).slice(0,7))).length;const sw=streakWeeks();
+ $("cal").innerHTML=`<div class="streak"><b>${sw}</b><span>${sw===1?'Woche':'Wochen'} Serie mit mindestens 3 Krafteinheiten</span></div>
+ <div class="cal-head"><button data-cal="-1" aria-label="Vorheriger Monat">‹</button><b>${MONTHS[m.getMonth()]} ${m.getFullYear()}</b><button data-cal="1" aria-label="Nächster Monat"${calOff>=0?' disabled':''}>›</button></div>
+ <div class="cal">${["Mo","Di","Mi","Do","Fr","Sa","So"].map(x=>`<div class="wd">${x}</div>`).join('')}${cells}</div>
+ <div class="legend"><span><i style="background:var(--red)"></i>Push</span><span><i style="background:var(--blue)"></i>Pull</span><span><i style="background:var(--yellow)"></i>Beine</span><span><i style="background:var(--green)"></i>Arme</span><span>● Früh</span><span>${cnt} Krafteinheiten im Monat</span></div>`;
+}
+$("cal").addEventListener('click',e=>{const b=e.target.closest('[data-cal]');if(!b||b.disabled)return;calOff=Math.min(0,calOff+ +b.dataset.cal);renderCal()});
+
+/* ---------- Wochenrückblick (Obsidian) ---------- */
+let revOff=0;
+function isoWeek(d){const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const dn=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-dn);const y=new Date(Date.UTC(t.getUTCFullYear(),0,1));return{w:Math.ceil(((t-y)/864e5+1)/7),y:t.getUTCFullYear()}}
+function weekData(off){
+ const mo=monday(new Date());mo.setDate(mo.getDate()-7*off);const su=new Date(mo);su.setDate(su.getDate()+6);
+ const inW=d=>{const x=new Date(d);return x>=mo&&x<new Date(su.getTime()+864e5)};
+ const log=logAll();const L=log.filter(l=>inW(l.date));const before=log.filter(l=>new Date(l.date)<mo);
+ const str=L.filter(l=>!l.am);const dur=str.reduce((t,l)=>t+(l.dur||0),0),vol=str.reduce((t,l)=>t+(l.vol||0),0);
+ const keys=[...Array(7)].map((_,k)=>{const d=new Date(mo);d.setDate(d.getDate()+k);return iso(d)});
+ const avg=(o,f)=>{const v=keys.map(k=>f(o[k])).filter(x=>x!=null&&x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null};
+ const sleep=avg(store.get("gym.sleep",{}),x=>x),prot=avg(store.get("gym.protein",{}),x=>x?x.reduce((a,b)=>a+b,0):null),mood=avg(store.get("gym.mood",{}),x=>x);
+ const prs=[];const names=new Set();str.forEach(l=>Object.keys(l.ex||{}).forEach(n=>names.add(n)));
+ names.forEach(n=>{const e=LIB[n];if(!e||e.bw||e.assist)return;const mx=ls=>Math.max(-1,...ls.flatMap(l=>(l.ex&&l.ex[n]||[]).map(s=>num(s.kg))).filter(isFinite));
+  const now=mx(str),prev=mx(before.filter(l=>!l.am));if(prev>0&&now>prev)prs.push(`${n}: ${fmt(prev)} → ${fmt(now)} kg`)});
+ const ms=muscleSets(L);const body=store.get("gym.body",[]).filter(b=>inW(b.date+"T12:00"));
+ return{mo,su,str,am:L.filter(l=>l.am),dur,vol,sleep,prot,mood,prs,ms,body,kw:isoWeek(mo)};
+}
+function weekMD(W){
+ const dd=d=>d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});const r1=x=>fmt(Math.round(x*10)/10);
+ const h=Math.floor(W.dur/60),mi=W.dur%60;
+ const lines=["---","type: training-woche",`woche: ${W.kw.y}-W${String(W.kw.w).padStart(2,'0')}`,`kraft: ${W.str.length}`,`frueh: ${W.am.length}`,W.vol?`volumen_kg: ${Math.round(W.vol)}`:null,W.sleep?`schlaf_h: ${Math.round(W.sleep*10)/10}`:null,W.prot?`eiweiss_g: ${Math.round(W.prot)}`:null,W.mood?`stimmung: ${Math.round(W.mood*10)/10}`:null,"tags: [training]","---",
+ `# Training KW ${W.kw.w} (${dd(W.mo)}–${dd(W.su)}${W.su.getFullYear()})`,"",
+ `- Krafteinheiten: ${W.str.length} von 6`,`- Früheinheiten: ${W.am.length}`,
+ W.dur?`- Trainingszeit: ${h} Std ${mi} Min`:null,W.vol?`- Bewegt: ${fmtK(W.vol)} kg`:null,
+ W.sleep?`- Ø Schlaf: ${r1(W.sleep)} Std`:null,W.prot?`- Ø Eiweiß: ${Math.round(W.prot)} g`:null,W.mood?`- Ø Stimmung: ${r1(W.mood)} von 5`:null,"",
+ "## Rekorde",...(W.prs.length?W.prs.map(x=>`- ${x}`):["- keine neuen diese Woche"]),"",
+ "## Muskel-Bilanz (Sätze)","| Muskel | Sätze |","|---|---|",...Object.keys(LBL).filter(k=>W.ms[k]>0).map(k=>`| ${LBL[k]} | ${fmt(W.ms[k])} |`),"",
+ ...(W.body.length?["## Körper",...W.body.map(b=>`- ${b.date}: `+BODY.filter(([k])=>isFinite(b[k])).map(([k,l,u])=>`${l} ${fmt(b[k])} ${u}`).join(", ")),""]:[]),
+ "## Notizen","- "].filter(x=>x!==null);
+ return lines.join("\n");
+}
+function renderReview(){
+ const W=weekData(revOff);const dd=d=>d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});const md=weekMD(W);
+ $("review").innerHTML=`<div class="seg" role="group" aria-label="Woche wählen" style="grid-template-columns:repeat(2,1fr)"><button data-rev="0" aria-pressed="${revOff===0}">Diese Woche</button><button data-rev="1" aria-pressed="${revOff===1}">Letzte Woche</button></div>
+ <p class="lbl">KW ${W.kw.w}: ${dd(W.mo)}–${dd(W.su)}</p>
+ <div class="log">
+  <div><span>Krafteinheiten / Früh</span><span>${W.str.length} / ${W.am.length}</span></div>
+  ${W.dur?`<div><span>Trainingszeit</span><span>${Math.floor(W.dur/60)} Std ${W.dur%60} Min</span></div>`:''}
+  ${W.vol?`<div><span>Bewegt</span><span>${fmtK(W.vol)} kg</span></div>`:''}
+  ${W.sleep?`<div><span>Ø Schlaf</span><span>${fmt(Math.round(W.sleep*10)/10)} Std</span></div>`:''}
+  ${W.prot?`<div><span>Ø Eiweiß</span><span>${Math.round(W.prot)} g</span></div>`:''}
+  <div><span>Neue Rekorde</span><span>${W.prs.length}</span></div>
+ </div>
+ <div class="btns2"><button class="btn primary" id="rev-copy">Für Obsidian kopieren</button><button class="btn" id="rev-share">Teilen</button></div>
+ <p class="status" id="rev-status" aria-live="polite">Kopiert eine fertige Markdown-Notiz mit Eigenschaften (Woche, Volumen, Schlaf) für deinen Vault.</p>
+ <details><summary>Notiz anzeigen</summary><textarea class="review-md" id="rev-md" readonly>${esc(md)}</textarea></details>`;
+}
+$("review").addEventListener('click',async e=>{
+ const r=e.target.closest('[data-rev]');if(r){revOff=+r.dataset.rev;renderReview();return}
+ const md=weekMD(weekData(revOff));
+ if(e.target.id==="rev-copy"){try{await navigator.clipboard.writeText(md);$("rev-status").textContent="Kopiert. In Obsidian eine neue Notiz öffnen und einfügen.";$("rev-status").classList.add("ok")}catch(err){const t=$("rev-md");t.closest("details").open=true;t.select();$("rev-status").textContent="Automatisches Kopieren ging nicht. Der Text ist markiert, kopiere ihn von Hand."}}
+ if(e.target.id==="rev-share"){const W=weekData(revOff);try{if(navigator.share){await navigator.share({title:`Training KW ${W.kw.w}`,text:md});return}}catch(err){if(err&&err.name==="AbortError")return}
+  $("rev-status").textContent="Teilen geht hier nicht. Nutze „Für Obsidian kopieren“."}
+});
+
 
 /* ---------- Einstellungen ---------- */
 const MEDIA_SUB={anim:"Gezeichnete Figur zeigt die Bewegung. Tippen pausiert. Funktioniert immer offline.",photo:"Echte Fotos von Start- und Endposition im Wechsel. Nach dem ersten Laden auch offline.",off:"Kompakte Ansicht ohne Bilder, nur Muskelgrafik und Eingaben."};
@@ -710,15 +1379,16 @@ function applyTheme(){if(theme==="system")document.documentElement.removeAttribu
 function renderSettings(){
  document.querySelectorAll('#seg-media button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===media));
  document.querySelectorAll('#seg-theme button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));
- $("media-sub").textContent=MEDIA_SUB[media];$("beginner").checked=beginner;$("sound").checked=soundOn;
+ $("media-sub").textContent=MEDIA_SUB[media];$("beginner").checked=beginner;$("sound").checked=soundOn;$("deload").checked=!!deloadOn();
 }
 $("seg-media").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;media=b.dataset.v;store.set("gym.media",media);renderSettings()});
 $("seg-theme").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;theme=b.dataset.v;store.set("gym.theme",theme);applyTheme();renderSettings()});
 $("beginner").addEventListener('change',e=>{beginner=e.target.checked;store.set("gym.beginner",beginner)});
+$("deload").addEventListener('change',e=>{store.set("gym.deloadUntil",e.target.checked?Date.now()+7*864e5:Date.now())});
 $("sound").addEventListener('change',e=>{soundOn=e.target.checked;store.set("gym.sound",soundOn);if(soundOn){unlockAudio();beep()}});
 
 /* ---------- Seiten ---------- */
-const VIEWS=["training","plan","fortschritt","einstellungen"];
+const VIEWS=["training","plan","fortschritt","ich","einstellungen"];
 function route(){
  const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):"training";
  document.querySelectorAll('.view').forEach(s=>s.hidden=s.dataset.view!==v);
@@ -727,19 +1397,20 @@ function route(){
  if(v==="training")renderTraining();else visible.clear();
  if(v==="plan")renderPlan();
  if(v==="fortschritt")renderProgress();
+ if(v==="ich")renderKopf();
  if(v==="einstellungen")renderSettings();
  window.scrollTo({top:0});
 }
 window.addEventListener('hashchange',route);
 
 /* ---------- Pausentimer + Ton ---------- */
-let endAt=0,iv=null,fired=true,ac=null,wl=null;
+let endAt=0,iv=null,fired=true,ac=null,wl=null,tLabel="Pause";
 function unlockAudio(){try{if(!ac){const C=window.AudioContext||window.webkitAudioContext;if(C)ac=new C()}if(ac&&ac.state==="suspended")ac.resume()}catch(e){}}
 function beep(){try{if(!ac)return;const t0=ac.currentTime+.05;[0,.28,.56].forEach((t,k)=>{const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.value=k===2?1320:880;g.gain.setValueAtTime(.0001,t0+t);g.gain.exponentialRampToValueAtTime(.5,t0+t+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+t+.2);o.connect(g);g.connect(ac.destination);o.start(t0+t);o.stop(t0+t+.25)})}catch(e){}}
 async function keepAwake(){try{if('wakeLock' in navigator&&(!wl||wl.released))wl=await navigator.wakeLock.request('screen')}catch(e){}}
-function show(left){const l=Math.max(left,0),m=Math.floor(l/60),s=l%60;$("tt").textContent=m+':'+String(s).padStart(2,'0');$("timer").classList.toggle('zero',left<=0);$("tl").textContent=left<=0?'Los, nächster Satz':'Pause'}
+function show(left){const l=Math.max(left,0),m=Math.floor(l/60),s=l%60;$("tt").textContent=m+':'+String(s).padStart(2,'0');$("timer").classList.toggle('zero',left<=0);$("tl").textContent=left<=0?'Los, nächster Satz':tLabel}
 function tick(){const left=Math.ceil((endAt-Date.now())/1000);show(left);if(left<=0&&!fired){fired=true;clearInterval(iv);if(soundOn)beep();try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}}
-function startTimer(sec){endAt=Date.now()+sec*1000;fired=false;$("timer").hidden=false;clearInterval(iv);tick();iv=setInterval(tick,250);keepAwake()}
+function startTimer(sec,label){tLabel=label||"Pause";endAt=Date.now()+sec*1000;fired=false;$("timer").hidden=false;clearInterval(iv);tick();iv=setInterval(tick,250);keepAwake()}
 function stopTimer(){clearInterval(iv);fired=true;$("timer").hidden=true}
 $("tplus").onclick=()=>{unlockAudio();if(fired)startTimer(30);else{endAt+=30000;tick()}};
 $("tstop").onclick=stopTimer;
@@ -747,7 +1418,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 /* ---------- Backup ---------- */
 function exportData(){const data={};try{for(let k=0;k<localStorage.length;k++){const key=localStorage.key(k);if(key.startsWith("gym."))data[key]=localStorage.getItem(key)}}catch(e){}
- return JSON.stringify({app:"tims-gym-plan",version:4,exported:new Date().toISOString(),data})}
+ return JSON.stringify({app:"tims-gym-plan",version:7,exported:new Date().toISOString(),data})}
 function bkStatus(t,ok){$("bk-status").textContent=t;$("bk-status").classList.toggle('ok',!!ok)}
 $("bk-save").onclick=async()=>{
  const json=exportData();const name=`gym-backup-${iso(new Date())}.json`;
@@ -767,10 +1438,10 @@ function prepareImport(text){
  if(!obj||obj.app!=="tims-gym-plan"||!obj.data){bkStatus("Das ist kein Backup dieser App.");return}
  let n=0;try{n=JSON.parse(obj.data["gym.log"]||"[]").length}catch(e){}
  const box=$("bk-confirm");box.hidden=false;
- box.innerHTML=`<p><b>Backup vom ${new Date(obj.exported).toLocaleDateString('de-DE')} mit ${n} Trainings wiederherstellen?</b> Deine aktuellen Daten auf diesem Handy werden dabei ersetzt.</p><div class="btns2"><button class="btn danger" id="bk-yes">Wiederherstellen</button><button class="btn" id="bk-no">Abbrechen</button></div>`;
+ box.innerHTML=`<p><b>Backup vom ${new Date(obj.exported).toLocaleDateString('de-DE')} mit ${n} Einheiten wiederherstellen?</b> Deine aktuellen Daten auf diesem Handy werden dabei ersetzt.</p><div class="btns2"><button class="btn danger" id="bk-yes">Wiederherstellen</button><button class="btn" id="bk-no">Abbrechen</button></div>`;
  $("bk-no").onclick=()=>{box.hidden=true;bkStatus("")};
  $("bk-yes").onclick=()=>{try{Object.keys(localStorage).filter(k=>k.startsWith("gym.")).forEach(k=>localStorage.removeItem(k));Object.entries(obj.data).forEach(([k,v])=>{if(k.startsWith("gym."))localStorage.setItem(k,v)})}catch(e){bkStatus("Wiederherstellen ging nicht, der Speicher ist gesperrt.");return}
-  box.hidden=true;$("bk-paste").hidden=true;beginner=store.get("gym.beginner",true);soundOn=store.get("gym.sound",true);media=store.get("gym.media","anim");theme=store.get("gym.theme","system");applyTheme();renderSettings();bkStatus(`Wiederhergestellt: ${n} Trainings.`,true)};
+  box.hidden=true;$("bk-paste").hidden=true;beginner=store.get("gym.beginner",true);soundOn=store.get("gym.sound",true);media=store.get("gym.media","anim");theme=store.get("gym.theme","system");applyTheme();renderSettings();bkStatus(`Wiederhergestellt: ${n} Einheiten.`,true)};
  box.scrollIntoView({block:"center"});
 }
 
