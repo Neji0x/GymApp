@@ -257,6 +257,36 @@ section.info{display:grid;gap:12px}
 .ed-fields input{width:74px;font-family:var(--mono);text-align:center}
 .ed-add,.ed-custom{display:grid;gap:8px}
 .ed-custom{border-top:1px solid var(--line);padding-top:10px}
+
+.quote{cursor:pointer;user-select:none;-webkit-user-select:none}
+.quote .qbar{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.quote .fav{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;width:40px;height:40px;cursor:pointer;display:grid;place-items:center}
+.quote .fav svg{width:20px;height:20px}
+.quote .fav[aria-pressed="true"]{color:var(--red);border-color:var(--red)}
+.quote .qfoot{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--muted)}
+.quote .q{transition:opacity .18s}
+.quote .q.out{opacity:0}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.badge{border:1px solid var(--line);border-radius:12px;padding:10px 6px;display:grid;justify-items:center;gap:4px;text-align:center;background:var(--bg)}
+.badge .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--muted);font-family:var(--display);font-weight:900;font-size:1.05rem}
+.badge.on .ic{background:var(--bc);color:#fff}
+.badge b{font-size:.78rem;font-weight:600;line-height:1.2}
+.badge small{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.badge:not(.on) b{color:var(--muted)}
+.libfilter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.libfilter button{flex:none;font:inherit;font-size:.82rem;font-weight:600;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer}
+.libfilter button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.libitem{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px}
+.libitem .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.libitem .top b{font-weight:600}
+.libitem .media{margin:0;border-radius:10px;max-width:100%}
+.libadd{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.libadd select{height:36px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:.85rem;padding:0 8px}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:fall 1.8s cubic-bezier(.2,.6,.4,1) forwards}
+@keyframes fall{to{transform:translate3d(var(--dx),105vh,0) rotate(var(--r));opacity:.9}}
+.newbadge{border:2px solid var(--ok);border-radius:12px;padding:10px 12px;font-size:.92rem}
+.libitem .top .ss{white-space:nowrap;flex:none}
 </style>
 </head>
 <body>
@@ -285,6 +315,10 @@ section.info{display:grid;gap:12px}
       <p class="lead">Abends Kraft, 75–85 Minuten. Früh optional locker: Ausdauer, Bauch-Stabilität und Beweglichkeit. Sonntag Pause.</p>
     </header>
     <div id="plan" style="display:grid;gap:12px"></div>
+    <section class="info">
+      <h2>Übungs-Bibliothek</h2>
+      <div class="card opt" id="lib"></div>
+    </section>
     <section class="info">
       <h2>Gym-Tasche</h2>
       <div class="card opt" id="bag"></div>
@@ -340,6 +374,10 @@ section.info{display:grid;gap:12px}
     <section class="info">
       <h2>Kalender</h2>
       <div class="card opt" id="cal"></div>
+    </section>
+    <section class="info">
+      <h2>Erfolge</h2>
+      <div class="card opt" id="badges"></div>
     </section>
     <section class="info">
       <h2>Muskel-Bilanz</h2>
@@ -462,6 +500,9 @@ section.info{display:grid;gap:12px}
       <div class="card opt">
         <label class="mode" for="beginner"><input type="checkbox" id="beginner"><span><b>Einsteiger-Modus</b> (Woche 1–3): höchstens 3 Sätze pro Übung.</span></label>
         <label class="mode" for="deload"><input type="checkbox" id="deload"><span><b>Erholungswoche</b>: 2 Sätze pro Übung, ca. 30 % weniger Gewicht. Schaltet sich nach 7 Tagen von selbst ab.</span></label>
+        <div class="opt"><span class="lbl">Pausenlänge</span>
+          <div class="seg" role="group" aria-label="Pausenlänge" id="seg-pause"><button data-v="0.7">Kürzer</button><button data-v="1">Normal</button><button data-v="1.3">Länger</button></div>
+          <span class="sub">Kürzer spart Zeit, länger hilft bei schweren Sätzen. Supersatz-Wechsel bleiben kurz.</span></div>
         <label class="mode" for="sound"><input type="checkbox" id="sound"><span><b>Ton am Pausenende.</b> Beim iPhone muss der Lautlos-Schalter aus sein.</span></label>
       </div>
     </section>
@@ -494,7 +535,7 @@ section.info{display:grid;gap:12px}
         <p class="status" id="bk-status" aria-live="polite"></p>
       </div>
     </section>
-    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 7.</p>
+    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 8.</p>
   </section>
 </div>
 
@@ -935,7 +976,7 @@ function plannedSets(){const out={};Object.keys(LBL).forEach(k=>out[k]=0);P.forE
 function renderProgress(){
  const{log,inWeek,thisWeek,amWeek}=weekStats();
  $("s-week").textContent=thisWeek+"/6";$("s-am").textContent=amWeek;$("s-total").textContent=log.length;
- renderCal();renderReview();
+ renderCal();renderReview();renderBadges();
  const done=muscleSets(inWeek),plan=plannedSets(),MAX=26;
  $("balance").innerHTML=`<p class="status">Harte Sätze pro Muskel diese Woche. Hauptmuskel zählt voll, Hilfsmuskel halb. Der graue Bereich ist ein guter Zielbereich.</p>`+
   Object.keys(LBL).map(k=>{const v=done[k],z=ZONE[k],pl=plan[k];const pc=x=>Math.min(100,x/MAX*100);
@@ -990,19 +1031,16 @@ function renderPlan(){
   <div class="btns2"><button class="btn${i===todayIdx?' primary':''}" data-start="${i}">${i===todayIdx?'Heute starten':'Starten'}</button><button class="btn" data-edit="${i}">Bearbeiten</button></div></article>`}).join('')
   +`<article class="card plan-day" style="--c:var(--line)"><header><h3>So: Ruhetag</h3></header><p class="lead">Muskeln wachsen in der Pause. Höchstens ein Spaziergang. Guter Tag fürs wöchentliche Backup und den Wochenrückblick.</p></article>`;
  $("road").innerHTML=ROAD.map(r=>`<div><em>${r.s}</em><b>${r.t}</b><span>${r.d}</span></div>`).join('');
- renderBag();
+ renderLib();renderBag();
 }
 const ROAD=[
- {s:"Fertig · V7",t:"Erholung: Eiweiß und Schlaf",d:"Eiweiß-Zähler mit Schnellbuttons, Schlaf pro Nacht, Warnung bei zu wenig Schlaf. Im Tab Ich."},
- {s:"Fertig · V7",t:"Körper-Tracking",d:"Gewicht, Brust, Oberarm und Taille mit Verlauf. Im Tab Ich."},
- {s:"Fertig · V7",t:"Wochenrückblick für Obsidian",d:"Zusammenfassung jeder Woche als fertige Markdown-Notiz zum Kopieren oder Teilen. Im Tab Fortschritt."},
- {s:"Fertig · V7",t:"Aufwärmsätze, Scheibenrechner, 1RM",d:"Aufwärmsätze werden automatisch berechnet, Scheiben pro Seite angezeigt, Maximalgewicht geschätzt."},
- {s:"Fertig · V7",t:"Plan-Editor",d:"Übungen hinzufügen, löschen, verschieben, Sätze, Wiederholungen, Pausen und Supersätze ändern, eigene Übungen anlegen."},
- {s:"Fertig · V7",t:"Kalender und Serie",d:"Monatsansicht aller Trainings und deine Serie aktiver Wochen. Im Tab Fortschritt."},
- {s:"Fertig · V7",t:"Gym-Tasche",d:"Checkliste zum Abhaken, setzt sich jeden Tag zurück."},
- {s:"Als Nächstes",t:"Erfolge und Meilensteine",d:"10, 25, 50 und 100 Trainings, erste volle Woche, neue Rekorde."},
- {s:"Als Nächstes",t:"Übungs-Bibliothek",d:"Alle Übungen nach Muskelgruppe zum Stöbern, mit Animation, Fotos und Technik-Tipps."},
- {s:"Monat 3",t:"Plan für Fortgeschrittene",d:"Mehr Abwechslung, schwerere Grundübungen und gezielte Schwachstellen."},
+ {s:"Fertig · V8",t:"Sprüche zum Durchtippen",d:"Antippen zeigt den nächsten Gedanken, das Herz speichert deine Favoriten."},
+ {s:"Fertig · V8",t:"Erfolge und Rekord-Feier",d:"Abzeichen für Meilensteine im Fortschritt-Tab, Konfetti bei neuen Rekorden."},
+ {s:"Fertig · V8",t:"Übungs-Bibliothek",d:"Alle Übungen nach Muskel, mit Animation oder Foto, direkt zu einem Tag hinzufügbar."},
+ {s:"Fertig · V8",t:"Pausenlänge",d:"Kürzer, normal oder länger, in den Einstellungen."},
+ {s:"Fertig · V7",t:"Erholung, Körper, Wochenrückblick",d:"Schlaf, Eiweiß, Körpermaße und die Wochen-Notiz für Obsidian."},
+ {s:"Fertig · V7",t:"Plan-Editor, Kalender, Aufwärmen",d:"Plan selbst bearbeiten, Monatskalender mit Serie, Aufwärmsätze und Scheibenrechner."},
+ {s:"Monat 3",t:"Plan für Fortgeschrittene",d:"Mehr Abwechslung, schwerere Grundübungen und gezielte Schwachstellen. Am besten zusammen mit dir anhand deiner echten Zahlen."},
  {s:"Bewusst nicht",t:"Fortschrittsfotos",d:"Würden den Speicher der App sprengen. Dafür ist deine Foto-App besser, z. B. ein eigenes Album."},
  {s:"Geht nicht",t:"Apple Health und Watch",d:"Eine Web-App kann darauf leider nicht zugreifen."}
 ];
@@ -1136,7 +1174,7 @@ $("day").addEventListener('click',e=>{
  const b=e.target.closest('.set');
  if(b){unlockAudio();const st=getState(day);const i=+b.dataset.i,s=+b.dataset.s;const c=cell(st,i,s);c.done=!c.done;
   if(c.done){if(!st._start)st._start=Date.now();const id=`${day.id}-${i}-${s}`;const kgI=$("kg-"+id),rpI=$("rp-"+id);
-   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;const ex=exAt(day,i);startTimer(ex.p,ex.p<=15?"Wechsel zur nächsten Übung":"Pause")}
+   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;const ex=exAt(day,i);startTimer(ex.p<=15?ex.p:Math.max(15,Math.round(ex.p*pauseF()/5)*5),ex.p<=15?"Wechsel zur nächsten Übung":"Pause")}
   store.set("gym.cur."+day.id,st);keep(()=>{});return}
  const sw=e.target.closest('[data-swap]');if(sw){const k=sw.dataset.swap;keep(()=>openSwap.has(k)?openSwap.delete(k):openSwap.add(k));return}
  const to=e.target.closest('[data-swapto]');
@@ -1161,9 +1199,12 @@ function finish(day){
   ex[e.n]=(ex[e.n]||[]).concat(done);
  });
  const dur=st._start?Math.max(1,Math.round((Date.now()-st._start)/60000)):null;
- const log=logAll();log.push({date:new Date().toISOString(),day:day.id,ex,dur,vol:Math.round(vol)});store.set("gym.log",log);
+ const before=unlockedIds();
+ const log=logAll();log.push({date:new Date().toISOString(),day:day.id,ex,dur,vol:Math.round(vol),...(lowDay()?{low:1}:{})});store.set("gym.log",log);
+ const fresh=BADGES.filter(b=>!before.includes(b.id)&&b.ok());
  store.set("gym.cur."+day.id,{});stopTimer();
- toast=(prs.length?`Eingetragen. Neuer Rekord bei: ${prs.join(", ")}!`:"Eingetragen. Stark, dass du da warst.")+(dur?` ${dur} Min., ${fmtK(vol)} kg bewegt.`:"");
+ toast=(prs.length?`Eingetragen. Neuer Rekord bei: ${prs.join(", ")}!`:"Eingetragen. Stark, dass du da warst.")+(dur?` ${dur} Min., ${fmtK(vol)} kg bewegt.`:"")+(fresh.length?` Neuer Erfolg: ${fresh.map(b=>b.t).join(", ")}!`:"");
+ if(prs.length||fresh.length)celebrate();
  renderTraining();const f=$("finish");if(f)window.scrollTo({top:f.offsetTop-200});
 }
 setInterval(()=>{const el=$("elapsed");if(!el||slot!=="pm")return;const s=getState(P[cur])._start;if(s)el.textContent=` · läuft seit ${Math.max(1,Math.round((Date.now()-s)/60000))} Min`},30000);
@@ -1205,7 +1246,7 @@ const MOODS=[[1,"Mies","var(--m1)"],[2,"Schlecht","var(--m2)"],[3,"Okay","var(--
 function dayNum(){const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
 function renderKopf(){
  const mood=store.get("gym.mood",{});const today=iso(new Date());
- $("quote").innerHTML=`<small>Gedanke für heute</small><p class="q">${LINES[(dayNum()+new Date().getFullYear())%LINES.length]}</p>`;
+ renderQuote();
  $("moods").innerHTML=MOODS.map(([v,l,c])=>`<button data-mood="${v}" aria-pressed="${mood[today]===v}" style="--mc:${c}"><i></i>${l}</button>`).join('');
  const days=[...Array(14)].map((_,k)=>{const d=new Date();d.setDate(d.getDate()-13+k);return iso(d)});
  const any=days.some(d=>mood[d]);
@@ -1373,15 +1414,95 @@ $("review").addEventListener('click',async e=>{
 });
 
 
+/* ---------- Sprüche ---------- */
+let quoteIdx=null,quoteFavOnly=false;
+function quoteList(){const f=store.get("gym.favQuotes",[]).filter(i=>i<LINES.length);return quoteFavOnly&&f.length?f:LINES.map((_,i)=>i)}
+function renderQuote(){
+ const favs=store.get("gym.favQuotes",[]);if(quoteFavOnly&&!favs.length)quoteFavOnly=false;
+ const list=quoteList();if(quoteIdx==null||!list.includes(quoteIdx))quoteIdx=quoteFavOnly?list[0]:(dayNum()+new Date().getFullYear())%LINES.length;
+ const fav=favs.includes(quoteIdx);
+ $("quote").innerHTML=`<div class="qbar"><small>${quoteFavOnly?'Deine Favoriten':'Gedanke für heute'}</small><button class="fav" id="q-fav" aria-pressed="${fav}" aria-label="${fav?'Aus Favoriten entfernen':'Als Favorit speichern'}"><svg viewBox="0 0 24 24" fill="${fav?'currentColor':'none'}" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div>
+ <p class="q" id="q-text">${LINES[quoteIdx]}</p>
+ <div class="qfoot"><span>Antippen für den nächsten · ${list.indexOf(quoteIdx)+1}/${list.length}</span>${favs.length?`<button class="reset" id="q-mode">${quoteFavOnly?'Alle zeigen':`Nur Favoriten (${favs.length})`}</button>`:''}</div>`;
+}
+$("quote").addEventListener('click',e=>{
+ if(e.target.closest('#q-fav')){const f=store.get("gym.favQuotes",[]);const k=f.indexOf(quoteIdx);if(k>=0)f.splice(k,1);else f.push(quoteIdx);store.set("gym.favQuotes",f);renderQuote();return}
+ if(e.target.closest('#q-mode')){quoteFavOnly=!quoteFavOnly;quoteIdx=null;renderQuote();return}
+ const list=quoteList();const next=list[(list.indexOf(quoteIdx)+1)%list.length];
+ const q=$("q-text");if(reduceMotion||!q){quoteIdx=next;renderQuote();return}
+ q.classList.add('out');setTimeout(()=>{quoteIdx=next;renderQuote()},170);
+});
+
+/* ---------- Erfolge ---------- */
+function prEvents(){let n=0;const best={};logAll().filter(l=>!l.am&&l.ex).forEach(l=>Object.entries(l.ex).forEach(([name,sets])=>{const e=LIB[name];if(!e||e.bw||e.assist)return;const m=Math.max(...sets.map(s=>num(s.kg)).filter(isFinite));if(!isFinite(m))return;if(best[name]!=null&&m>best[name])n++;best[name]=Math.max(best[name]??-1,m)}));return n}
+function bestWeekCount(){const per={};logAll().filter(l=>!l.am).forEach(l=>{const k=iso(monday(new Date(l.date)));(per[k]=per[k]||new Set()).add(l.day)});return Math.max(0,...Object.values(per).map(s=>s.size))}
+function bestStreak(){const per={};logAll().filter(l=>!l.am).forEach(l=>{const k=iso(monday(new Date(l.date)));per[k]=(per[k]||0)+1});const ks=Object.keys(per).sort();let best=0,run=0,prev=null;
+ ks.forEach(k=>{const ok=per[k]>=3;if(!ok){run=0;prev=k;return}if(prev){const d=new Date(prev);d.setDate(d.getDate()+7);run=iso(d)===k&&run>0?run+1:1}else run=1;best=Math.max(best,run);prev=k});return best}
+const strN=()=>logAll().filter(l=>!l.am).length,amN=()=>logAll().filter(l=>l.am).length,volN=()=>logAll().reduce((t,l)=>t+(l.vol||0),0);
+const daysHit=(key,f)=>Object.values(store.get(key,{})).filter(f).length;
+const BADGES=[
+ {id:"s1",t:"Erstes Training",ic:"1",c:"var(--red)",v:strN,goal:1},
+ {id:"s10",t:"10 Trainings",ic:"10",c:"var(--red)",v:strN,goal:10},
+ {id:"s25",t:"25 Trainings",ic:"25",c:"var(--blue)",v:strN,goal:25},
+ {id:"s50",t:"50 Trainings",ic:"50",c:"var(--yellow)",v:strN,goal:50},
+ {id:"s100",t:"100 Trainings",ic:"100",c:"var(--green)",v:strN,goal:100},
+ {id:"week6",t:"Volle Woche",ic:"6/6",c:"var(--green)",v:bestWeekCount,goal:6},
+ {id:"st4",t:"4 Wochen Serie",ic:"4W",c:"var(--blue)",v:bestStreak,goal:4},
+ {id:"st12",t:"12 Wochen Serie",ic:"12W",c:"var(--yellow)",v:bestStreak,goal:12},
+ {id:"pr1",t:"Erster Rekord",ic:"PR",c:"var(--red)",v:prEvents,goal:1},
+ {id:"pr25",t:"25 Rekorde",ic:"25",c:"var(--red)",v:prEvents,goal:25},
+ {id:"vol100",t:"100 Tonnen bewegt",ic:"100t",c:"var(--blue)",v:volN,goal:100000,fmtv:x=>fmtK(x/1000)+" t",fmtg:"100 t"},
+ {id:"am10",t:"Frühaufsteher",ic:"AM",c:"var(--yellow)",v:amN,goal:10},
+ {id:"low1",t:"Trotzdem da",ic:"!",c:"var(--green)",v:()=>logAll().filter(l=>l.low).length,goal:1,d:"Ein Training im Schlechter-Tag-Modus abgeschlossen"},
+ {id:"sleep7",t:"Gut geschlafen",ic:"Zz",c:"var(--blue)",v:()=>daysHit("gym.sleep",h=>h>=7),goal:7,d:"7 Nächte mit mindestens 7 Std"},
+ {id:"prot7",t:"Eiweiß-Profi",ic:"g",c:"var(--green)",v:()=>daysHit("gym.protein",a=>a.reduce((x,y)=>x+y,0)>=protGoal()),goal:7,d:"7 Tage Eiweißziel erreicht"},
+];
+BADGES.forEach(b=>b.ok=()=>b.v()>=b.goal);
+const unlockedIds=()=>BADGES.filter(b=>b.ok()).map(b=>b.id);
+function renderBadges(){
+ const n=BADGES.filter(b=>b.ok()).length;
+ $("badges").innerHTML=`<p class="sub">${n} von ${BADGES.length} freigeschaltet</p><div class="badges">${BADGES.map(b=>{const v=b.v(),ok=v>=b.goal;
+  return `<div class="badge${ok?' on':''}" style="--bc:${b.c}" title="${b.d||b.t}"><span class="ic">${b.ic}</span><b>${b.t}</b><small>${ok?'geschafft':(b.fmtv?b.fmtv(v)+' / '+b.fmtg:`${Math.min(v,b.goal)} / ${b.goal}`)}</small></div>`}).join('')}</div>`;
+}
+function celebrate(){if(reduceMotion)return;const box=document.createElement('div');box.className='confetti';box.setAttribute('aria-hidden','true');
+ const cols=['var(--red)','var(--blue)','var(--yellow)','var(--green)'];
+ for(let k=0;k<70;k++){const i=document.createElement('i');i.style.left=Math.random()*100+'vw';i.style.background=cols[k%4];i.style.animationDelay=(Math.random()*.4)+'s';i.style.setProperty('--dx',(Math.random()*120-60)+'px');i.style.setProperty('--r',(Math.random()*720-360)+'deg');box.appendChild(i)}
+ document.body.appendChild(box);setTimeout(()=>box.remove(),2600)}
+
+/* ---------- Übungs-Bibliothek ---------- */
+let libFilter="all";const libOpen=new Set();
+function renderLib(){
+ const names=Object.keys(LIB).filter(n=>libFilter==="all"||LIB[n].m.includes(libFilter)).sort((a,b)=>(LIB[a].m[0]===libFilter?0:1)-(LIB[b].m[0]===libFilter?0:1)||a.localeCompare(b,'de'));
+ const used=new Set(P.flatMap(d=>d.ex.map(x=>x.n)));
+ $("lib").innerHTML=`<p class="sub">${Object.keys(LIB).length} Übungen. Tippe auf „Ansehen“ für Animation und Technik.</p>
+ <div class="libfilter" role="group" aria-label="Nach Muskel filtern"><button data-lf="all" aria-pressed="${libFilter==='all'}">Alle</button>${Object.keys(LBL).map(k=>`<button data-lf="${k}" aria-pressed="${libFilter===k}">${LBL[k]}</button>`).join('')}</div>
+ ${names.map(n=>{const e={...LIB[n],n};const open=libOpen.has(n);
+  return `<div class="libitem"><div class="top"><b>${esc(n)}</b>${used.has(n)?'<span class="ss" style="border-color:var(--ok);color:var(--ok)">im Plan</span>':''}</div>
+  <span class="muscles" style="color:var(--muted)">${e.m.map(k=>LBL[k]).join(' · ')}</span>
+  ${open?`${mediaHTML(e)}<p class="cue">${e.c}</p><div class="libadd"><label class="sub" for="la-${esc(n)}">Hinzufügen zu</label><select id="la-${esc(n)}" data-lib-day>${P.map((d,i)=>`<option value="${i}">${d.wd}: ${esc(d.short)}</option>`).join('')}</select><button class="btn" data-lib-add="${esc(n)}">Hinzufügen</button><a class="btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">Video</a></div>`:''}
+  <button class="reset" data-lib-open="${esc(n)}" style="justify-self:start">${open?'Schließen':'Ansehen'}</button></div>`}).join('')}`;
+ hookLibAnims();
+}
+function hookLibAnims(){if(reduceMotion)return;document.querySelectorAll('#lib .media.anim').forEach(el=>{io?io.observe(el):visible.add(el)})}
+$("lib").addEventListener('click',e=>{
+ const f=e.target.closest('[data-lf]');if(f){libFilter=f.dataset.lf;renderLib();return}
+ const o=e.target.closest('[data-lib-open]');if(o){const n=o.dataset.libOpen;libOpen.has(n)?libOpen.delete(n):libOpen.add(n);const y=window.scrollY;renderLib();window.scrollTo({top:y});return}
+ const a=e.target.closest('[data-lib-add]');if(a){const n=a.dataset.libAdd;const sel=a.parentElement.querySelector('select');const i=+sel.value;P[i].ex.push({n,s:3,r:LIB[n].bw?"10–15":"10–12",p:75});savePlan(i);
+  a.textContent="Hinzugefügt ✓";a.disabled=true;setTimeout(()=>{const y=window.scrollY;renderPlan();window.scrollTo({top:y})},900)}
+});
+const pauseF=()=>store.get("gym.pauseF",1);
+
 /* ---------- Einstellungen ---------- */
 const MEDIA_SUB={anim:"Gezeichnete Figur zeigt die Bewegung. Tippen pausiert. Funktioniert immer offline.",photo:"Echte Fotos von Start- und Endposition im Wechsel. Nach dem ersten Laden auch offline.",off:"Kompakte Ansicht ohne Bilder, nur Muskelgrafik und Eingaben."};
 function applyTheme(){if(theme==="system")document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',theme)}
 function renderSettings(){
  document.querySelectorAll('#seg-media button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===media));
  document.querySelectorAll('#seg-theme button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===theme));
+ document.querySelectorAll('#seg-pause button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===pauseF()));
  $("media-sub").textContent=MEDIA_SUB[media];$("beginner").checked=beginner;$("sound").checked=soundOn;$("deload").checked=!!deloadOn();
 }
 $("seg-media").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;media=b.dataset.v;store.set("gym.media",media);renderSettings()});
+$("seg-pause").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;store.set("gym.pauseF",+b.dataset.v);renderSettings()});
 $("seg-theme").addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;theme=b.dataset.v;store.set("gym.theme",theme);applyTheme();renderSettings()});
 $("beginner").addEventListener('change',e=>{beginner=e.target.checked;store.set("gym.beginner",beginner)});
 $("deload").addEventListener('change',e=>{store.set("gym.deloadUntil",e.target.checked?Date.now()+7*864e5:Date.now())});
@@ -1418,7 +1539,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 /* ---------- Backup ---------- */
 function exportData(){const data={};try{for(let k=0;k<localStorage.length;k++){const key=localStorage.key(k);if(key.startsWith("gym."))data[key]=localStorage.getItem(key)}}catch(e){}
- return JSON.stringify({app:"tims-gym-plan",version:7,exported:new Date().toISOString(),data})}
+ return JSON.stringify({app:"tims-gym-plan",version:8,exported:new Date().toISOString(),data})}
 function bkStatus(t,ok){$("bk-status").textContent=t;$("bk-status").classList.toggle('ok',!!ok)}
 $("bk-save").onclick=async()=>{
  const json=exportData();const name=`gym-backup-${iso(new Date())}.json`;

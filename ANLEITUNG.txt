@@ -1,4 +1,4 @@
-GYM-PLAN APP – UPDATE AUF VERSION 7
+GYM-PLAN APP – UPDATE AUF VERSION 8
 
 HOCHLADEN
 1. Im Repository "GymApp": "Add file" -> "Upload files".
@@ -6,14 +6,21 @@ HOCHLADEN
    (der Ordner hat jetzt mehr Fotos, alte werden einfach ersetzt).
 3. "Commit changes" klicken.
 4. 5-10 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
-   Ab jetzt erkennst du die neue Version an "Version 7" ganz unten in den Einstellungen.
+   Ab jetzt erkennst du die neue Version an "Version 8" ganz unten in den Einstellungen.
 
 WICHTIG
 Deine Trainings, Rekorde und Einstellungen bleiben erhalten.
 Nur angefangene, noch nicht abgeschlossene Sätze werden einmal zurückgesetzt,
 weil sich die Reihenfolge der Übungen geändert hat.
 
-NEU IN VERSION 7
+NEU IN VERSION 8
+- Sprüche im Tab "Ich" antippen zum Durchschalten, Herz für Favoriten
+- Erfolge mit 15 Abzeichen im Fortschritt-Tab
+- Konfetti bei neuen Rekorden und Erfolgen
+- Übungs-Bibliothek im Plan-Tab mit Filter nach Muskel
+- Pausenlänge in den Einstellungen
+
+AUS VERSION 7
 - Tab "Ich" (vorher "Kopf"): Schlaf, Eiweiß-Zähler, Körper-Tracking (Gewicht, Brust, Oberarm, Taille)
 - Warnung bei wenig Schlaf
 - Plan-Editor: im Plan-Tab bei jedem Tag auf "Bearbeiten"
