@@ -1,47 +1,28 @@
-GYM-PLAN APP – UPDATE AUF VERSION 8
+GYM-PLAN APP – KOMPLETTPAKET VERSION 15
+
+Dieses Paket enthält ALLES. Du musst keine alten Updates nachholen.
 
 HOCHLADEN
-1. Im Repository "GymApp": "Add file" -> "Upload files".
-2. index.html, sw.js und den kompletten Ordner img hineinziehen
-   (der Ordner hat jetzt mehr Fotos, alte werden einfach ersetzt).
-3. "Commit changes" klicken.
-4. 5-10 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
-   Ab jetzt erkennst du die neue Version an "Version 8" ganz unten in den Einstellungen.
+1. Zip auf dem PC entpacken.
+2. Im Repository "GymApp": "Add file" -> "Upload files".
+3. ALLE Dateien aus dem entpackten Ordner markieren (Strg + A) und hineinziehen.
+   Gleichnamige Dateien werden einfach ersetzt, nichts geht kaputt.
+4. "Commit changes" klicken.
+5. 5-10 Minuten warten. App am iPhone öffnen, komplett schließen, nochmal öffnen.
+   In den Einstellungen ganz unten muss "Version 15" stehen.
 
-WICHTIG
 Deine Trainings, Rekorde und Einstellungen bleiben erhalten.
-Nur angefangene, noch nicht abgeschlossene Sätze werden einmal zurückgesetzt,
-weil sich die Reihenfolge der Übungen geändert hat.
+Angefangene, noch nicht abgeschlossene Sätze werden einmal zurückgesetzt.
 
-NEU IN VERSION 8
-- Sprüche im Tab "Ich" antippen zum Durchschalten, Herz für Favoriten
-- Erfolge mit 15 Abzeichen im Fortschritt-Tab
-- Konfetti bei neuen Rekorden und Erfolgen
-- Übungs-Bibliothek im Plan-Tab mit Filter nach Muskel
-- Pausenlänge in den Einstellungen
-
-AUS VERSION 7
-- Tab "Ich" (vorher "Kopf"): Schlaf, Eiweiß-Zähler, Körper-Tracking (Gewicht, Brust, Oberarm, Taille)
-- Warnung bei wenig Schlaf
-- Plan-Editor: im Plan-Tab bei jedem Tag auf "Bearbeiten"
-- Aufwärmsätze, Scheibenrechner, geschätztes Maximalgewicht (1RM)
-- Kalender und Wochen-Serie im Fortschritt-Tab
-- Wochenrückblick als Obsidian-Notiz (kopieren oder teilen)
-- Gym-Tasche-Checkliste im Plan-Tab
-
-AUS VERSION 6
-- Neuer Tab "Kopf": Gedanke des Tages, Stimmung, Schlechter-Tag-Modus, dein Warum, Erfolge, Hilfe-Nummern
-
-AUS VERSION 5
-- Neuer Plan: 7-8 Übungen pro Abend, ca. 75-85 Min
-  (mehr Lat, Bauch 6x pro Woche, unterer Rücken, Po, Beinrückseite, Nacken, Unterarme)
-- Früh-Modus: lockere Einheiten für morgens (Ausdauer, Bauch-Stabilität, Beweglichkeit)
-- Supersätze am Samstag
-- Muskel-Bilanz: Sätze pro Muskelgruppe pro Woche
-- Übung tauschen, wenn eine Maschine besetzt ist
-- Notizen pro Übung (z. B. Sitzhöhe)
-- Trainingsdauer und bewegtes Gewicht
-- Erholungswoche (schlägt sich nach ca. 6 Wochen selbst vor)
-- Ausblick auf kommende Funktionen im Plan-Tab
+WAS SEIT VERSION 9 NEU IST
+- V10: Oberkörper-Fokus, Beine nur kurz am Mittwoch; Drop-Sätze und Rest-Pause
+- V11: Dips am Barren statt Maschine, Bank-Dips als Alternative
+- V12: Jede Übung frei tauschbar ("nur heute" oder dauerhaft);
+       T-Bar Rudern und Hip Thrust Maschine
+- V13: Training zählt ab Start (auch nach Mitternacht richtig);
+       Kalender: nachtragen, verschieben, löschen; alte Einträge werden repariert
+- V14: Schrägbank-Brustpresse (Maschine)
+- V15: Eingetragene Sätze zählen automatisch (ohne Abhaken);
+       "Training starten"-Button; Pausentimer abschaltbar (Aus/Kurz/Mittel/Normal)
 
 Übungsfotos: Free Exercise DB (github.com/yuhonas/free-exercise-db), gemeinfrei (Unlicense).

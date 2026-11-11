@@ -287,6 +287,24 @@ section.info{display:grid;gap:12px}
 @keyframes fall{to{transform:translate3d(var(--dx),105vh,0) rotate(var(--r));opacity:.9}}
 .newbadge{border:2px solid var(--ok);border-radius:12px;padding:10px 12px;font-size:.92rem}
 .libitem .top .ss{white-space:nowrap;flex:none}
+
+.setrow.tech .set{border-color:var(--hit);color:var(--hit);font-size:.78rem}
+.setrow.tech .set.on{background:var(--hit);color:var(--on-hit)}
+.techinfo{font-size:.85rem;border-left:3px solid var(--hit);padding:4px 10px;background:var(--bg);border-radius:0 8px 8px 0}
+.techinfo.off{border-left-color:var(--line);color:var(--muted)}
+
+.cal button.d{font:inherit;font-family:var(--mono);font-size:.78rem;border:none;cursor:pointer;padding:0}
+.cal .d.sel{outline:2px solid var(--hit);outline-offset:1px}
+.cal .d.fut{opacity:.4}
+.calday{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:8px}
+.calentry{display:grid;gap:6px;background:var(--bg);border-radius:10px;padding:8px 10px}
+.calentry small{color:var(--muted)}
+.calbtns{display:flex;gap:6px;flex-wrap:wrap}
+.calbtns .btn{padding:6px 10px;font-size:.82rem}
+.caladd{display:grid;gap:6px}
+
+.seg.four{grid-template-columns:repeat(4,1fr)}
+#start-btn{margin-top:4px}
 </style>
 </head>
 <body>
@@ -312,7 +330,7 @@ section.info{display:grid;gap:12px}
   <section class="view" id="v-plan" data-view="plan" hidden>
     <header style="display:grid;gap:6px">
       <h1>Wochenplan</h1>
-      <p class="lead">Abends Kraft, 75–85 Minuten. Früh optional locker: Ausdauer, Bauch-Stabilität und Beweglichkeit. Sonntag Pause.</p>
+      <p class="lead">Abends Kraft mit Fokus auf den Oberkörper, 60–80 Minuten. Beine nur kurz am Mittwoch. Früh optional locker: Ausdauer, Bauch-Stabilität und Beweglichkeit. Sonntag Pause.</p>
     </header>
     <div id="plan" style="display:grid;gap:12px"></div>
     <section class="info">
@@ -501,9 +519,9 @@ section.info{display:grid;gap:12px}
         <label class="mode" for="beginner"><input type="checkbox" id="beginner"><span><b>Einsteiger-Modus</b> (Woche 1–3): höchstens 3 Sätze pro Übung.</span></label>
         <label class="mode" for="rotation"><input type="checkbox" id="rotation"><span><b>Plan fortlaufend</b>: Die App startet immer mit dem nächsten Tag nach deinem letzten Training, egal welcher Wochentag. Gut, wenn du Tage verschiebst oder auch sonntags trainierst.</span></label>
         <label class="mode" for="deload"><input type="checkbox" id="deload"><span><b>Erholungswoche</b>: 2 Sätze pro Übung, ca. 30 % weniger Gewicht. Schaltet sich nach 7 Tagen von selbst ab.</span></label>
-        <div class="opt"><span class="lbl">Pausenlänge</span>
-          <div class="seg" role="group" aria-label="Pausenlänge" id="seg-pause"><button data-v="0.7">Kürzer</button><button data-v="1">Normal</button><button data-v="1.3">Länger</button></div>
-          <span class="sub">Kürzer spart Zeit, länger hilft bei schweren Sätzen. Supersatz-Wechsel bleiben kurz.</span></div>
+        <div class="opt"><span class="lbl">Pausentimer</span>
+          <div class="seg four" role="group" aria-label="Pausentimer" id="seg-pause"><button data-v="0">Aus</button><button data-v="0.5">Kurz</button><button data-v="0.75">Mittel</button><button data-v="1">Normal</button></div>
+          <span class="sub">Startet nach jedem abgehakten Satz. „Aus" heißt: kein Timer, du machst Pause nach Gefühl. Drop- und Rest-Pause-Timer laufen trotzdem.</span></div>
         <label class="mode" for="sound"><input type="checkbox" id="sound"><span><b>Ton am Pausenende.</b> Beim iPhone muss der Lautlos-Schalter aus sein.</span></label>
       </div>
     </section>
@@ -536,7 +554,7 @@ section.info{display:grid;gap:12px}
         <p class="status" id="bk-status" aria-live="polite"></p>
       </div>
     </section>
-    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 9.</p>
+    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 15.</p>
   </section>
 </div>
 
@@ -721,13 +739,14 @@ const MAP={
  "Bankdrücken (Multipresse oder Langhantel)":"benchSmith","Schrägbankdrücken Kurzhantel":"inclineDB","Schulterpresse (Maschine)":"shoulderPress","Butterfly (Maschine)":"flyMachine","Seitheben Kurzhantel":"lateralDB","Trizepsdrücken am Kabel (Seil)":"pushdown",
  "Latzug breit":"pulldown","Rudern sitzend am Kabel":"rowCable","Reverse Butterfly (Maschine)":"reverseFly","Bizeps-Curls Kurzhantel":"curlDB","Hammer-Curls Kurzhantel":"hammerDB",
  "Beinpresse":"legPress","Beinstrecker (Maschine)":"legExt","Beinbeuger (Maschine)":"legCurl","Wadenheben (Maschine)":"calf","Crunches am Kabel":"cableCrunch","Unterarmstütz (Plank)":"plank",
- "Schulterdrücken Kurzhantel (sitzend)":"shoulderPressDB","Brustpresse (Maschine)":"chestMachine","Cable Crossover":"crossover","Seitheben am Kabel (einarmig)":"lateralCable","Dips (assistiert an der Maschine)":"dip","Trizeps Überkopf am Kabel":"overheadExt",
+ "Schulterdrücken Kurzhantel (sitzend)":"shoulderPressDB","Brustpresse (Maschine)":"chestMachine","Cable Crossover":"crossover","Seitheben am Kabel (einarmig)":"lateralCable","Dips (assistiert an der Maschine)":"dip","Dips am Barren":"dip","Schrägbank-Brustpresse (Maschine)":"inclineMachine","T-Bar Rudern (Brustpolster)":"rowMachine","Hip Thrust Maschine":"hipThrust","Trizeps Überkopf am Kabel":"overheadExt",
  "Rudern an der Maschine (Brustpolster)":"rowMachine","Latzug enger Griff":"pulldownClose","Face Pulls (Kabel, Seil)":"facePull","SZ-Curls":"curlBar","Bizeps-Curls am Kabel":"curlCable",
  "Schrägbank-Curls Kurzhantel":"curlIncline","Trizepsdrücken am Kabel (Stange)":"pushdownBar","Hammer-Curls am Kabel (Seil)":"curlCable","Beinheben hängend":"legRaise"
 };
 D.shoulderPressDB={...D.shoulderPress,opt:{db:1}};
 D.pulldownClose={...D.pulldown,A:{...D.pulldown.A,ua:8,fa:6},B:{ua:190,fa:4}};
 D.pushdownBar=D.pushdown;
+D.inclineMachine={v:"side",A:D.inclineDB.A,B:D.inclineDB.B,draw:(J,P)=>drawSide(J,{back:backrest({hip:J.hip,t:P.t},8,10)+seat(108,112,30)})+ln([J.ha[0],J.ha[1]-7],[J.ha[0],J.ha[1]+7],4,WT)};
 function frame(key,p){
  const d=D[key];if(!d)return"";
  const P=mix(d.A,{...d.A,...d.B},p);
@@ -746,11 +765,14 @@ const TYPES={push:{c:"var(--red)",on:"#fff"},pull:{c:"var(--blue)",on:"#fff"},le
 const LIB={
  "Bankdrücken (Multipresse oder Langhantel)":{ph:"Smith_Machine_Bench_Press",bar:20,m:["chest","delt","tri"],c:"Anfangs an der Multipresse oder mit Spotter. Stange zur unteren Brust, Schulterblätter zusammen, Füße fest am Boden.",q:"Bankdrücken richtig Anfänger",alt:["Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
  "Bankdrücken Kurzhantel":{ph:"Dumbbell_Bench_Press",db:1,m:["chest","delt","tri"],c:"Hanteln kontrolliert bis Brusthöhe, oben nicht aneinanderschlagen. Gewicht pro Hantel eintragen.",q:"Kurzhantel Bankdrücken Technik",alt:["Bankdrücken (Multipresse oder Langhantel)","Brustpresse (Maschine)"]},
- "Schrägbankdrücken Kurzhantel":{ph:"Incline_Dumbbell_Press",db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik",alt:["Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
- "Brustpresse (Maschine)":{ph:"Machine_Bench_Press",m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen",alt:["Bankdrücken Kurzhantel","Bankdrücken (Multipresse oder Langhantel)"]},
+ "Schrägbankdrücken Kurzhantel":{ph:"Incline_Dumbbell_Press",db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik",alt:["Schrägbank-Brustpresse (Maschine)","Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
+ "Schrägbank-Brustpresse (Maschine)":{ph:"Leverage_Incline_Chest_Press",m:["chest","delt","tri"],c:"Für die obere Brust. Sitz so einstellen, dass die Griffe etwa auf Höhe der oberen Brust sind. Schulterblätter nach hinten-unten, Rücken fest am Polster, nach oben-vorne drücken und langsam zurück. Als Gewicht die aufgelegten Scheiben eintragen (pro Seite oder gesamt, aber immer gleich).",q:"Incline Chest Press Maschine Technik",alt:["Schrägbankdrücken Kurzhantel","Brustpresse (Maschine)"]},
+ "Brustpresse (Maschine)":{ph:"Machine_Bench_Press",m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen",alt:["Schrägbank-Brustpresse (Maschine)","Bankdrücken Kurzhantel","Bankdrücken (Multipresse oder Langhantel)"]},
  "Butterfly (Maschine)":{ph:"Butterfly",m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik",alt:["Cable Crossover"]},
  "Cable Crossover":{ph:"Cable_Crossover",m:["chest"],c:"Leicht nach vorne lehnen, Hände vor der Brust zusammenführen.",q:"Cable Crossover Brust Technik",alt:["Butterfly (Maschine)"]},
- "Dips (assistiert an der Maschine)":{ph:"Dips_-_Triceps_Version",phNote:"freie Dips, gleiche Bewegung",assist:1,m:["tri","chest"],c:"Hilfsgewicht eintragen. Weniger Hilfe heißt stärker. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik",alt:["Trizepsdrücken am Kabel (Stange)"]},
+ "Dips am Barren":{ph:"Dips_-_Triceps_Version",bw:1,m:["tri","chest"],c:"Oberkörper leicht nach vorne für mehr Brust. Nur so tief, bis die Oberarme etwa waagerecht sind, nicht tiefer als es in der Schulter angenehm ist. Schaffst du keine 6? Dann nur langsam runterlassen (3–5 Sek.) und mit den Füßen wieder hoch. Später mit Dip-Gürtel Gewicht dazu.",q:"Dips am Barren richtig Anfänger",alt:["Bank-Dips","Trizepsdrücken am Kabel (Stange)"]},
+ "Bank-Dips":{ph:"Bench_Dips",bw:1,m:["tri","chest"],c:"Hände hinter dir auf der Bank, Beine angewinkelt (leichter) oder gestreckt (schwerer). Langsam runter, bis die Oberarme waagerecht sind. Schultern bleiben unten.",q:"Bank Dips richtig ausführen",alt:["Dips am Barren","Trizepsdrücken am Kabel (Stange)"]},
+ "Dips (assistiert an der Maschine)":{ph:"Dips_-_Triceps_Version",phNote:"freie Dips, gleiche Bewegung",assist:1,m:["tri","chest"],c:"Hilfsgewicht eintragen. Weniger Hilfe heißt stärker. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik",alt:["Dips am Barren","Bank-Dips"]},
  "Schulterpresse (Maschine)":{ph:"Machine_Shoulder_Military_Press",m:["delt","tri"],c:"Rücken fest am Polster, nicht ins Hohlkreuz drücken.",q:"Schulterpresse Maschine Technik",alt:["Schulterdrücken Kurzhantel (sitzend)"]},
  "Schulterdrücken Kurzhantel (sitzend)":{ph:"Seated_Dumbbell_Press",db:1,m:["delt","tri"],c:"Lehne fast senkrecht, Hanteln bis Ohrhöhe senken.",q:"Kurzhantel Schulterdrücken sitzend Technik",alt:["Schulterpresse (Maschine)"]},
  "Seitheben Kurzhantel":{ph:"Side_Lateral_Raise",db:1,m:["delt"],c:"Leichtes Gewicht. Arme bis Schulterhöhe, kein Schwung aus dem Körper.",q:"Seitheben Kurzhantel richtig",alt:["Seitheben am Kabel (einarmig)"]},
@@ -763,9 +785,10 @@ const LIB={
  "Latzug breit":{ph:"Wide-Grip_Lat_Pulldown",m:["lat","bi"],c:"Stange zur oberen Brust, Brust raus, nicht weit zurücklehnen.",q:"Latzug richtig ausführen",alt:["Latzug enger Griff","Überzüge am Kabel (gestreckte Arme)"]},
  "Latzug enger Griff":{ph:"V-Bar_Pulldown",m:["lat","bi"],c:"V-Griff zur Brust, Ellbogen nach unten führen.",q:"Latzug enger Griff Technik",alt:["Latzug breit"]},
  "Überzüge am Kabel (gestreckte Arme)":{ph:"Straight-Arm_Pulldown",m:["lat"],c:"Arme fast gestreckt, Stange in einem Bogen bis zu den Oberschenkeln ziehen. Spür den Lat.",q:"Straight Arm Pulldown Technik",alt:["Latzug enger Griff"]},
- "Rudern sitzend am Kabel":{ph:"Seated_Cable_Rows",m:["lat","bi","delt"],c:"Griff zum Bauchnabel, Schulterblätter zusammen, Oberkörper ruhig.",q:"Rudern sitzend Kabelzug Technik",alt:["Rudern an der Maschine (Brustpolster)","Einarmiges Kurzhantel-Rudern"]},
- "Rudern an der Maschine (Brustpolster)":{ph:"Leverage_Iso_Row",m:["lat","bi","delt"],c:"Brust am Polster, Ellbogen eng nach hinten ziehen.",q:"Rudermaschine Brustpolster Technik",alt:["Rudern sitzend am Kabel","Einarmiges Kurzhantel-Rudern"]},
+ "Rudern sitzend am Kabel":{ph:"Seated_Cable_Rows",m:["lat","bi","delt"],c:"Griff zum Bauchnabel, Schulterblätter zusammen, Oberkörper ruhig.",q:"Rudern sitzend Kabelzug Technik",alt:["Rudern an der Maschine (Brustpolster)","T-Bar Rudern (Brustpolster)","Einarmiges Kurzhantel-Rudern"]},
+ "Rudern an der Maschine (Brustpolster)":{ph:"Leverage_Iso_Row",m:["lat","bi","delt"],c:"Brust am Polster, Ellbogen eng nach hinten ziehen.",q:"Rudermaschine Brustpolster Technik",alt:["T-Bar Rudern (Brustpolster)","Rudern sitzend am Kabel","Einarmiges Kurzhantel-Rudern"]},
  "Einarmiges Kurzhantel-Rudern":{ph:"One-Arm_Dumbbell_Row",db:1,m:["lat","bi"],c:"Knie und Hand auf der Bank, Rücken gerade. Ellbogen Richtung Hüfte ziehen. Sätze pro Seite.",q:"Einarmiges Kurzhantel Rudern Technik",alt:["Rudern sitzend am Kabel","Rudern an der Maschine (Brustpolster)"]},
+ "T-Bar Rudern (Brustpolster)":{ph:"Lying_T-Bar_Row",m:["lat","bi","delt"],c:"Füße auf die Trittplatten, Brust aufs Polster. Enger Parallelgriff für die Rückenmitte, breiter Griff für den oberen Rücken. Ellbogen nach hinten ziehen, oben Schulterblätter zusammen. Als Gewicht die aufgelegten Scheiben eintragen.",q:"T-Bar Rudern Brustpolster Technik",alt:["Rudern an der Maschine (Brustpolster)","Rudern sitzend am Kabel","Einarmiges Kurzhantel-Rudern"]},
  "Shrugs Kurzhantel":{ph:"Dumbbell_Shrug",db:1,m:["trap"],c:"Schultern gerade nach oben zu den Ohren ziehen, oben 1 Sek halten. Nicht kreisen.",q:"Kurzhantel Shrugs Technik",alt:[]},
  "Hyperextensions":{ph:"Hyperextensions_Back_Extensions",bw:1,m:["lowback","glute","ham"],c:"Langsam runter, hoch bis der Körper gerade ist, nicht ins Hohlkreuz überstrecken.",q:"Hyperextensions richtig ausführen",alt:["Rumänisches Kreuzheben Kurzhantel"]},
  "Bizeps-Curls Kurzhantel":{ph:"Dumbbell_Bicep_Curl",db:1,m:["bi"],c:"Ellbogen fest neben dem Körper, oben Handfläche nach außen drehen.",q:"Bizeps Curls Kurzhantel richtig",alt:["SZ-Curls","Bizeps-Curls am Kabel"]},
@@ -778,7 +801,8 @@ const LIB={
  "Beinpresse":{ph:"Leg_Press",m:["quad","glute","ham"],c:"Füße schulterbreit, Knie zeigen Richtung Zehen, unten Po nicht abheben.",q:"Beinpresse richtig ausführen",alt:["Kniebeuge (Multipresse)"]},
  "Kniebeuge (Multipresse)":{ph:"Smith_Machine_Squat",bar:20,m:["quad","glute"],c:"Füße leicht vor der Stange, Brust aufrecht, so tief wie es mit geradem Rücken geht.",q:"Kniebeuge Multipresse Technik",alt:["Beinpresse"]},
  "Rumänisches Kreuzheben Kurzhantel":{ph:"Stiff-Legged_Dumbbell_Deadlift",db:1,m:["ham","glute","lowback"],c:"Knie leicht gebeugt, Po nach hinten schieben, Rücken gerade. Runter bis du die Dehnung hinten im Bein spürst.",q:"Rumänisches Kreuzheben Kurzhantel Technik",alt:["Hip Thrust","Beinbeuger (Maschine)"]},
- "Hip Thrust":{ph:"Barbell_Hip_Thrust",bar:20,m:["glute","ham"],c:"Schulterblätter auf der Bank, Kinn zur Brust. Oben Po fest anspannen, 1 Sek halten. Gibt es auch als Maschine.",q:"Hip Thrust richtig ausführen",alt:["Rumänisches Kreuzheben Kurzhantel"]},
+ "Hip Thrust":{ph:"Barbell_Hip_Thrust",bar:20,m:["glute","ham"],c:"Schulterblätter auf der Bank, Kinn zur Brust. Oben Po fest anspannen, 1 Sek halten. Gibt es auch als Maschine.",q:"Hip Thrust richtig ausführen",alt:["Hip Thrust Maschine","Rumänisches Kreuzheben Kurzhantel"]},
+ "Hip Thrust Maschine":{ph:"Barbell_Hip_Thrust",phNote:"gleiche Bewegung mit Langhantel",m:["glute","ham"],c:"Rücken ans Polster, Gurt über die Hüfte, Füße hüftbreit auf die Plattform. Hüfte hochdrücken, bis der Körper gerade ist, oben den Po 1 Sek. anspannen. Als Gewicht die aufgelegten Scheiben eintragen.",q:"Hip Thrust Maschine Technik",alt:["Hip Thrust","Rumänisches Kreuzheben Kurzhantel"]},
  "Beinstrecker (Maschine)":{ph:"Leg_Extensions",m:["quad"],c:"Oben kurz halten, langsam ablassen.",q:"Beinstrecker Maschine Technik",alt:["Beinpresse"]},
  "Beinbeuger (Maschine)":{ph:"Seated_Leg_Curl",m:["ham"],c:"Polster knapp über der Ferse, langsam zurücklassen.",q:"Beinbeuger Maschine Technik",alt:["Rumänisches Kreuzheben Kurzhantel"]},
  "Wadenheben (Maschine)":{ph:"Standing_Calf_Raises",m:["calf"],c:"Unten voll dehnen, oben 1 Sek halten.",q:"Wadenheben Maschine Technik",alt:[]},
@@ -791,32 +815,32 @@ const LIB={
 };
 
 /* ---------- Plan (Abend, Kraft) ---------- */
-const X=(n,s,r,p,ss)=>({n,s,r,p,ss});
+const X=(n,s,r,p,ss,t)=>({n,s,r,p,...(ss?{ss}:{}),...(t?{t}:{})});
 const P_DEFAULT=[
 {id:"mo",wd:"Mo",short:"Push",type:"push",name:"Push A: Brust schwer",time:"ca. 80 Min",ex:[
  X("Bankdrücken (Multipresse oder Langhantel)",4,"6–10",150),X("Schrägbankdrücken Kurzhantel",3,"8–12",90),X("Schulterpresse (Maschine)",3,"8–12",90),
- X("Butterfly (Maschine)",3,"12–15",60),X("Seitheben Kurzhantel",3,"12–15",60),X("Trizepsdrücken am Kabel (Seil)",3,"12–15",60),
- X("Kniebeuge (Multipresse)",3,"8–12",120),X("Crunches am Kabel",3,"12–15",60)]},
+ X("Butterfly (Maschine)",3,"12–15",60,"","drop"),X("Seitheben Kurzhantel",3,"12–15",60),X("Trizepsdrücken am Kabel (Seil)",3,"12–15",60,"","drop"),
+ X("Trizeps Überkopf am Kabel",3,"12–15",60),X("Crunches am Kabel",3,"12–15",60)]},
 {id:"di",wd:"Di",short:"Pull",type:"pull",name:"Pull A: Lat breit + Bizeps",time:"ca. 80 Min",ex:[
  X("Latzug breit",4,"8–12",120),X("Rudern sitzend am Kabel",3,"10–12",90),X("Überzüge am Kabel (gestreckte Arme)",3,"12–15",60),
  X("Reverse Butterfly (Maschine)",3,"12–15",60),X("Shrugs Kurzhantel",3,"10–15",60),X("Bizeps-Curls Kurzhantel",3,"10–12",60),
  X("Hammer-Curls Kurzhantel",3,"10–12",60),X("Hyperextensions",3,"12–15",60)]},
-{id:"mi",wd:"Mi",short:"Beine",type:"legs",name:"Beine, Po + Bauch",time:"ca. 85 Min",ex:[
- X("Beinpresse",4,"10–12",150),X("Rumänisches Kreuzheben Kurzhantel",3,"8–12",120),X("Beinstrecker (Maschine)",3,"12–15",60),
- X("Beinbeuger (Maschine)",3,"10–12",60),X("Hip Thrust",3,"8–12",90),X("Wadenheben (Maschine)",4,"12–15",60),
+{id:"mi",wd:"Mi",short:"Mix",type:"legs",name:"Schultern, Bauch + Beine kurz",time:"ca. 50 Min",ex:[
+ X("Beinpresse",3,"10–12",120),X("Rumänisches Kreuzheben Kurzhantel",2,"10–12",90),X("Seitheben am Kabel (einarmig)",3,"12–15",45,"","drop"),
+ X("Unterarm-Curls Kurzhantel",3,"15–20",45),
  X("Beinheben hängend",3,"8–12",60),X("Unterarmstütz (Plank)",3,"30–45 s",45)]},
 {id:"do",wd:"Do",short:"Push",type:"push",name:"Push B: Schultern zuerst",time:"ca. 75 Min",ex:[
- X("Schulterdrücken Kurzhantel (sitzend)",4,"8–12",120),X("Brustpresse (Maschine)",3,"10–12",90),X("Cable Crossover",3,"12–15",60),
- X("Seitheben am Kabel (einarmig)",3,"12–15",45),X("Dips (assistiert an der Maschine)",3,"8–12",90),X("Trizepsdrücken am Kabel (Stange)",3,"10–12",60),
+ X("Schulterdrücken Kurzhantel (sitzend)",4,"8–12",120),X("Brustpresse (Maschine)",3,"10–12",90),X("Cable Crossover",3,"12–15",60,"","drop"),
+ X("Seitheben am Kabel (einarmig)",3,"12–15",45),X("Dips am Barren",3,"6–12",90),X("Trizepsdrücken am Kabel (Stange)",3,"10–12",60),
  X("Seitstütz",3,"30–45 s",30)]},
 {id:"fr",wd:"Fr",short:"Pull",type:"pull",name:"Pull B: Rücken dick + Bizeps",time:"ca. 80 Min",ex:[
  X("Rudern an der Maschine (Brustpolster)",4,"8–12",120),X("Latzug enger Griff",3,"10–12",90),X("Einarmiges Kurzhantel-Rudern",3,"10–12",60),
- X("Face Pulls (Kabel, Seil)",3,"15",60),X("SZ-Curls",3,"8–12",75),X("Beinbeuger (Maschine)",3,"10–12",60),
- X("Unterarm-Curls Kurzhantel",3,"15–20",45),X("Bauchmaschine (Crunch)",3,"12–15",60)]},
+ X("Face Pulls (Kabel, Seil)",3,"15",60),X("SZ-Curls",3,"8–12",75),X("Bizeps-Curls am Kabel",3,"12–15",60,"","drop"),
+ X("Unterarm-Curls Kurzhantel",3,"15–20",45),X("Bauchmaschine (Crunch)",3,"12–15",60,"","rp")]},
 {id:"sa",wd:"Sa",short:"Arme",type:"arms",name:"Arme + Schultern (Supersätze)",time:"ca. 75 Min",ex:[
  X("Seitheben Kurzhantel",4,"12–15",60),X("Schrägbank-Curls Kurzhantel",3,"10–12",10,"A"),X("Trizepsdrücken am Kabel (Stange)",3,"10–12",90,"A"),
  X("Hammer-Curls am Kabel (Seil)",3,"12",10,"B"),X("Trizeps Überkopf am Kabel",3,"12–15",90,"B"),X("Shrugs Kurzhantel",3,"10–15",60),
- X("Wadenheben (Maschine)",3,"15",45),X("Russian Twist",3,"15–20",45)]}
+ X("Crunches am Kabel",3,"12–15",60),X("Russian Twist",3,"15–20",45)]}
 ];
 /* ---------- Früheinheiten (locker) ---------- */
 const AM={
@@ -831,7 +855,7 @@ const AM={
 const AMDAYS=[["mo","Mo"],["di","Di"],["mi","Mi"],["do","Do"],["fr","Fr"],["sa","Sa"],["so","So"]];
 
 const LBL={chest:"Brust",delt:"Schultern",tri:"Trizeps",bi:"Bizeps",lat:"Rücken/Lat",quad:"Oberschenkel",ham:"Beinrückseite",glute:"Po",calf:"Waden",fore:"Unterarm",abs:"Bauch",lowback:"Unterer Rücken",trap:"Nacken"};
-const ZONE={chest:[10,20],delt:[12,30],tri:[10,22],bi:[10,22],lat:[10,20],quad:[8,16],ham:[6,14],glute:[6,14],calf:[6,12],fore:[4,10],abs:[8,16],lowback:[3,8],trap:[4,10]};
+const ZONE={chest:[10,20],delt:[12,34],tri:[10,22],bi:[10,22],lat:[10,20],quad:[3,10],ham:[2,10],glute:[2,10],calf:[0,8],fore:[4,10],abs:[8,16],lowback:[3,8],trap:[4,10]};
 function fig(ms){
  const on=k=>ms.includes(k)?'var(--hit)':'var(--muscle)';
  return `<svg viewBox="0 0 60 104" role="img" aria-label="Trainierte Muskeln: ${ms.map(k=>LBL[k]).join(', ')}">
@@ -871,6 +895,13 @@ const shortDate=d=>new Date(d).toLocaleDateString('de-DE',{day:'2-digit',month:'
 /* Planwechsel auf Version 5: angefangene Eingaben passen nicht mehr zu den neuen Positionen */
 Object.assign(LIB,store.get("gym.customLib",{}));
 let P=store.get("gym.plan",null)||JSON.parse(JSON.stringify(P_DEFAULT));
+if(!Array.isArray(P)||P.length!==P_DEFAULT.length||!P.every(d=>d&&Array.isArray(d.ex)))P=JSON.parse(JSON.stringify(P_DEFAULT));
+if(!store.get("gym.logFix",0)){const lg=store.get("gym.log",[]);lg.forEach(l=>{if(l.am)return;const d=new Date(l.date);
+ if(l.dur&&l.dur>300){l.date=new Date(d.getTime()-l.dur*60000).toISOString();l.dur=null}
+ else if(d.getHours()<4){l.date=new Date(d.getTime()-(l.dur||60)*60000).toISOString()}});
+ lg.sort((a,b)=>a.date<b.date?-1:1);store.set("gym.log",lg);store.set("gym.logFix",1)}
+if(store.get("gym.planVer",0)>=10&&store.get("gym.planVer",0)<11){P.forEach(d=>d.ex.forEach(x=>{if(x.n==="Dips (assistiert an der Maschine)"){x.n="Dips am Barren";x.r="6–12"}}));if(store.get("gym.plan",null))store.set("gym.plan",P);try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",11)}
+if(store.get("gym.planVer",0)<10){try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k));localStorage.removeItem("gym.swap")}catch(e){}if(store.get("gym.plan",null))store.set("gym.planUpdate",1);store.set("gym.planVer",11)}
 if(store.get("gym.planVer",0)<5){try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",5)}
 
 const todayIdx=(new Date().getDay()+6)%7;
@@ -895,11 +926,15 @@ const exCount=day=>lowDay()?Math.min(4,day.ex.length):day.ex.length;
 const unit=e=>/s$/.test(e.r)?"s":"Wdh";
 const topReps=e=>{const m=e.r.match(/\d+/g);return m?+m[m.length-1]:null};
 const logAll=()=>store.get("gym.log",[]);
-function hist(name){return logAll().filter(l=>l.ex&&l.ex[name]&&l.ex[name].length).map(l=>({date:l.date,sets:l.ex[name]}))}
+function hist(name){return logAll().map(l=>({date:l.date,sets:(l.ex&&l.ex[name]||[]).filter(x=>!x.x)})).filter(h=>h.sets.length)}
+const filled=(c,e)=>!!c&&(c.done||(String(c.reps??"")!==""&&(e.bw||String(c.kg??"")!=="")));
+const techOn=e=>!!e.t&&!beginner&&!deloadOn()&&!lowDay();
+const TECH={drop:"Drop-Satz",rp:"Rest-Pause"};
+const nExtra=e=>techOn(e)?2:0;
 function getState(d){return store.get("gym.cur."+d.id,{})}
 function cell(st,i,s){st[i]=st[i]||[];st[i][s]=st[i][s]||{kg:"",reps:"",done:false};return st[i][s]}
 /* Übung an Position i, mit Tausch */
-function exAt(day,i){const slotEx=day.ex[i];const sw=store.get("gym.swap",{})[day.id+"-"+i];const n=sw&&LIB[sw]?sw:slotEx.n;return{...LIB[n],...slotEx,n,orig:slotEx.n,swapped:n!==slotEx.n}}
+function exAt(day,i){const slotEx=day.ex[i];const raw=store.get("gym.swap",{})[day.id+"-"+i];const today=raw&&typeof raw==="object";const sw=typeof raw==="string"?raw:(today&&raw.d===iso(new Date())?raw.n:null);const n=sw&&LIB[sw]?sw:slotEx.n;return{...LIB[n],...slotEx,n,orig:slotEx.n,swapped:n!==slotEx.n,swapToday:today&&n!==slotEx.n}}
 
 /* ---------- Steigerungs-Logik ---------- */
 function suggest(e,last){
@@ -998,7 +1033,7 @@ function renderProgress(){
  $("records").innerHTML=recs.length?recs.map(({n,e,best})=>`<div><span>${esc(n)}</span><span>${e.bw?`${fmt(best.v)}`:`${fmt(best.v)} kg × ${best.r}<br>≈ 1RM ${fmt(e1rm(n))} kg`}</span></div>`).join(''):'<p class="lead">Hier erscheinen deine Bestwerte pro Übung.</p>';
  const last=log.slice(-10).reverse();
  $("log").innerHTML=last.length?last.map(l=>{const nm=l.am?`Früh: ${(AM[l.day]||{}).name||"locker"}`:((P.find(p=>p.id===l.day)||{}).name||l.day);
-  const extra=[l.dur?`${l.dur} Min`:"",l.vol?`${fmtK(l.vol)} kg`:""].filter(Boolean).join(" · ");
+  const extra=[l.nach?"nachgetragen":"",l.dur&&l.dur<=300?`${l.dur} Min`:"",l.vol?`${fmtK(l.vol)} kg`:""].filter(Boolean).join(" · ");
   return `<div><span>${esc(nm)}</span><span>${new Date(l.date).toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'})}${extra?" · "+extra:""}</span></div>`}).join('')
   :'<p class="lead">Noch nichts eingetragen. Nach dem ersten Training tippst du auf „Training abschließen".</p>';
 }
@@ -1016,6 +1051,7 @@ function editorHTML(d,i){
   <div class="ed-fields"><span>Sätze</span><span class="step"><button data-ed="sminus" data-j="${j}" aria-label="Weniger Sätze">−</button><span>${x.s}</span><button data-ed="splus" data-j="${j}" aria-label="Mehr Sätze">+</button></span>
   <label>Wdh <input data-edf="r" data-j="${j}" value="${esc(x.r)}" aria-label="Wiederholungen"></label>
   <label>Pause <select data-edf="p" data-j="${j}">${PAUSES.map(p=>`<option value="${p}"${p===x.p?' selected':''}>${p} s</option>`).join('')}</select></label>
+  <label>Technik <select data-edf="t" data-j="${j}"><option value="">–</option><option value="drop"${x.t==="drop"?' selected':''}>Drop-Satz</option><option value="rp"${x.t==="rp"?' selected':''}>Rest-Pause</option></select></label>
   <label>Supersatz <select data-edf="ss" data-j="${j}"><option value="">–</option>${["A","B","C"].map(v=>`<option${x.ss===v?' selected':''}>${v}</option>`).join('')}</select></label></div></div>`).join('');
  return `<article class="card plan-day ed" style="--c:${t.c}"><header><h3>${d.wd}: ${esc(d.name)}</h3><span class="num">bearbeiten</span></header>
  ${rows||'<p class="lead">Noch keine Übungen.</p>'}
@@ -1029,9 +1065,10 @@ function editorHTML(d,i){
  <p class="status">Änderungen werden sofort gespeichert. Deine Trainingsgeschichte bleibt dabei erhalten.</p></article>`;
 }
 function renderPlan(){
- $("plan").innerHTML=P.map((d,i)=>{if(editDay===i)return editorHTML(d,i);const t=TYPES[d.type];const a=AM[d.id];
+ const upd=store.get("gym.planUpdate",0)?`<div class="banner"><b>Neuer Standardplan verfügbar.</b><span>Oberkörper-Fokus, Beine nur noch kurz am Mittwoch, Drop- und Rest-Pause-Sätze. Du hast deinen Plan selbst bearbeitet, deshalb wurde er nicht automatisch ersetzt.</span><div class="btns2"><button class="btn primary" id="plan-upd-yes">Neuen Plan übernehmen</button><button class="btn" id="plan-upd-no">Meinen behalten</button></div></div>`:"";
+ $("plan").innerHTML=upd+P.map((d,i)=>{if(editDay===i)return editorHTML(d,i);const t=TYPES[d.type];const a=AM[d.id];
   return `<article class="card plan-day" style="--c:${t.c}"><header><h3>${d.wd}: ${esc(d.name)}</h3><span class="num">${d.time}</span></header>
-  <ol>${d.ex.map((_,j)=>{const e=exAt(d,j);return `<li>${esc(e.n)} <span>${nSets(e)} × ${e.r}${e.ss?` · Supersatz ${e.ss}`:''}</span></li>`}).join('')}</ol>
+  <ol>${d.ex.map((_,j)=>{const e=exAt(d,j);return `<li>${esc(e.n)} <span>${nSets(e)} × ${e.r}${e.ss?` · Supersatz ${e.ss}`:''}${e.t?` · ${TECH[e.t]}`:''}</span></li>`}).join('')}</ol>
   <p class="status">Früh (optional): ${a.name}, ${a.time}</p>
   <div class="btns2"><button class="btn${i===planToday()?' primary':''}" data-start="${i}">${i===planToday()?'Heute starten':'Starten'}</button><button class="btn" data-edit="${i}">Bearbeiten</button></div></article>`}).join('')
   +`<article class="card plan-day" style="--c:var(--line)"><header><h3>So: Ruhetag</h3></header><p class="lead">Muskeln wachsen in der Pause. Höchstens ein Spaziergang. Guter Tag fürs wöchentliche Backup und den Wochenrückblick.</p></article>`;
@@ -1039,6 +1076,8 @@ function renderPlan(){
  renderLib();renderBag();
 }
 const ROAD=[
+ {s:"Fertig · V10",t:"Oberkörper-Fokus",d:"Beine nur noch kurz am Mittwoch (Erhaltung), mehr Platz für Schultern, Arme und Bauch."},
+ {s:"Fertig · V10",t:"Drop-Sätze und Rest-Pause",d:"Im letzten Satz ausgewählter Übungen, mit vorgeschlagenem Gewicht und passendem Timer. Im Plan-Editor pro Übung einstellbar."},
  {s:"Fertig · V8",t:"Sprüche zum Durchtippen",d:"Antippen zeigt den nächsten Gedanken, das Herz speichert deine Favoriten."},
  {s:"Fertig · V8",t:"Erfolge und Rekord-Feier",d:"Abzeichen für Meilensteine im Fortschritt-Tab, Konfetti bei neuen Rekorden."},
  {s:"Fertig · V8",t:"Übungs-Bibliothek",d:"Alle Übungen nach Muskel, mit Animation oder Foto, direkt zu einem Tag hinzufügbar."},
@@ -1051,6 +1090,8 @@ const ROAD=[
 ];
 function savePlan(i){store.set("gym.plan",P);const d=P[i];const sw=store.get("gym.swap",{});Object.keys(sw).filter(k=>k.startsWith(d.id+"-")).forEach(k=>delete sw[k]);store.set("gym.swap",sw);store.set("gym.cur."+d.id,{})}
 $("plan").addEventListener('click',e=>{
+ if(e.target.id==="plan-upd-yes"){P=JSON.parse(JSON.stringify(P_DEFAULT));try{localStorage.removeItem("gym.plan");localStorage.removeItem("gym.swap");Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(err){}store.set("gym.planUpdate",0);renderPlan();return}
+ if(e.target.id==="plan-upd-no"){store.set("gym.planUpdate",0);renderPlan();return}
  const st=e.target.closest('[data-start]');if(st){cur=+st.dataset.start;slot="pm";editDay=null;location.hash="training";return}
  const ed=e.target.closest('[data-edit]');if(ed){editDay=+ed.dataset.edit;resetAsk=null;renderPlan();document.querySelector('.plan-day.ed').scrollIntoView({block:"start"});return}
  const b=e.target.closest('[data-ed]');if(!b||editDay==null)return;
@@ -1074,6 +1115,7 @@ $("plan").addEventListener('change',e=>{
  if(f==="r"){const v=e.target.value.trim().replace(/-/g,"–");if(/\d/.test(v))x.r=v}
  if(f==="p")x.p=+e.target.value;
  if(f==="ss")x.ss=e.target.value||undefined;
+ if(f==="t")x.t=e.target.value||undefined;
  savePlan(editDay);
 });
 /* Gym-Tasche */
@@ -1122,38 +1164,47 @@ function renderTraining(){
   const preKg=sg&&sg.kg!=null?fmt(sg.kg):"";
   const u=unit(e);const top=topReps(e);let g=0;
   const rows=Array.from({length:n},(_,s)=>{
-   const c=(st[i]||[])[s]||{};if(c.done)g++;
+   const c=(st[i]||[])[s]||{};if(filled(c,e))g++;
    const preR=last&&last.sets[s]?last.sets[s].reps:(top??"");
    const id=`${day.id}-${i}-${s}`;
-   return `<div class="setrow${e.bw?' bw':''}"><button class="set${c.done?' on':''}" data-i="${i}" data-s="${s}" aria-pressed="${!!c.done}" aria-label="Satz ${s+1} erledigt">${s+1}</button>${e.bw?'':`<label class="fld" for="kg-${id}"><input id="kg-${id}" inputmode="decimal" data-f="kg" data-i="${i}" data-s="${s}" value="${esc(c.kg??'')}" placeholder="${preKg}"><span>${e.assist?'kg Hilfe':'kg'}</span></label>`}<label class="fld" for="rp-${id}"><input id="rp-${id}" inputmode="numeric" data-f="reps" data-i="${i}" data-s="${s}" value="${esc(c.reps??'')}" placeholder="${preR}"><span>${u}</span></label></div>`}).join('');
+   return `<div class="setrow${e.bw?' bw':''}"><button class="set${filled(c,e)?' on':''}" data-i="${i}" data-s="${s}" aria-pressed="${!!c.done}" aria-label="Satz ${s+1} erledigt">${s+1}</button>${e.bw?'':`<label class="fld" for="kg-${id}"><input id="kg-${id}" inputmode="decimal" data-f="kg" data-i="${i}" data-s="${s}" value="${esc(c.kg??'')}" placeholder="${preKg}"><span>${e.assist?'kg Hilfe':'kg'}</span></label>`}<label class="fld" for="rp-${id}"><input id="rp-${id}" inputmode="numeric" data-f="reps" data-i="${i}" data-s="${s}" value="${esc(c.reps??'')}" placeholder="${preR}"><span>${u}</span></label></div>`}).join('');
+  let extra="";const X2=nExtra(e);
+  if(X2){const lastC=(st[i]||[])[n-1]||{};const step=e.db?2:2.5;const base=num(lastC.kg)||num(preKg);
+   for(let k=0;k<X2;k++){const s2=n+k;const c=(st[i]||[])[s2]||{};if(filled(c,e))g++;
+    const kgP=isFinite(base)?fmt(e.t==="drop"?Math.max(step,Math.round(base*(k?0.55:0.75)/step)*step):base):"";
+    const rP=e.t==="drop"?Math.max(4,Math.round((top||10)*0.6)):4;const id=`${day.id}-${i}-${s2}`;const lab=(e.t==="drop"?"D":"R")+(k+1);
+    extra+=`<div class="setrow tech${e.bw?' bw':''}"><button class="set${filled(c,e)?' on':''}" data-i="${i}" data-s="${s2}" aria-pressed="${!!c.done}" aria-label="${TECH[e.t]} ${k+1} erledigt">${lab}</button>${e.bw?'':`<label class="fld" for="kg-${id}"><input id="kg-${id}" inputmode="decimal" data-f="kg" data-i="${i}" data-s="${s2}" value="${esc(c.kg??'')}" placeholder="${kgP}"><span>kg</span></label>`}<label class="fld" for="rp-${id}"><input id="rp-${id}" inputmode="numeric" data-f="reps" data-i="${i}" data-s="${s2}" value="${esc(c.reps??'')}" placeholder="${rP}"><span>${u}</span></label></div>`}
+   total+=X2}
+  const techInfo=e.t?(techOn(e)?`<p class="techinfo"><b>${TECH[e.t]} im letzten Satz:</b> ${e.t==="drop"?"Direkt nach Satz "+n+" ca. 25 % Gewicht runter und ohne Pause bis zum Limit weiter (D1), dann nochmal runter (D2).":"Nach Satz "+n+" 20 Sek. Pause, gleiches Gewicht, so viele Wdh. wie gehen (R1), das Ganze nochmal (R2)."}</p>`:`<p class="techinfo off">${TECH[e.t]} im letzten Satz: ${beginner?"wird nach dem Einsteiger-Modus freigeschaltet":"heute aus"}.</p>`):"";
   got+=g;const ck=day.id+"-"+i;
   const note=store.get("gym.note",{})[e.n]||"";
-  const swapUI=openSwap.has(ck)?`<div class="swaps">${[e.orig,...(LIB[e.orig].alt||[])].filter((x,k,a)=>a.indexOf(x)===k).map(a=>`<button data-swapto="${esc(a)}" data-i="${i}" aria-current="${a===e.n}">${esc(a)}<span>${a===e.orig?'Original':(LIB[a].m.map(m=>LBL[m]).slice(0,2).join(', '))}</span></button>`).join('')}</div>`:'';
+  const swapUI=openSwap.has(ck)?`<div class="swaps"><label class="mode" for="swt-${ck}"><input type="checkbox" id="swt-${ck}"${swapTodayPref?' checked':''} data-swt><span><b>Nur heute</b> tauschen (sonst dauerhaft für diesen Tag)</span></label><span class="status">Passende Alternativen</span>${[e.orig,...(LIB[e.orig].alt||[])].filter((x,k,a)=>a.indexOf(x)===k).map(a=>`<button data-swapto="${esc(a)}" data-i="${i}" data-ck="${ck}" aria-current="${a===e.n}">${esc(a)}<span>${a===e.orig?'Original':(LIB[a].m.map(m=>LBL[m]).slice(0,2).join(', '))}</span></button>`).join('')}<label class="status" for="sws-${ck}">Oder jede andere Übung</label><select class="pick" id="sws-${ck}" data-swapsel data-i="${i}" data-ck="${ck}"><option value="">Übung wählen …</option>${libOptions()}</select></div>`:'';
   const noteUI=openNote.has(ck)?`<div class="noteedit"><label class="status" for="note-${ck}">Notiz, z. B. Sitzhöhe oder Griff</label><input id="note-${ck}" data-note="${esc(e.n)}" value="${esc(note)}" placeholder="Sitz Stufe 4, Polster Loch 3"></div>`:(note?`<p class="note"><b>Notiz:</b> ${esc(note)}</p>`:'');
-  return `<article class="ex${g===n?' done':''}">${mediaHTML(e)}<div class="fig">${fig(e.m)}</div><div class="exbody">
+  return `<article class="ex${g===n+X2?' done':''}">${mediaHTML(e)}<div class="fig">${fig(e.m)}</div><div class="exbody">
    <div class="extop"><h3>${esc(e.n)}</h3><span class="num">${String(i+1).padStart(2,'0')}</span></div>
    ${e.ss?`<span class="ss">Supersatz ${e.ss}${day.ex[i+1]&&day.ex[i+1].ss===e.ss?': direkt weiter zur nächsten Übung':': danach Pause'}</span>`:''}
-   ${e.swapped?`<span class="swapped">Getauscht statt: ${esc(e.orig)}</span>`:''}
+   ${e.swapped?`<span class="swapped">Getauscht${e.swapToday?' (nur heute)':''} statt: ${esc(e.orig)}</span>`:''}
    <div class="row"><span class="dose">${n} × ${e.r}</span><span class="muscles">${e.m.map(k=>LBL[k]).join(' · ')}</span></div>
    <p class="cue">${e.c}</p>
    ${noteUI}
    ${last?`<p class="last">Letztes Mal (${shortDate(last.date)}): ${lastText(e,last)}</p>`:''}
    ${sg?`<span class="hint${sg.up?' up':''}">${sg.up?'↑ ':''}${sg.text}</span>`:''}
    ${platesHTML(e,sg)}${warmupHTML(e,i,sg,last)}
-   <div class="setrows">${rows}</div>
-   <div class="links">${(LIB[e.orig].alt||[]).length?`<button class="hbtn" data-swap="${ck}" aria-expanded="${openSwap.has(ck)}">${ICON_SWAP}Tauschen</button>`:''}<button class="hbtn" data-note-toggle="${ck}" aria-expanded="${openNote.has(ck)}">${ICON_NOTE}Notiz</button><button class="hbtn" data-chart="${ck}" aria-expanded="${openCharts.has(ck)}">${ICON_CHART}Verlauf</button><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a></div>
+   ${techInfo}<div class="setrows">${rows}${extra}</div>
+   <div class="links"><button class="hbtn" data-swap="${ck}" aria-expanded="${openSwap.has(ck)}">${ICON_SWAP}Tauschen</button><button class="hbtn" data-note-toggle="${ck}" aria-expanded="${openNote.has(ck)}">${ICON_NOTE}Notiz</button><button class="hbtn" data-chart="${ck}" aria-expanded="${openCharts.has(ck)}">${ICON_CHART}Verlauf</button><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener">${ICON_VID}Video</a></div>
    ${swapUI}
    ${openCharts.has(ck)?chart(e,h):''}
   </div></article>`}).join('');
  const banners=[];
  if(todayIdx===6&&!rotation()&&store.get("gym.sundayOk","")!==iso(new Date())){const nx=nextRotIdx();
   banners.push(`<div class="banner"><b>Heute ist Sonntag, eigentlich dein Ruhetag.</b><span>Du willst trotzdem? Dann mach mit dem nächsten Tag in deinem Plan weiter: <b>${P[nx].wd}: ${esc(P[nx].name)}</b>.</span><button class="btn primary" id="sunday-go" data-i="${nx}" style="justify-self:start">Trotzdem trainieren</button><span class="sub">Tipp: Wenn du öfter Tage verschiebst, schalte in den Einstellungen „Plan fortlaufend“ ein. Dann geht es immer mit dem nächsten Tag weiter, egal welcher Wochentag ist.</span></div>`)}
+ if(st._start&&Date.now()-st._start>6*3600e3)banners.push(`<div class="banner"><b>Training vom ${new Date(st._start).toLocaleDateString('de-DE',{weekday:'long',day:'2-digit',month:'2-digit'})} ist noch offen.</b><span>Wahrscheinlich hast du vergessen abzuschließen. Es wird für den Tag eingetragen, an dem du angefangen hast, und die Dauer kommt aus deinen Sätzen.</span><div class="btns2"><button class="btn primary" id="stale-finish">Jetzt abschließen</button><button class="btn" id="stale-drop">Verwerfen</button></div></div>`);
  const rb=recBanner(false);if(rb)banners.push(rb);
  if(lowDay()){const why=store.get("gym.why","");banners.push(`<div class="banner"><b>Schlechter-Tag-Modus: 4 Übungen, je 2 Sätze.</b><span>Hingehen ist heute der Sieg. Alles darüber ist Bonus.</span>${why?`<span><b>Dein Warum:</b> ${esc(why)}</span>`:''}<button class="reset" id="lowday-off" style="justify-self:start">Doch normal trainieren</button></div>`)}
  if(deloadOn())banners.push(`<div class="banner"><b>Erholungswoche aktiv.</b><span>2 Sätze pro Übung, ca. 30 % weniger Gewicht. Endet am ${new Date(store.get("gym.deloadUntil",0)).toLocaleDateString('de-DE')}.</span></div>`);
  else if(deloadDue())banners.push(`<div class="banner"><b>Zeit für eine Erholungswoche?</b><span>Du trainierst seit über 6 Wochen ohne Pause. Eine lockere Woche schützt Gelenke, danach bist du stärker. Einschalten unter Einstellungen.</span></div>`);
  const start=st._start;
- $("day").innerHTML=`${banners.join('')}<div class="dayhead"><h2>${day.wd}: ${day.name}</h2><span class="meta">${exCount(day)} Übungen · ${total} Sätze · ${day.time} · ${got}/${total} erledigt<span id="elapsed">${start?` · läuft seit ${Math.max(1,Math.round((Date.now()-start)/60000))} Min`:''}</span></span><div class="progress"><div style="width:${total?got/total*100:0}%"></div></div></div><div class="list">${items}</div>
+ $("day").innerHTML=`${banners.join('')}<div class="dayhead"><h2>${day.wd}: ${day.name}</h2><span class="meta">${exCount(day)} Übungen · ${total} Sätze · ${day.time} · <span id="cnt">${got}/${total} erledigt</span><span id="elapsed">${start&&Date.now()-start<6*3600e3?` · läuft seit ${Math.max(1,Math.round((Date.now()-start)/60000))} Min`:''}</span></span><div class="progress"><div style="width:${total?got/total*100:0}%"></div></div>${start?"":`<button class="btn primary" id="start-btn">Training starten</button><span class="sub">Startet die Zeitmessung. Passiert auch automatisch beim ersten Eintrag.</span>`}</div><div class="list">${items}</div>
  <button class="finish" id="finish"${got===0?' disabled':''}>Training abschließen</button>${toast?`<p class="toast" role="status">${toast}</p>`:''}<button class="reset" id="reset">Eingaben für ${day.wd} zurücksetzen</button>`;
  toast="";hookAnims();
 }
@@ -1179,42 +1230,56 @@ $("day").addEventListener('click',e=>{
  if(m&&!reduceMotion){const pz=m.querySelector('.pause');if(paused.has(m)){paused.delete(m);pz.hidden=true}else{paused.add(m);pz.hidden=false}return}
  const b=e.target.closest('.set');
  if(b){unlockAudio();const st=getState(day);const i=+b.dataset.i,s=+b.dataset.s;const c=cell(st,i,s);c.done=!c.done;
-  if(c.done){if(!st._start)st._start=Date.now();const id=`${day.id}-${i}-${s}`;const kgI=$("kg-"+id),rpI=$("rp-"+id);
-   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;const ex=exAt(day,i);startTimer(ex.p<=15?ex.p:Math.max(15,Math.round(ex.p*pauseF()/5)*5),ex.p<=15?"Wechsel zur nächsten Übung":"Pause")}
+  if(c.done){if(!st._start)st._start=Date.now();st._last=Date.now();const id=`${day.id}-${i}-${s}`;const kgI=$("kg-"+id),rpI=$("rp-"+id);
+   if(kgI&&!c.kg)c.kg=kgI.placeholder;if(rpI&&!c.reps)c.reps=rpI.placeholder;const ex=exAt(day,i);const nn=nSets(ex),xx=nExtra(ex);
+   if(xx&&s>=nn-1&&s<nn+xx-1){if(ex.t==="drop")startTimer(10,"Sofort Gewicht runter: Drop-Satz");else startTimer(20,"Rest-Pause: gleiches Gewicht, gleich weiter")}
+   else if(pauseF()>0)startTimer(ex.p<=15?ex.p:Math.max(15,Math.round(ex.p*pauseF()/5)*5),ex.p<=15?"Wechsel zur nächsten Übung":"Pause")}
   store.set("gym.cur."+day.id,st);keep(()=>{});return}
  const sw=e.target.closest('[data-swap]');if(sw){const k=sw.dataset.swap;keep(()=>openSwap.has(k)?openSwap.delete(k):openSwap.add(k));return}
  const to=e.target.closest('[data-swapto]');
- if(to){const i=+to.dataset.i;const map=store.get("gym.swap",{});const key=day.id+"-"+i;const orig=day.ex[i].n;
-  if(to.dataset.swapto===orig)delete map[key];else map[key]=to.dataset.swapto;store.set("gym.swap",map);
-  const st=getState(day);delete st[i];store.set("gym.cur."+day.id,st);keep(()=>openSwap.delete(key));return}
+ if(to){const cb=document.getElementById("swt-"+to.dataset.ck);applySwap(day,+to.dataset.i,to.dataset.swapto,cb?cb.checked:true);return}
  const nt=e.target.closest('[data-note-toggle]');if(nt){const k=nt.dataset.noteToggle;keep(()=>openNote.has(k)?openNote.delete(k):openNote.add(k));const inp=document.getElementById("note-"+k);if(inp)inp.focus();return}
  const hb=e.target.closest('[data-chart]');if(hb){const k=hb.dataset.chart;keep(()=>openCharts.has(k)?openCharts.delete(k):openCharts.add(k));return}
  if(e.target.id==='sunday-go'){store.set("gym.sundayOk",iso(new Date()));cur=+e.target.dataset.i;renderTraining();window.scrollTo({top:0});return}
+ if(e.target.id==='start-btn'){const st=getState(day);st._start=Date.now();st._last=Date.now();store.set("gym.cur."+day.id,st);renderTraining();return}
+ if(e.target.id==='stale-finish'){finish(day);return}
+ if(e.target.id==='stale-drop'){store.set("gym.cur."+day.id,{});renderTraining();return}
  if(e.target.id==='lowday-off'){store.set("gym.lowDay","");renderTraining();return}
  if(e.target.id==='reset'){store.set("gym.cur."+day.id,{});renderTraining();return}
  if(e.target.id==='finish')finish(day);
 });
+function applySwap(day,i,name,today){const map=store.get("gym.swap",{});const key=day.id+"-"+i;const orig=day.ex[i].n;
+ if(name===orig)delete map[key];else map[key]=today?{n:name,d:iso(new Date())}:name;store.set("gym.swap",map);
+ const st=getState(day);delete st[i];store.set("gym.cur."+day.id,st);const y=window.scrollY;openSwap.delete(key);renderTraining();window.scrollTo({top:y})}
+let swapTodayPref=store.get("gym.swapToday",true);
+$("day").addEventListener('change',e=>{
+ if(e.target.dataset.swt!==undefined){swapTodayPref=e.target.checked;store.set("gym.swapToday",swapTodayPref);return}
+ if(e.target.dataset.swapsel!==undefined&&e.target.value){const cb=document.getElementById("swt-"+e.target.dataset.ck);applySwap(P[cur],+e.target.dataset.i,e.target.value,cb?cb.checked:true)}
+});
 $("day").addEventListener('input',e=>{
  if(e.target.dataset.note!==undefined){const notes=store.get("gym.note",{});const v=e.target.value.trim();if(v)notes[e.target.dataset.note]=v;else delete notes[e.target.dataset.note];store.set("gym.note",notes);return}
- const f=e.target.dataset.f;if(!f)return;const day=P[cur];const st=getState(day);const c=cell(st,+e.target.dataset.i,+e.target.dataset.s);c[f]=e.target.value.trim();store.set("gym.cur."+day.id,st)});
+ const f=e.target.dataset.f;if(!f)return;const day=P[cur];const st=getState(day);const c=cell(st,+e.target.dataset.i,+e.target.dataset.s);c[f]=e.target.value.trim();if(!st._start)st._start=Date.now();st._last=Date.now();store.set("gym.cur."+day.id,st);updCount()});
+function updCount(){const day=P[cur];const st=getState(day);let g=0,t=0;day.ex.slice(0,exCount(day)).forEach((_,i)=>{const e=exAt(day,i);const n=nSets(e)+nExtra(e);t+=n;for(let s=0;s<n;s++)if(filled((st[i]||[])[s],e))g++});const m=$("cnt");if(m)m.textContent=`${g}/${t} erledigt`;const f=$("finish");if(f)f.disabled=g===0;const pb=document.querySelector(".dayhead .progress div");if(pb)pb.style.width=(t?g/t*100:0)+"%";const sb=$("start-btn");if(sb&&st._start)sb.remove()}
 function finish(day){
  const st=getState(day);const ex={};const prs=[];let vol=0;
  day.ex.slice(0,exCount(day)).forEach((_,i)=>{const e=exAt(day,i);
-  const done=(st[i]||[]).slice(0,nSets(e)).filter(c=>c&&c.done&&c.reps!=="").map(c=>e.bw?{reps:num(c.reps)}:{kg:num(c.kg),reps:num(c.reps)}).filter(x=>isFinite(x.reps)&&(e.bw||isFinite(x.kg)));
+  const done=(st[i]||[]).slice(0,nSets(e)).filter(c=>filled(c,e)&&c.reps!=="").map(c=>e.bw?{reps:num(c.reps)}:{kg:num(c.kg),reps:num(c.reps)}).filter(x=>isFinite(x.reps)&&(e.bw||isFinite(x.kg)));
+  const xs=(st[i]||[]).slice(nSets(e),nSets(e)+nExtra(e)).filter(c=>filled(c,e)&&c.reps!=="").map(c=>e.bw?{reps:num(c.reps),x:1}:{kg:num(c.kg),reps:num(c.reps),x:1}).filter(x=>isFinite(x.reps)&&(e.bw||isFinite(x.kg)));
   if(!done.length)return;
+  if(!e.bw&&!e.assist)xs.forEach(x=>vol+=x.kg*x.reps*(e.db?2:1));
   if(!e.bw&&!e.assist){done.forEach(x=>vol+=x.kg*x.reps*(e.db?2:1));const prev=hist(e.n);if(prev.length){const pm=Math.max(...prev.flatMap(x=>x.sets.map(s=>num(s.kg))).filter(isFinite));const nm=Math.max(...done.map(x=>x.kg));if(nm>pm)prs.push(e.n.replace(/ \(.*\)/,''))}}
-  ex[e.n]=(ex[e.n]||[]).concat(done);
+  ex[e.n]=(ex[e.n]||[]).concat(done,xs);
  });
- const dur=st._start?Math.max(1,Math.round((Date.now()-st._start)/60000)):null;
+ const t0=st._start||Date.now(),t1=Math.max(t0,(st._last&&Date.now()-st._last>45*60e3)?st._last:Date.now());let dur=st._start?Math.max(1,Math.round((t1-t0)/60000)+2):null;if(dur&&dur>300)dur=null;
  const before=unlockedIds();
- const log=logAll();log.push({date:new Date().toISOString(),day:day.id,ex,dur,vol:Math.round(vol),...(lowDay()?{low:1}:{})});store.set("gym.log",log);
+ const log=logAll();log.push({date:new Date(t0).toISOString(),day:day.id,ex,dur,vol:Math.round(vol),...(lowDay()?{low:1}:{})});store.set("gym.log",log);
  const fresh=BADGES.filter(b=>!before.includes(b.id)&&b.ok());
  store.set("gym.cur."+day.id,{});stopTimer();
  toast=(prs.length?`Eingetragen. Neuer Rekord bei: ${prs.join(", ")}!`:"Eingetragen. Stark, dass du da warst.")+(dur?` ${dur} Min., ${fmtK(vol)} kg bewegt.`:"")+(fresh.length?` Neuer Erfolg: ${fresh.map(b=>b.t).join(", ")}!`:"");
  if(prs.length||fresh.length)celebrate();
  renderTraining();const f=$("finish");if(f)window.scrollTo({top:f.offsetTop-200});
 }
-setInterval(()=>{const el=$("elapsed");if(!el||slot!=="pm")return;const s=getState(P[cur])._start;if(s)el.textContent=` · läuft seit ${Math.max(1,Math.round((Date.now()-s)/60000))} Min`},30000);
+setInterval(()=>{const el=$("elapsed");if(!el||slot!=="pm")return;const s=getState(P[cur])._start;if(s&&Date.now()-s<6*3600e3)el.textContent=` · läuft seit ${Math.max(1,Math.round((Date.now()-s)/60000))} Min`},30000);
 
 /* ---------- Kopf ---------- */
 const LINES=[
@@ -1356,14 +1421,31 @@ function renderCal(){
  const startPad=(m.getDay()+6)%7;const days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();const today=iso(now);
  let cells="";for(let i=0;i<startPad;i++)cells+='<div class="d out"></div>';
  for(let i=1;i<=days;i++){const k=iso(new Date(m.getFullYear(),m.getMonth(),i));const t=kd[k]?TYPES[kd[k]]:null;
-  cells+=`<div class="d${t?' k':''}${amd[k]?' am':''}${k===today?' today':''}"${t?` style="--c:${t.c};--on-c:${t.on}"`:''}>${i}</div>`}
+  const fut=k>today;cells+=fut?`<div class="d fut">${i}</div>`:`<button class="d${t?' k':''}${amd[k]?' am':''}${k===today?' today':''}${k===calSel?' sel':''}" data-day="${k}"${t?` style="--c:${t.c};--on-c:${t.on}"`:''} aria-label="${k}">${i}</button>`}
  const cnt=Object.keys(kd).filter(k=>k.startsWith(iso(m).slice(0,7))).length;const sw=streakWeeks();
  $("cal").innerHTML=`<div class="streak"><b>${sw}</b><span>${sw===1?'Woche':'Wochen'} Serie mit mindestens 3 Krafteinheiten</span></div>
  <div class="cal-head"><button data-cal="-1" aria-label="Vorheriger Monat">‹</button><b>${MONTHS[m.getMonth()]} ${m.getFullYear()}</b><button data-cal="1" aria-label="Nächster Monat"${calOff>=0?' disabled':''}>›</button></div>
  <div class="cal">${["Mo","Di","Mi","Do","Fr","Sa","So"].map(x=>`<div class="wd">${x}</div>`).join('')}${cells}</div>
- <div class="legend"><span><i style="background:var(--red)"></i>Push</span><span><i style="background:var(--blue)"></i>Pull</span><span><i style="background:var(--yellow)"></i>Beine</span><span><i style="background:var(--green)"></i>Arme</span><span>● Früh</span><span>${cnt} Krafteinheiten im Monat</span></div>`;
+ <div class="legend"><span><i style="background:var(--red)"></i>Push</span><span><i style="background:var(--blue)"></i>Pull</span><span><i style="background:var(--yellow)"></i>Beine</span><span><i style="background:var(--green)"></i>Arme</span><span>● Früh</span><span>${cnt} Krafteinheiten im Monat</span></div>
+ <p class="sub">Tipp: Tippe auf einen Tag, um ein vergessenes Training nachzutragen oder einen Eintrag zu korrigieren.</p>${calSel?calDayHTML(calSel):''}`;
 }
-$("cal").addEventListener('click',e=>{const b=e.target.closest('[data-cal]');if(!b||b.disabled)return;calOff=Math.min(0,calOff+ +b.dataset.cal);renderCal()});
+let calSel=null,calDel=null;
+function calDayHTML(k){
+ const log=logAll();const items=log.map((l,idx)=>({l,idx})).filter(x=>iso(new Date(x.l.date))===k);
+ const d=new Date(k+"T12:00");const ago=Math.round((new Date(iso(new Date())+"T12:00")-d)/864e5);
+ const nm=l=>l.am?`Früh: ${(AM[l.day]||{}).name||"locker"}`:((P.find(p=>p.id===l.day)||{}).name||l.day);
+ return `<div class="calday"><p class="lbl">${d.toLocaleDateString('de-DE',{weekday:'long',day:'2-digit',month:'long'})}</p>
+ ${items.length?items.map(({l,idx})=>`<div class="calentry"><span>${esc(nm(l))}${l.nach?' <small>(nachgetragen)</small>':''}</span><div class="calbtns"><button class="btn" data-calmove="${idx}">Auf Vortag</button>${calDel===idx?`<button class="btn danger" data-caldel-yes="${idx}">Wirklich löschen</button>`:`<button class="btn" data-caldel="${idx}">Löschen</button>`}</div></div>`).join(''):'<p class="sub">An diesem Tag ist nichts eingetragen.</p>'}
+ ${ago<=14?`<div class="caladd"><label class="sub" for="cal-add-sel">Training nachtragen</label><select class="pick" id="cal-add-sel">${P.map(p=>`<option value="${p.id}">${p.wd}: ${esc(p.name)}</option>`).join('')}<option value="am">Früheinheit (locker)</option></select><button class="btn primary" id="cal-add">Nachtragen</button></div><p class="sub">Nachgetragene Einheiten zählen für Kalender, Serie und Statistik, aber ohne Sätze und Gewichte. Möglich bis 14 Tage zurück.</p>`:'<p class="sub">Nachtragen geht nur für die letzten 14 Tage.</p>'}
+ </div>`;
+}
+$("cal").addEventListener('click',e=>{
+ const day=e.target.closest('[data-day]');if(day){calSel=calSel===day.dataset.day?null:day.dataset.day;calDel=null;renderCal();return}
+ const mv=e.target.closest('[data-calmove]');if(mv){const log=logAll();const l=log[+mv.dataset.calmove];if(l){const d=new Date(l.date);d.setDate(d.getDate()-1);l.date=d.toISOString();log.sort((a,b)=>a.date<b.date?-1:1);store.set("gym.log",log);calSel=iso(d)}calDel=null;renderProgress();return}
+ const dl=e.target.closest('[data-caldel]');if(dl){calDel=+dl.dataset.caldel;renderCal();return}
+ const dy=e.target.closest('[data-caldel-yes]');if(dy){const log=logAll();log.splice(+dy.dataset.caldelYes,1);store.set("gym.log",log);calDel=null;renderProgress();return}
+ if(e.target.id==="cal-add"&&calSel){const v=$("cal-add-sel").value;const log=logAll();const dt=new Date(calSel+"T18:00");log.push(v==="am"?{date:dt.toISOString(),day:AMDAYS[(dt.getDay()+6)%7][0],am:1,nach:1}:{date:dt.toISOString(),day:v,ex:{},nach:1});log.sort((a,b)=>a.date<b.date?-1:1);store.set("gym.log",log);renderProgress();return}
+ const b=e.target.closest('[data-cal]');if(!b||b.disabled)return;calOff=Math.min(0,calOff+ +b.dataset.cal);calSel=null;renderCal()});
 
 /* ---------- Wochenrückblick (Obsidian) ---------- */
 let revOff=0;
@@ -1547,7 +1629,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 /* ---------- Backup ---------- */
 function exportData(){const data={};try{for(let k=0;k<localStorage.length;k++){const key=localStorage.key(k);if(key.startsWith("gym."))data[key]=localStorage.getItem(key)}}catch(e){}
- return JSON.stringify({app:"tims-gym-plan",version:9,exported:new Date().toISOString(),data})}
+ return JSON.stringify({app:"tims-gym-plan",version:15,exported:new Date().toISOString(),data})}
 function bkStatus(t,ok){$("bk-status").textContent=t;$("bk-status").classList.toggle('ok',!!ok)}
 $("bk-save").onclick=async()=>{
  const json=exportData();const name=`gym-backup-${iso(new Date())}.json`;
