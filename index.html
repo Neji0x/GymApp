@@ -305,6 +305,17 @@ section.info{display:grid;gap:12px}
 
 .seg.four{grid-template-columns:repeat(4,1fr)}
 #start-btn{margin-top:4px}
+
+.seg.two{grid-template-columns:repeat(2,1fr)}
+.card.focus{display:grid;gap:10px;border-left:4px solid var(--hit)}
+.card.focus header{display:flex;justify-content:space-between;align-items:baseline}
+.focusgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.focusgrid button{font:inherit;text-align:left;display:grid;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.focusgrid button small{color:var(--muted);font-size:.78rem}
+.focusgrid button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.focusgrid button[aria-pressed="true"] small{color:inherit;opacity:.75}
+.fxtag{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--hit);color:var(--on-hit);vertical-align:1px}
+.swapped.fx{color:var(--fg);font-weight:600;border-left:3px solid var(--hit);padding-left:6px}
 </style>
 </head>
 <body>
@@ -332,6 +343,7 @@ section.info{display:grid;gap:12px}
       <h1>Wochenplan</h1>
       <p class="lead">Abends Kraft mit Fokus auf den Oberkörper, 60–80 Minuten. Beine nur kurz am Mittwoch. Früh optional locker: Ausdauer, Bauch-Stabilität und Beweglichkeit. Sonntag Pause.</p>
     </header>
+    <div id="focus"></div>
     <div id="plan" style="display:grid;gap:12px"></div>
     <section class="info">
       <h2>Übungs-Bibliothek</h2>
@@ -554,7 +566,7 @@ section.info{display:grid;gap:12px}
         <p class="status" id="bk-status" aria-live="polite"></p>
       </div>
     </section>
-    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 15.</p>
+    <p class="credit">Übungsfotos: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">Free Exercise DB</a>, gemeinfrei (Unlicense). Animationen und Plan: selbst erstellt. Version 16.</p>
   </section>
 </div>
 
@@ -739,7 +751,7 @@ const MAP={
  "Bankdrücken (Multipresse oder Langhantel)":"benchSmith","Schrägbankdrücken Kurzhantel":"inclineDB","Schulterpresse (Maschine)":"shoulderPress","Butterfly (Maschine)":"flyMachine","Seitheben Kurzhantel":"lateralDB","Trizepsdrücken am Kabel (Seil)":"pushdown",
  "Latzug breit":"pulldown","Rudern sitzend am Kabel":"rowCable","Reverse Butterfly (Maschine)":"reverseFly","Bizeps-Curls Kurzhantel":"curlDB","Hammer-Curls Kurzhantel":"hammerDB",
  "Beinpresse":"legPress","Beinstrecker (Maschine)":"legExt","Beinbeuger (Maschine)":"legCurl","Wadenheben (Maschine)":"calf","Crunches am Kabel":"cableCrunch","Unterarmstütz (Plank)":"plank",
- "Schulterdrücken Kurzhantel (sitzend)":"shoulderPressDB","Brustpresse (Maschine)":"chestMachine","Cable Crossover":"crossover","Seitheben am Kabel (einarmig)":"lateralCable","Dips (assistiert an der Maschine)":"dip","Dips am Barren":"dip","Schrägbank-Brustpresse (Maschine)":"inclineMachine","T-Bar Rudern (Brustpolster)":"rowMachine","Hip Thrust Maschine":"hipThrust","Trizeps Überkopf am Kabel":"overheadExt",
+ "Schulterdrücken Kurzhantel (sitzend)":"shoulderPressDB","Brustpresse (Maschine)":"chestMachine","Cable Crossover":"crossover","Cable Crossover von unten (obere Brust)":"crossover","Seitheben am Kabel (einarmig)":"lateralCable","Dips (assistiert an der Maschine)":"dip","Dips am Barren":"dip","Schrägbank-Brustpresse (Maschine)":"inclineMachine","T-Bar Rudern (Brustpolster)":"rowMachine","Hip Thrust Maschine":"hipThrust","Trizeps Überkopf am Kabel":"overheadExt",
  "Rudern an der Maschine (Brustpolster)":"rowMachine","Latzug enger Griff":"pulldownClose","Face Pulls (Kabel, Seil)":"facePull","SZ-Curls":"curlBar","Bizeps-Curls am Kabel":"curlCable",
  "Schrägbank-Curls Kurzhantel":"curlIncline","Trizepsdrücken am Kabel (Stange)":"pushdownBar","Hammer-Curls am Kabel (Seil)":"curlCable","Beinheben hängend":"legRaise"
 };
@@ -765,11 +777,12 @@ const TYPES={push:{c:"var(--red)",on:"#fff"},pull:{c:"var(--blue)",on:"#fff"},le
 const LIB={
  "Bankdrücken (Multipresse oder Langhantel)":{ph:"Smith_Machine_Bench_Press",bar:20,m:["chest","delt","tri"],c:"Anfangs an der Multipresse oder mit Spotter. Stange zur unteren Brust, Schulterblätter zusammen, Füße fest am Boden.",q:"Bankdrücken richtig Anfänger",alt:["Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
  "Bankdrücken Kurzhantel":{ph:"Dumbbell_Bench_Press",db:1,m:["chest","delt","tri"],c:"Hanteln kontrolliert bis Brusthöhe, oben nicht aneinanderschlagen. Gewicht pro Hantel eintragen.",q:"Kurzhantel Bankdrücken Technik",alt:["Bankdrücken (Multipresse oder Langhantel)","Brustpresse (Maschine)"]},
- "Schrägbankdrücken Kurzhantel":{ph:"Incline_Dumbbell_Press",db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik",alt:["Schrägbank-Brustpresse (Maschine)","Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
+ "Schrägbankdrücken Kurzhantel":{ph:"Incline_Dumbbell_Press",db:1,m:["chest","delt","tri"],c:"Bank auf ca. 30°. Hanteln kontrolliert bis Brusthöhe, Unterarme senkrecht. Gewicht pro Hantel eintragen.",q:"Schrägbankdrücken Kurzhantel Technik",alt:["Schrägbank-Brustpresse (Maschine)","Cable Crossover von unten (obere Brust)","Bankdrücken Kurzhantel","Brustpresse (Maschine)"]},
  "Schrägbank-Brustpresse (Maschine)":{ph:"Leverage_Incline_Chest_Press",m:["chest","delt","tri"],c:"Für die obere Brust. Sitz so einstellen, dass die Griffe etwa auf Höhe der oberen Brust sind. Schulterblätter nach hinten-unten, Rücken fest am Polster, nach oben-vorne drücken und langsam zurück. Als Gewicht die aufgelegten Scheiben eintragen (pro Seite oder gesamt, aber immer gleich).",q:"Incline Chest Press Maschine Technik",alt:["Schrägbankdrücken Kurzhantel","Brustpresse (Maschine)"]},
  "Brustpresse (Maschine)":{ph:"Machine_Bench_Press",m:["chest","delt","tri"],c:"Griffe auf Brusthöhe, Schulterblätter hinten-unten, Ellbogen nicht ganz durchstrecken.",q:"Brustpresse Maschine richtig ausführen",alt:["Schrägbank-Brustpresse (Maschine)","Bankdrücken Kurzhantel","Bankdrücken (Multipresse oder Langhantel)"]},
- "Butterfly (Maschine)":{ph:"Butterfly",m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik",alt:["Cable Crossover"]},
- "Cable Crossover":{ph:"Cable_Crossover",m:["chest"],c:"Leicht nach vorne lehnen, Hände vor der Brust zusammenführen.",q:"Cable Crossover Brust Technik",alt:["Butterfly (Maschine)"]},
+ "Butterfly (Maschine)":{ph:"Butterfly",m:["chest"],c:"Leicht gebeugte Arme, Bewegung kommt aus der Brust. Langsam zurück.",q:"Butterfly Maschine Brust Technik",alt:["Cable Crossover","Cable Crossover von unten (obere Brust)"]},
+ "Cable Crossover":{ph:"Cable_Crossover",m:["chest"],c:"Seile oben, leicht nach vorne lehnen, Hände in einem Bogen nach unten vor dem Bauch zusammenführen. Trifft vor allem die untere Brust.",q:"Cable Crossover Brust Technik",alt:["Cable Crossover von unten (obere Brust)","Butterfly (Maschine)"]},
+ "Cable Crossover von unten (obere Brust)":{ph:"Cable_Crossover",phNote:"gleiche Maschine, Rollen ganz unten",m:["chest","delt"],c:"Rollen ganz unten, ein Schritt nach vorne. Arme leicht gebeugt, in einem Bogen nach oben ziehen, bis sich die Hände auf Kinnhöhe treffen. Oben 1 Sek. zusammendrücken, langsam zurück. Etwas leichter als von oben, Schultern unten lassen.",q:"Low to High Cable Fly obere Brust",alt:["Cable Crossover","Schrägbank-Brustpresse (Maschine)"]},
  "Dips am Barren":{ph:"Dips_-_Triceps_Version",bw:1,m:["tri","chest"],c:"Oberkörper leicht nach vorne für mehr Brust. Nur so tief, bis die Oberarme etwa waagerecht sind, nicht tiefer als es in der Schulter angenehm ist. Schaffst du keine 6? Dann nur langsam runterlassen (3–5 Sek.) und mit den Füßen wieder hoch. Später mit Dip-Gürtel Gewicht dazu.",q:"Dips am Barren richtig Anfänger",alt:["Bank-Dips","Trizepsdrücken am Kabel (Stange)"]},
  "Bank-Dips":{ph:"Bench_Dips",bw:1,m:["tri","chest"],c:"Hände hinter dir auf der Bank, Beine angewinkelt (leichter) oder gestreckt (schwerer). Langsam runter, bis die Oberarme waagerecht sind. Schultern bleiben unten.",q:"Bank Dips richtig ausführen",alt:["Dips am Barren","Trizepsdrücken am Kabel (Stange)"]},
  "Dips (assistiert an der Maschine)":{ph:"Dips_-_Triceps_Version",phNote:"freie Dips, gleiche Bewegung",assist:1,m:["tri","chest"],c:"Hilfsgewicht eintragen. Weniger Hilfe heißt stärker. Nur so tief, wie es in der Schulter angenehm ist.",q:"assistierte Dips Maschine Technik",alt:["Dips am Barren","Bank-Dips"]},
@@ -894,15 +907,57 @@ const shortDate=d=>new Date(d).toLocaleDateString('de-DE',{day:'2-digit',month:'
 
 /* Planwechsel auf Version 5: angefangene Eingaben passen nicht mehr zu den neuen Positionen */
 Object.assign(LIB,store.get("gym.customLib",{}));
-let P=store.get("gym.plan",null)||JSON.parse(JSON.stringify(P_DEFAULT));
-if(!Array.isArray(P)||P.length!==P_DEFAULT.length||!P.every(d=>d&&Array.isArray(d.ex)))P=JSON.parse(JSON.stringify(P_DEFAULT));
+let PB=store.get("gym.plan",null)||JSON.parse(JSON.stringify(P_DEFAULT));
+if(!Array.isArray(PB)||PB.length!==P_DEFAULT.length||!PB.every(d=>d&&Array.isArray(d.ex)))PB=JSON.parse(JSON.stringify(P_DEFAULT));
 if(!store.get("gym.logFix",0)){const lg=store.get("gym.log",[]);lg.forEach(l=>{if(l.am)return;const d=new Date(l.date);
  if(l.dur&&l.dur>300){l.date=new Date(d.getTime()-l.dur*60000).toISOString();l.dur=null}
  else if(d.getHours()<4){l.date=new Date(d.getTime()-(l.dur||60)*60000).toISOString()}});
  lg.sort((a,b)=>a.date<b.date?-1:1);store.set("gym.log",lg);store.set("gym.logFix",1)}
-if(store.get("gym.planVer",0)>=10&&store.get("gym.planVer",0)<11){P.forEach(d=>d.ex.forEach(x=>{if(x.n==="Dips (assistiert an der Maschine)"){x.n="Dips am Barren";x.r="6–12"}}));if(store.get("gym.plan",null))store.set("gym.plan",P);try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",11)}
+if(store.get("gym.planVer",0)>=10&&store.get("gym.planVer",0)<11){PB.forEach(d=>d.ex.forEach(x=>{if(x.n==="Dips (assistiert an der Maschine)"){x.n="Dips am Barren";x.r="6–12"}}));if(store.get("gym.plan",null))store.set("gym.plan",PB);try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",11)}
 if(store.get("gym.planVer",0)<10){try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k));localStorage.removeItem("gym.swap")}catch(e){}if(store.get("gym.plan",null))store.set("gym.planUpdate",1);store.set("gym.planVer",11)}
 if(store.get("gym.planVer",0)<5){try{Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(e){}store.set("gym.planVer",5)}
+
+
+/* ---------- Schwachstellen-Fokus ---------- */
+const FOCUS={
+ brust:{label:"Brust",sub:"obere und untere Brust",m:["chest"],first:/^(Schrägbank|Bankdrücken|Brustpresse)/,adds:["Schrägbank-Brustpresse (Maschine)","Cable Crossover von unten (obere Brust)","Cable Crossover"]},
+ brustoben:{label:"Obere Brust",sub:"der Teil unterm Schlüsselbein",m:["chest"],first:/^Schrägbank/,adds:["Schrägbank-Brustpresse (Maschine)","Cable Crossover von unten (obere Brust)","Schrägbankdrücken Kurzhantel"]},
+ schultern:{label:"Schultern",sub:"vor allem seitlich, für breite Schultern",m:["delt"],first:/^(Seitheben|Schulter)/,adds:["Seitheben am Kabel (einarmig)","Seitheben Kurzhantel","Reverse Butterfly (Maschine)"]},
+ arme:{label:"Arme",sub:"Bizeps und Trizeps",m:["bi","tri"],first:/Curls|^Trizeps/,adds:["Bizeps-Curls am Kabel","Trizepsdrücken am Kabel (Seil)","Hammer-Curls am Kabel (Seil)"]},
+ ruecken:{label:"Rücken",sub:"Breite und Dicke",m:["lat"],first:/^(Latzug|Rudern|T-Bar)/,adds:["Latzug breit","T-Bar Rudern (Brustpolster)","Rudern sitzend am Kabel"]}
+};
+const focusKey=()=>{const k=store.get("gym.focus","");return FOCUS[k]?k:""};
+const focusLvl=()=>store.get("gym.focusLvl",2)===3?3:2;
+function applyFocus(base){
+ const days=base.map(d=>({...d,ex:d.ex.map((x,j)=>({...x,src:j}))}));
+ const k=focusKey();if(!k)return days;const f=FOCUS[k];
+ const prim=d=>d.ex.reduce((a,x)=>a+(LIB[x.n]&&f.m.includes(LIB[x.n].m[0])?x.s:0),0);
+ const isF=days.map(d=>prim(d)>=6);
+ const tmpl=n=>{const big=LIB[n].m.length>=3;return{n,s:3,r:big?"8–12":"12–15",p:big?90:60,src:"f:"+n,fx:1}};
+ let c=0,added=0;
+ days.forEach((d,i)=>{
+  if(isF[i]){const j=d.ex.findIndex(x=>f.first.test(x.n));
+   if(j>0){const[x]=d.ex.splice(j,1);d.ex.unshift({...x,fmove:1})}
+   else if(j<0){const n=f.adds.find(a=>LIB[a]&&!d.ex.some(x=>x.n===a));if(n)d.ex.unshift(tmpl(n))}
+   return}
+  if(i<days.length-1&&isF[i+1])return;
+  if(added>=focusLvl())return;
+  for(let t=0;t<f.adds.length;t++){const n=f.adds[(c+t)%f.adds.length];if(LIB[n]&&!d.ex.some(x=>x.n===n)){d.ex.unshift(tmpl(n));c=(c+t+1)%f.adds.length;added++;break}}
+ });
+ return days;
+}
+let P=applyFocus(PB);
+function setFocus(k,lvl){
+ const old=P;store.set("gym.focus",k);if(lvl)store.set("gym.focusLvl",lvl);P=applyFocus(PB);
+ const sw=store.get("gym.swap",{}),nsw={};
+ Object.keys(sw).forEach(key=>{if(!P.some(d=>key.startsWith(d.id+"-")))nsw[key]=sw[key]});
+ P.forEach((d,di)=>{const o=old[di];if(!o)return;const map={};
+  o.ex.forEach((x,oi)=>{const ni=d.ex.findIndex(y=>y.src===x.src);if(ni>=0)map[oi]=ni});
+  Object.keys(map).forEach(oi=>{const v=sw[d.id+"-"+oi];if(v!=null)nsw[d.id+"-"+map[oi]]=v});
+  const st=store.get("gym.cur."+d.id,null);if(st){const ns={};Object.keys(st).forEach(key=>{if(/^\d+$/.test(key)){if(map[key]!=null)ns[map[key]]=st[key]}else ns[key]=st[key]});store.set("gym.cur."+d.id,ns)}});
+ store.set("gym.swap",nsw);
+}
+function rebuildP(){P=applyFocus(PB)}
 
 const todayIdx=(new Date().getDay()+6)%7;
 const rotation=()=>store.get("gym.rotation",false);
@@ -1066,12 +1121,13 @@ function editorHTML(d,i){
 }
 function renderPlan(){
  const upd=store.get("gym.planUpdate",0)?`<div class="banner"><b>Neuer Standardplan verfügbar.</b><span>Oberkörper-Fokus, Beine nur noch kurz am Mittwoch, Drop- und Rest-Pause-Sätze. Du hast deinen Plan selbst bearbeitet, deshalb wurde er nicht automatisch ersetzt.</span><div class="btns2"><button class="btn primary" id="plan-upd-yes">Neuen Plan übernehmen</button><button class="btn" id="plan-upd-no">Meinen behalten</button></div></div>`:"";
- $("plan").innerHTML=upd+P.map((d,i)=>{if(editDay===i)return editorHTML(d,i);const t=TYPES[d.type];const a=AM[d.id];
+ $("plan").innerHTML=upd+P.map((d,i)=>{if(editDay===i)return editorHTML(PB[i],i);const t=TYPES[d.type];const a=AM[d.id];
   return `<article class="card plan-day" style="--c:${t.c}"><header><h3>${d.wd}: ${esc(d.name)}</h3><span class="num">${d.time}</span></header>
-  <ol>${d.ex.map((_,j)=>{const e=exAt(d,j);return `<li>${esc(e.n)} <span>${nSets(e)} × ${e.r}${e.ss?` · Supersatz ${e.ss}`:''}${e.t?` · ${TECH[e.t]}`:''}</span></li>`}).join('')}</ol>
+  <ol>${d.ex.map((_,j)=>{const e=exAt(d,j);return `<li>${e.fx?'<b class="fxtag">Fokus</b> ':''}${e.fmove?'<b class="fxtag">Fokus zuerst</b> ':''}${esc(e.n)} <span>${nSets(e)} × ${e.r}${e.ss?` · Supersatz ${e.ss}`:''}${e.t?` · ${TECH[e.t]}`:''}</span></li>`}).join('')}</ol>
   <p class="status">Früh (optional): ${a.name}, ${a.time}</p>
   <div class="btns2"><button class="btn${i===planToday()?' primary':''}" data-start="${i}">${i===planToday()?'Heute starten':'Starten'}</button><button class="btn" data-edit="${i}">Bearbeiten</button></div></article>`}).join('')
   +`<article class="card plan-day" style="--c:var(--line)"><header><h3>So: Ruhetag</h3></header><p class="lead">Muskeln wachsen in der Pause. Höchstens ein Spaziergang. Guter Tag fürs wöchentliche Backup und den Wochenrückblick.</p></article>`;
+ renderFocus();
  $("road").innerHTML=ROAD.map(r=>`<div><em>${r.s}</em><b>${r.t}</b><span>${r.d}</span></div>`).join('');
  renderLib();renderBag();
 }
@@ -1088,14 +1144,14 @@ const ROAD=[
  {s:"Bewusst nicht",t:"Fortschrittsfotos",d:"Würden den Speicher der App sprengen. Dafür ist deine Foto-App besser, z. B. ein eigenes Album."},
  {s:"Geht nicht",t:"Apple Health und Watch",d:"Eine Web-App kann darauf leider nicht zugreifen."}
 ];
-function savePlan(i){store.set("gym.plan",P);const d=P[i];const sw=store.get("gym.swap",{});Object.keys(sw).filter(k=>k.startsWith(d.id+"-")).forEach(k=>delete sw[k]);store.set("gym.swap",sw);store.set("gym.cur."+d.id,{})}
+function savePlan(i){store.set("gym.plan",PB);rebuildP();const d=P[i];const sw=store.get("gym.swap",{});Object.keys(sw).filter(k=>k.startsWith(d.id+"-")).forEach(k=>delete sw[k]);store.set("gym.swap",sw);store.set("gym.cur."+d.id,{})}
 $("plan").addEventListener('click',e=>{
- if(e.target.id==="plan-upd-yes"){P=JSON.parse(JSON.stringify(P_DEFAULT));try{localStorage.removeItem("gym.plan");localStorage.removeItem("gym.swap");Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(err){}store.set("gym.planUpdate",0);renderPlan();return}
+ if(e.target.id==="plan-upd-yes"){PB=JSON.parse(JSON.stringify(P_DEFAULT));rebuildP();try{localStorage.removeItem("gym.plan");localStorage.removeItem("gym.swap");Object.keys(localStorage).filter(k=>k.startsWith("gym.cur.")).forEach(k=>localStorage.removeItem(k))}catch(err){}store.set("gym.planUpdate",0);renderPlan();return}
  if(e.target.id==="plan-upd-no"){store.set("gym.planUpdate",0);renderPlan();return}
  const st=e.target.closest('[data-start]');if(st){cur=+st.dataset.start;slot="pm";editDay=null;location.hash="training";return}
  const ed=e.target.closest('[data-edit]');if(ed){editDay=+ed.dataset.edit;resetAsk=null;renderPlan();document.querySelector('.plan-day.ed').scrollIntoView({block:"start"});return}
  const b=e.target.closest('[data-ed]');if(!b||editDay==null)return;
- const i=editDay,d=P[i],j=+b.dataset.j,act=b.dataset.ed;const y=window.scrollY;
+ const i=editDay,d=PB[i],j=+b.dataset.j,act=b.dataset.ed;const y=window.scrollY;
  if(act==="up"&&j>0){[d.ex[j-1],d.ex[j]]=[d.ex[j],d.ex[j-1]]}
  else if(act==="down"&&j<d.ex.length-1){[d.ex[j+1],d.ex[j]]=[d.ex[j],d.ex[j+1]]}
  else if(act==="del"){d.ex.splice(j,1)}
@@ -1106,12 +1162,12 @@ $("plan").addEventListener('click',e=>{
   if(LIB[n]&&!LIB[n].custom){$("ec-status").textContent="Diese Übung gibt es schon. Wähle sie oben bei „Übung hinzufügen“.";return}
   const cl=store.get("gym.customLib",{});cl[n]={m:[$("ec-m").value],c:"Eigene Übung.",q:n+" Übung Technik",bw:$("ec-bw").checked?1:0,alt:[],custom:1};store.set("gym.customLib",cl);LIB[n]=cl[n];d.ex.push({n,s:3,r:"10–12",p:75})}
  else if(act==="reset"){resetAsk=i;renderPlan();window.scrollTo({top:y});return}
- else if(act==="reset-yes"){P[i]=JSON.parse(JSON.stringify(P_DEFAULT[i]));resetAsk=null}
+ else if(act==="reset-yes"){PB[i]=JSON.parse(JSON.stringify(P_DEFAULT[i]));resetAsk=null}
  else if(act==="done"){editDay=null;resetAsk=null;renderPlan();return}
  savePlan(i);renderPlan();window.scrollTo({top:y});
 });
 $("plan").addEventListener('change',e=>{
- const f=e.target.dataset.edf;if(!f||editDay==null)return;const x=P[editDay].ex[+e.target.dataset.j];
+ const f=e.target.dataset.edf;if(!f||editDay==null)return;const x=PB[editDay].ex[+e.target.dataset.j];
  if(f==="r"){const v=e.target.value.trim().replace(/-/g,"–");if(/\d/.test(v))x.r=v}
  if(f==="p")x.p=+e.target.value;
  if(f==="ss")x.ss=e.target.value||undefined;
@@ -1183,7 +1239,7 @@ function renderTraining(){
   return `<article class="ex${g===n+X2?' done':''}">${mediaHTML(e)}<div class="fig">${fig(e.m)}</div><div class="exbody">
    <div class="extop"><h3>${esc(e.n)}</h3><span class="num">${String(i+1).padStart(2,'0')}</span></div>
    ${e.ss?`<span class="ss">Supersatz ${e.ss}${day.ex[i+1]&&day.ex[i+1].ss===e.ss?': direkt weiter zur nächsten Übung':': danach Pause'}</span>`:''}
-   ${e.swapped?`<span class="swapped">Getauscht${e.swapToday?' (nur heute)':''} statt: ${esc(e.orig)}</span>`:''}
+   ${e.fx?`<span class="swapped fx">Fokus-Übung: ${esc(FOCUS[focusKey()].label)}. Kommt zuerst, solange du noch frisch bist.</span>`:''}${e.fmove?`<span class="swapped fx">Fokus: nach vorne gezogen</span>`:''}${e.swapped?`<span class="swapped">Getauscht${e.swapToday?' (nur heute)':''} statt: ${esc(e.orig)}</span>`:''}
    <div class="row"><span class="dose">${n} × ${e.r}</span><span class="muscles">${e.m.map(k=>LBL[k]).join(' · ')}</span></div>
    <p class="cue">${e.c}</p>
    ${noteUI}
@@ -1576,7 +1632,7 @@ function hookLibAnims(){if(reduceMotion)return;document.querySelectorAll('#lib .
 $("lib").addEventListener('click',e=>{
  const f=e.target.closest('[data-lf]');if(f){libFilter=f.dataset.lf;renderLib();return}
  const o=e.target.closest('[data-lib-open]');if(o){const n=o.dataset.libOpen;libOpen.has(n)?libOpen.delete(n):libOpen.add(n);const y=window.scrollY;renderLib();window.scrollTo({top:y});return}
- const a=e.target.closest('[data-lib-add]');if(a){const n=a.dataset.libAdd;const sel=a.parentElement.querySelector('select');const i=+sel.value;P[i].ex.push({n,s:3,r:LIB[n].bw?"10–15":"10–12",p:75});savePlan(i);
+ const a=e.target.closest('[data-lib-add]');if(a){const n=a.dataset.libAdd;const sel=a.parentElement.querySelector('select');const i=+sel.value;PB[i].ex.push({n,s:3,r:LIB[n].bw?"10–15":"10–12",p:75});savePlan(i);
   a.textContent="Hinzugefügt ✓";a.disabled=true;setTimeout(()=>{const y=window.scrollY;renderPlan();window.scrollTo({top:y})},900)}
 });
 const pauseF=()=>store.get("gym.pauseF",1);
@@ -1629,7 +1685,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 /* ---------- Backup ---------- */
 function exportData(){const data={};try{for(let k=0;k<localStorage.length;k++){const key=localStorage.key(k);if(key.startsWith("gym."))data[key]=localStorage.getItem(key)}}catch(e){}
- return JSON.stringify({app:"tims-gym-plan",version:15,exported:new Date().toISOString(),data})}
+ return JSON.stringify({app:"tims-gym-plan",version:16,exported:new Date().toISOString(),data})}
 function bkStatus(t,ok){$("bk-status").textContent=t;$("bk-status").classList.toggle('ok',!!ok)}
 $("bk-save").onclick=async()=>{
  const json=exportData();const name=`gym-backup-${iso(new Date())}.json`;
@@ -1658,7 +1714,24 @@ function prepareImport(text){
 
 cur=rotation()?nextRotIdx():(todayIdx<6?todayIdx:nextRotIdx());
 applyTheme();route();
-if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+
+/* ---------- Fokus-Karte ---------- */
+function renderFocus(){
+ const k=focusKey(),f=FOCUS[k],lvl=focusLvl();
+ const sets=k?(()=>{const out={};P.forEach(d=>d.ex.forEach((_,i)=>{const e=exAt(d,i);if(f.m.includes(e.m[0]))out.n=(out.n||0)+nSets(e)}));return out.n||0})():0;
+ const days=k?P.filter(d=>d.ex.some(x=>x.fx||x.fmove)).map(d=>d.wd):[];
+ $("focus").innerHTML=`<article class="card focus"><header><h3>Schwachstellen-Fokus</h3><span class="num">${k?"an":"aus"}</span></header>
+ <p class="lead">Wähl, was bei dir am meisten hinterherhängt. Die App zieht passende Übungen an den Anfang, wenn du noch frisch bist, und baut an Tagen ohne diesen Muskel eine Zusatzübung ein. Der Tag vor einem schweren Tag für diesen Muskel bleibt frei, damit er sich erholt.</p>
+ <div class="focusgrid" role="group" aria-label="Fokus wählen"><button data-focus="" aria-pressed="${!k}">Aus</button>${Object.keys(FOCUS).map(x=>`<button data-focus="${x}" aria-pressed="${x===k}"><b>${FOCUS[x].label}</b><small>${FOCUS[x].sub}</small></button>`).join('')}</div>
+ ${k?`<div class="opt"><span class="lbl">Stärke</span><div class="seg two" role="group" aria-label="Fokus-Stärke"><button data-flvl="2" aria-pressed="${lvl===2}">Normal: 2 Extra-Tage</button><button data-flvl="3" aria-pressed="${lvl===3}">Stark: 3 Extra-Tage</button></div></div>
+ <p class="status"><b>${f.label}: ca. ${sets} Sätze pro Woche.</b> Angepasst: ${days.join(", ")}. ${lvl===3?"Stark ist viel. Wenn der Muskel am Trainingstag noch richtig schmerzt oder du schwächer wirst, geh auf Normal zurück.":"Guter Start. Nach 2–3 Wochen kannst du auf Stark gehen, wenn du dich gut erholst."} Bleib 8–12 Wochen bei einem Fokus, dann wechseln.</p>`:''}
+ </article>`;
+}
+$("focus").addEventListener('click',e=>{
+ const b=e.target.closest('[data-focus]');const l=e.target.closest('[data-flvl]');if(!b&&!l)return;const y=window.scrollY;
+ if(b)setFocus(b.dataset.focus);else setFocus(focusKey(),+l.dataset.flvl);
+ renderPlan();window.scrollTo({top:y});
+});
 </script>
 
 </body>
